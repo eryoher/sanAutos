@@ -1,0 +1,50 @@
+import React, { Component } from 'react';
+import Link  from 'next/link'
+import { Row, Col, Menu, Divider } from 'antd';
+
+export default class MenuAdmin extends Component {
+  
+    constructor(props) {
+        super(props);
+        this.state = {
+        isOpen: false,
+            collapsed : true,
+        };
+    }
+
+
+    render() {
+        const {showMenu} = this.props;
+        return (
+            <Col span={17} offset={3} style={{textAlign:'center', top:'1em'}} >
+                { showMenu && <Menu
+                    mode="horizontal"
+                    className={'menu-container'}                
+                >                
+                    <Menu.Item key={'home'}>                            
+                        <Link href={{ pathname: '/admin'}}><a>Inicio</a></Link>
+                    </Menu.Item>
+                    <Menu.Item key={"test"} disabled>
+                        <Divider type={"vertical"} />
+                    </Menu.Item>
+                    <Menu.Item key={'promociones'}>                            
+                        <Link href={{ pathname: '/adminpromotions'}}><a>Promociones</a></Link>
+                    </Menu.Item>
+                    <Menu.Item key={"test2"} disabled>
+                        <Divider type={"vertical"} />
+                    </Menu.Item>
+                    <Menu.Item key={'companies'}>                            
+                        <Link href={{ pathname: '/adminCompanies'}}><a>Empresas</a></Link>
+                    </Menu.Item>
+                    <Menu.Item key={"test3"} disabled>
+                        <Divider type={"vertical"} />
+                    </Menu.Item>
+                    <Menu.Item key={'categories'}>                            
+                        <Link href={{ pathname: '/adminCategories'}}><a>Categorias</a></Link>
+                    </Menu.Item>
+
+                </Menu>}
+            </Col>                       
+        );
+    }
+}

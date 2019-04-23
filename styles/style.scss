@@ -1,0 +1,484 @@
+@import '../node_modules/breakpoint-sass/stylesheets/breakpoint';
+@import '../node_modules/compass-mixins/lib/compass';
+@import "~antd/dist/antd.css";   // import official less entry file
+@import 'functions';
+
+
+body{    
+    max-width: $width-page;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px auto !important;
+    
+    .color-orange{
+        color: #d38148;
+    }
+
+    .color-blue{
+        color: #058bca;
+    }
+
+    .color-white{
+        color: #fff;
+    }
+
+    .top-header{
+        background-repeat: repeat-x;
+        height: 46px;
+        background-size: cover;
+    }
+
+    .banner-content{
+        @include backgroundImage;
+        height: 317px;
+        .banner-logo{
+            height: 80%;            
+            background-repeat: no-repeat;
+            background-position-x: 33px;
+            background-position-y: 28px;            
+        }
+
+        .banner-row{
+            //border: 1px solid red;
+            height: 50px;
+        }
+
+        .banner-login{
+            a{
+                color: #fff;
+                @include MyriadRegular(22pt);
+                font-weight: bold;
+                padding-right: 20px;
+
+            }
+            padding-top: 20px;
+            text-align: right;            
+        }
+
+        .banner-message{
+            color: #fff;
+            text-align: center;
+            @include MyriadRegular(18pt);            
+        }
+
+        .title-top-promotions{
+            @include MyriadRegular(22pt);
+            color: #000;
+            padding-left: 35px;
+            font-weight: bold;
+            padding-top: 15px;
+        }
+    }
+
+    .ant-modal-body{
+        padding: 0px;
+        .addUser-container{
+            .logo-login{
+                height: 190px;
+                @include backgroundImage;
+                text-align: center;
+                margin-bottom: 110px;
+                .logo-img{
+                    width: 200px;
+                    padding-top: 50px;
+                }                
+                .title{
+                    color:#57abde;
+                    @include MyriadRegular(26pt);    
+
+                }
+            }
+
+            .form-content{
+                .input-form-login{
+                    @include MyriadRegular(14pt);    
+                    background-color: #ededed;
+                    box-shadow: 0px 6px 1px 1px #ccc;
+                    height: 44px;
+                    color: #000;
+                    border:1px solid #ededed;
+                }
+
+                .login-form-button{
+                    @include MyriadRegular(26pt);    
+                    background-color: #57abde;
+                    height: 60px;
+                    border-radius: 25px;
+                    color: #fff;
+                    width: 50%;
+                }
+                .ant-form-explain{
+                    padding-top: 8px;
+                }
+            }
+            
+        }
+    }
+
+    .donaciones-content{            
+        margin-top:0px;
+        .title{
+            text-align: left;
+            margin-left: 0px;
+        }
+        .vertical-divider{
+            border-bottom: 3px solid $blue;            
+            margin-left: 0px;
+            height: 1px;
+            margin-bottom: 2%;
+            width: 40%;
+        }
+
+        .presentation-mode{
+            padding-top:10px;            
+            
+            .conten-slide{
+                .my-slide-content{
+                    @include backgroundImage;
+                    height: 466px;
+                    .margen-slogan{
+                        padding-bottom: 10%;
+                    }
+                    .slogan-content{                            
+                        width: 50%;
+                        background-color: rgba(187, 186, 186, 0.7);
+                        
+                        text-align: left;
+                        padding-left: 5%;
+                        .slogan{
+                            .purchased{
+                                @include QuickSandRegular(22pt);    
+                                @include backgroundImage;                                
+                                padding-left: 15px;
+                                font-weight: bold;
+                            }
+                            .valor{
+                                @include MyriadRegular(36pt);    
+                                color:#fff;
+                                opacity: 1;
+                            }
+                            .deal{
+                                @include MyriadRegular(22pt);    
+                                color:#fff;                                                                
+                                @include backgroundImage;                                
+                                padding-left: 15px;                                                              
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .information-container{
+        .information-icon{
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 150px;
+        }
+        .information-title{
+            @include MyriadRegular(28pt); 
+            line-height: 1;
+            padding-top: 10%;
+        }
+        .information-description{
+            @include MyriadRegular(16pt); 
+            color: gray;
+            text-align: justify;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .border-bottom-information{
+            height: 15px;
+            background-image: linear-gradient(#f4971d, #fed532);    
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .divider-information{
+            width: 2px;
+            background-color: #d2cece;
+            top: 1em;
+            height: 14em;
+        }
+    }
+
+    .promotions-container{
+        .menu-categories{            
+            .list-categories{
+                padding: 5%;
+                .category-item{
+                    padding-top: 25px;
+                    .title{
+                        @include MyriadRegular(16pt);    
+                        font-weight: bold;
+                    }
+                    .icon{
+                        width: 75px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .list-promotions{
+            min-height: 500px;
+            border-left: 3px dashed gray;
+            .title-promotions-list{
+                @include MyriadRegular(30pt); 
+                margin-left: 15px;
+                width: 98%;
+                padding-left: 10px;
+            }
+            
+            .promotion-item{
+                @include backgroundImage;
+                padding: 15px;
+                margin: 15px;
+                height: 350px;
+                color:#fff;
+                .vertical-space{
+                    margin:15%;
+                }
+                .subcontent{
+                    width: 50%;
+                    background-color: rgba(107, 101, 101, 0.3);
+                    text-align: left;
+                    
+                    .slogan{
+                        margin-left: 5%;                       
+                        
+                        .purchased{
+                            padding-left: 5%;
+                            background-image: linear-gradient(#827e7a99, #b7acb63d);    
+                            @include MyriadRegular(14pt);    
+                        }
+
+                        .valor{
+                            padding-left: 5%;
+                            @include MyriadRegular(18pt);    
+
+
+                        }
+                        .deal{
+                            @include MyriadRegular(14pt);    
+                            padding-left: 5%;
+                            background-image: linear-gradient(#f4971d, #fed532);    
+                        }
+                    }
+                }
+
+                .sell-button{     
+                    position: absolute;
+                    bottom:10%;                                         
+                    text-align: center;
+                    left: auto;
+                    right: auto;
+                    width: 90%;
+                }
+            }
+            .description-item{
+                padding-left: 15px;
+                @include MyriadRegular(15pt);    
+                text-align: justify;
+            }
+        }
+
+        .border-bottom-promotions{
+            height: 15px;
+            background-image: linear-gradient(#f4971d, #fed532);    
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .buypromotion-content{
+        @include backgroundImage;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        padding-top: 21%;
+        h3{
+            @include MyriadRegular(19pt);
+
+        }
+        .button-buypromotion{
+            color: #fff;
+            background-color: #729FCB;
+            @include MyriadRegular(19pt);
+            background-color: #729FCB;
+            height: 48px;
+            border-radius: 30px;
+            width: 35%;
+            margin-bottom: 5px;
+        }
+    }
+
+    .promotion-container{
+        .header{
+            height: 57px;
+            width: 100%;
+            background-color: #058bca;
+        }
+        .content{
+            margin-top: 20px;
+
+            .ant-tabs-card-bar{
+                .ant-tabs-tab{
+                    background-image: linear-gradient(#1f1b2d, #165a9d);
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    color:#fff;
+                }
+            }
+            .promotion-images{
+                .main-image{
+                    img{
+                        height: 512px;
+                        width: 100%;
+                    }
+
+                }
+                .list-images{
+                    .list{
+                        @include backgroundImage;
+                        height: 148px;
+                        margin: 10px;
+                        margin-top: 20px;
+                        width: 31%;
+                        display: inline-block;
+                    }
+                }
+                .description{
+                    text-align: justify;
+                    @include MyriadRegular(16pt);
+                }
+                .time-promotion{
+                    margin-top: 20px;
+                    .img-clock{
+                        width: 90px;
+                    }
+                    .message{
+                        @include MyriadRegular(24pt);
+                        font-weight: bold;
+                    }
+                    .time{
+                        @include MyriadRegular(24pt);
+                        font-weight: bold;
+                        margin-left: 5%;
+                        .interval{
+                            background-color: #d0cece;
+                            padding: 5px;
+                        }
+                    }
+                }
+                .div-botton-donate{
+                    text-align: center;
+                    margin-bottom: 20px;
+                    margin-top: 20px;
+                    .botton-donate{
+                        color: #fff;
+                        background-image: linear-gradient(#1f1b2d, #165a9d);
+                        @include MyriadRegular(24pt);
+                        height: 60px;
+                        padding-top: 15px;
+                        border-radius: 50px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .allies-container{
+        color: #000;            
+        margin: 25px;
+        .title{
+            text-align: center;
+            @include MyriadRegular(32pt);
+        }
+        .description{
+            margin-top: 25px;
+            text-align: justify;
+            @include MyriadRegular(18pt);
+        }
+    }
+
+    .footer-container{
+        height: 224px;
+        background-color: #272828;
+
+        .protect-data{
+            margin-top: 5%;
+            padding-left: 3%;
+            .title{
+                color: #fff;
+                @include MyriadRegular(18pt);
+                text-align: left;
+            }
+        }
+
+        .footer-seccion{            
+            height: 100%;
+        }
+        .logo-left{
+            text-align: center;
+            .logo{
+                margin-top: 12%;
+                margin-right: 10%;
+            }            
+        }
+    }
+
+    .menu-container{
+        background-color:rgb(221, 242, 245);
+        .ant-menu-item{
+            @include QuickSandRegular(15pt);
+            vertical-align: middle;
+            color: #000;
+            font-weight: bold;
+            padding-left: 5px;
+            padding-right: 5px;
+            a{
+                text-decoration: none;
+                color: #000;
+            }
+        }
+        .left-divider{
+            border-left: 1px solid red;
+            padding-left: 8px;
+            height: .9em;
+        }
+    }   
+
+    .confirmation-content{
+        margin-top: 25px;
+        text-align: center;
+        @include MyriadRegular(16pt);
+        .title{
+            @include MyriadRegular(24pt);
+        }
+
+        .confirm-label{
+            font-weight: bold;
+            border: 1px solid gray;
+            background-color: #44bccc;
+        }
+        .confirm-value{
+            background-color: #d1d5d6;
+            border: 1px solid gray;
+        }
+
+        .botton-donate{
+            color: #fff;
+            background-image: linear-gradient(#1f1b2d, #165a9d);
+            @include MyriadRegular(24pt);
+            height: 60px;
+            padding-top: 15px;
+            border-radius: 50px;
+            width: 150px;
+        }
+    }
+
+}
+    
