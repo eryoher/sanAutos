@@ -6,6 +6,7 @@ import paymentSagas from './Payments';
 import inventorySaga from './Inventories';
 import companySaga from './Companies';
 import userSaga from './Users';
+import imageSaga from './Images';
 
 export default function* rootSaga(getState) {
     yield all([
@@ -15,7 +16,8 @@ export default function* rootSaga(getState) {
         paymentSagas(),
         inventorySaga(),
         companySaga(),
-        userSaga()
+        userSaga(),
+        imageSaga()
     ])
 }
   

@@ -1,19 +1,63 @@
 import React, { Component } from 'react';
-import { Col } from 'antd';
+import { Col, Carousel } from 'antd';
 import Footer from '../common/footer';
+import { connect } from 'react-redux';
+import getConfig from 'next/config';
+import { getImagesByContainer } from '../../actions';
+const { publicRuntimeConfig } = getConfig();
 
-export default class Allies extends Component {
+
+const infoColumn = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 24 },
+    lg: { span: 12 },
+    xl: { span: 12 },
+}
+
+class Allies extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
+    componentWillMount = () => {
+        this.props.getImagesByContainer('allies');
+    }
+
+    renderAllies = () => {
+        const { listImages } = this.props;
+        const rows = [];
+        listImages.forEach(images => {
+            const urlImage = `${publicRuntimeConfig.apiUrl}/Images/allies/download/${images.name}`
+            rows.push(
+                <Col key={images.name} style={{width:'100%', textAlign:'center'}} >
+                    <img src = {urlImage} style={{width:'250px', margin:'0px auto'}} />                    
+                </Col>
+            )
+        });
+
+        return (
+            <Carousel
+                autoplay
+                autoplaySpeed ={'30'}
+                className="presentation-mode"
+                dots = {false}
+            >
+                {rows}
+            </Carousel>
+        )
+    }
+
     render() {
+        const { listImages } = this.props;
         return (
             <Col span={24} className={"allies-container"} >
                 <Col span={24} className={"title"}>
-                   <b> Nuestros </b> <span className={"color-blue"}> Aliados </span>
+                   Han apoyado a la fundacion <span className={'color-blue'} > <b> Portal Magico </b> </span> 
                 </Col>
                 <Col span={21} offset={1} className={"description"}>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                    massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                    felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-                    fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                    { listImages && this.renderAllies() }
                 </Col>
                 <Col span={24} >
                     <Footer />
@@ -22,3 +66,12 @@ export default class Allies extends Component {
         )
     }
 }
+
+function mapStateToProps({ images }){
+    const { listImages } = images
+    return {
+        listImages
+    }
+}
+
+export default connect (mapStateToProps,{getImagesByContainer})(Allies);

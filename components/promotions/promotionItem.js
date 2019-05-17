@@ -33,7 +33,7 @@ export default class PromotionItem extends Component {
                                     { `Valor: ${promotion.price.toLocaleString()} ` }
                                 </div>           
                                 <div className={'deal'}>
-                                    { `Ahorra: ${discount.toLocaleString() } ` }                                        
+                                    { `Bono: ${discount.toLocaleString() } ` }                                        
                                 </div>                             
                             </div>
                     </div>

@@ -25,7 +25,8 @@ export default class InformationPromotion extends Component {
         const logoCard = "../../static/img/information-card.png";
         const logoLetter = "../../static/img/information-letter.png";
         const urlFilePrivate =`${publicRuntimeConfig.appUrl}/static/files/Politica_de_tratamiento_de_datos_personales.pdf`;
-
+        const urlRegister =`${publicRuntimeConfig.appUrl}/static/files/Pasos_para_registrarse.pdf`;
+        const urlDonate =`${publicRuntimeConfig.appUrl}/static/files/pasos_para_donar.pdf`;
         return (
             <Col span={24} className={"information-container"} >
                 <Col { ...infoColumn } >
@@ -35,8 +36,8 @@ export default class InformationPromotion extends Component {
                         <div className={"color-blue"} >Registrarse</div>
                     </Col>
                     <Col span={24} className={"information-description"} >
-                        Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit
+                        Deseas saber como registrarse
+                        dar click <a href={urlRegister} target={"_blank"} > aqui. </a>
                     </Col>
                 </Col>
                 <Col {...dividerColumn} >
@@ -49,8 +50,8 @@ export default class InformationPromotion extends Component {
                         <div className={"color-blue"} >Donar</div>
                     </Col>
                     <Col span={24} className={"information-description"} >
-                        Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit
+                        Deseas saber como donar
+                        debes dar click <a href={urlDonate} target={"_blank"} > aqui. </a>
                     </Col>
                 </Col>
                 <Col {...dividerColumn} >

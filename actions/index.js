@@ -6,3 +6,4 @@ export * from './Payments.js';
 export * from './Inventories';
 export * from './Companies';
 export * from './Users';
+export * from './Images';

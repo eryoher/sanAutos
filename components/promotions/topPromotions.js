@@ -55,7 +55,7 @@ class TopPromotions extends Component {
                                         { `Donacion: ${ parseInt(promotion.price - discount).toLocaleString() }` }
                                     </div>           
                                     <div className={'deal'} style={{backgroundImage: `url(${bgdiscount})`}} >
-                                        { `Ahorra: ${ discount.toLocaleString() }  (${promotion.discount}%)` }                                        
+                                        { `Bono de descuento: ${ discount.toLocaleString() }  (${promotion.discount}%)` }                                        
                                     </div>                             
                                 </div>
                         </div>

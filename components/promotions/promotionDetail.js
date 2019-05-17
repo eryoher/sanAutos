@@ -128,7 +128,7 @@ class PromotionDetail extends Component {
                                 <Button href={urlButton} target={target} className={"botton-donate"} onClick={ () => this.handleCallPaid() } > {nameButton} </Button>                                 
                             </Col>
                             <Col span={5} offset={1} className={"div-botton-donate"} >
-                                <Button href={'/'} target={target} className={"botton-donate"}> Volver </Button>                                 
+                                <Button href={'/'} className={"botton-donate"}> Volver </Button>                                 
                             </Col>
                             <Login 
                                 showLogin = { this.state.showLogin }
