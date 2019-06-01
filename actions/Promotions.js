@@ -10,9 +10,12 @@ import {
     GET_TOP_PROMOTIONS,
     GET_TOP_PROMOTIONS_SUCCESS,
     SEARCH_PROMOTIONS,
-    SEARCH_PROMOTIONS_SUCCESS
+    SEARCH_PROMOTIONS_SUCCESS,
+    GET_PROMOTIONSCATEGORY,
+    GET_PROMOTIONSCATEGORY_SUCCESS,
+    GET_PROMOTIONSINTEREST,
+    GET_PROMOTIONSINTEREST_SUCCESS
 } from '../constants/ActionsTypes';
-  
 
 export const getPromotions = (params) => {               
     return {
@@ -20,7 +23,6 @@ export const getPromotions = (params) => {
         payload: params
     }        
 };
-
 
 export const getPromotionsSuccess = (data) => {               
     return {
@@ -36,14 +38,12 @@ export const getPromotion = (params) => {
     }        
 };
 
-
 export const getPromotionSuccess = (data) => {               
     return {
         type: GET_PROMOTION_SUCCESS,
         payload:data
     }        
 };
-
 
 export const updatePromotion = ( promotionId, params) => {               
     return {
@@ -93,10 +93,37 @@ export const searchPromotions = (params) => {
     }        
 };
 
-
 export const searchPromotionsSuccess = (data) => {               
     return {
         type: SEARCH_PROMOTIONS_SUCCESS,
         payload:data
+    }        
+};
+
+export const getPromotionsCategory = (params) => {               
+    return {
+        type: GET_PROMOTIONSCATEGORY,
+        payload: params
+    }        
+};
+
+export const getPromotionsCategorySuccess = (data) => {               
+    return {
+        type: GET_PROMOTIONSCATEGORY_SUCCESS,
+        payload: data
+    }        
+};
+
+export const getPromotionsInterest = (params) => {               
+    return {
+        type: GET_PROMOTIONSINTEREST,
+        payload: params
+    }        
+};
+
+export const getPromotionsInterestSuccess = (data) => {               
+    return {
+        type: GET_PROMOTIONSINTEREST_SUCCESS,
+        payload: data
     }        
 };

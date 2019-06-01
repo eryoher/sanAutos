@@ -1,4 +1,21 @@
-import { GET_PROMOTIONS, GET_PROMOTIONS_SUCCESS, GET_PROMOTION, GET_PROMOTION_SUCCESS, UPDATE_PROMOTION, UPDATE_PROMOTION_SUCCESS, CREATE_PROMOTION, CREATE_PROMOTION_SUCCESS, GET_TOP_PROMOTIONS, GET_TOP_PROMOTIONS_SUCCESS, SEARCH_PROMOTIONS, SEARCH_PROMOTIONS_SUCCESS } from "../constants/ActionsTypes";
+import { 
+    GET_PROMOTIONS, 
+    GET_PROMOTIONS_SUCCESS, 
+    GET_PROMOTION, 
+    GET_PROMOTION_SUCCESS, 
+    UPDATE_PROMOTION, 
+    UPDATE_PROMOTION_SUCCESS, 
+    CREATE_PROMOTION, 
+    CREATE_PROMOTION_SUCCESS, 
+    GET_TOP_PROMOTIONS, 
+    GET_TOP_PROMOTIONS_SUCCESS, 
+    SEARCH_PROMOTIONS, 
+    SEARCH_PROMOTIONS_SUCCESS, 
+    GET_PROMOTIONSCATEGORY, 
+    GET_PROMOTIONSCATEGORY_SUCCESS, 
+    GET_PROMOTIONSINTEREST, 
+    GET_PROMOTIONSINTEREST_SUCCESS 
+} from "../constants/ActionsTypes";
 
 
 const initialState = {    
@@ -6,6 +23,8 @@ const initialState = {
     promotion:null,
     success:null,
     toppromotions:null,
+    gridpromotions: null,
+    gridInterests: null,
     searchparamaters:null
 }
 
@@ -35,6 +54,14 @@ function rootReducer(state = initialState, action) {
             return {...state, search:null }
         case SEARCH_PROMOTIONS_SUCCESS:
             return { ...state, search:action.payload.data }
+        case GET_PROMOTIONSCATEGORY:
+            return { ...state, gridpromotions: null, searchParamaters: action.payload }
+        case GET_PROMOTIONSCATEGORY_SUCCESS:
+            return { ...state, gridpromotions: action.payload.data}
+        case GET_PROMOTIONSINTEREST:
+            return { ...state, gridInterests: null, searchParamaters: action.payload }
+        case GET_PROMOTIONSINTEREST_SUCCESS:
+            return { ...state, gridInterestspromotions: action.payload.data}
         default:
             return state
     }

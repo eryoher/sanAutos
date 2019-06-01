@@ -1,484 +1,754 @@
-@import '../node_modules/breakpoint-sass/stylesheets/breakpoint';
-@import '../node_modules/compass-mixins/lib/compass';
-@import "~antd/dist/antd.css";   // import official less entry file
-@import 'functions';
+@import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
+@import "../node_modules/compass-mixins/lib/compass";
+@import "~antd/dist/antd.css"; // import official less entry file
+@import "functions";
 
+body {
+  max-width: $width-page;
+  margin: 0px auto !important;
+  @include MyriadRegular(18pt);
 
-body{    
-    max-width: $width-page;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin: 0px auto !important;
-    
-    .color-orange{
-        color: #d38148;
+  .color-orange {
+    color: #d38148;
+  }
+
+  .color-blue {
+    color: #058bca;
+  }
+
+  .color-white {
+    color: #fff;
+  }
+
+  .top-header {
+    background-repeat: repeat-x;
+    height: 46px;
+    background-size: cover;
+  }
+
+  .banner-content {
+    @include breakpoint(max-width 400px) {
+      @include backgroundImage;
+    }
+    background-size: cover;
+    height: 190px;
+    .banner-logo {
+      height: 100%;
+      background-size: 40%;
+      background-repeat: no-repeat;
+      background-position-x: 33px;
+      background-position-y: 28px;
+      @include breakpoint(max-width 400px) {
+        height: 150%;
+        background-color: #1f1b2d;
+      }
+    }
+    .banner-row {
+      height: 50px;
     }
 
-    .color-blue{
-        color: #058bca;
-    }
-
-    .color-white{
+    .banner-login {
+      a {
         color: #fff;
+        @include MyriadRegular(18pt);
+        font-weight: bold;
+        padding-right: 20px;
+      }
+      padding-top: 20px;
+      text-align: right;
     }
 
-    .top-header{
-        background-repeat: repeat-x;
-        height: 46px;
-        background-size: cover;
+    .banner-message {
+      color: #fff;
+      text-align: center;
+      @include MyriadRegular(18pt);
     }
 
-    .banner-content{
-        @include backgroundImage;
-        height: 317px;
-        .banner-logo{
-            height: 80%;            
-            background-repeat: no-repeat;
-            background-position-x: 33px;
-            background-position-y: 28px;            
-        }
-
-        .banner-row{
-            //border: 1px solid red;
-            height: 50px;
-        }
-
-        .banner-login{
-            a{
-                color: #fff;
-                @include MyriadRegular(22pt);
-                font-weight: bold;
-                padding-right: 20px;
-
-            }
-            padding-top: 20px;
-            text-align: right;            
-        }
-
-        .banner-message{
-            color: #fff;
-            text-align: center;
-            @include MyriadRegular(18pt);            
-        }
-
-        .title-top-promotions{
-            @include MyriadRegular(22pt);
-            color: #000;
-            padding-left: 35px;
-            font-weight: bold;
-            padding-top: 15px;
-        }
+    .title-top-promotions {
+      @include MyriadRegular(22pt);
+      color: #000;
+      padding-left: 35px;
+      font-weight: bold;
+      padding-top: 15px;
     }
+  }
 
-    .ant-modal-body{
-        padding: 0px;
-        .addUser-container{
-            .logo-login{
-                height: 190px;
-                @include backgroundImage;
-                text-align: center;
-                margin-bottom: 110px;
-                .logo-img{
-                    width: 200px;
-                    padding-top: 50px;
-                }                
-                .title{
-                    color:#57abde;
-                    @include MyriadRegular(26pt);    
-
-                }
-            }
-
-            .form-content{
-                .input-form-login{
-                    @include MyriadRegular(14pt);    
-                    background-color: #ededed;
-                    box-shadow: 0px 6px 1px 1px #ccc;
-                    height: 44px;
-                    color: #000;
-                    border:1px solid #ededed;
-                }
-
-                .login-form-button{
-                    @include MyriadRegular(26pt);    
-                    background-color: #57abde;
-                    height: 60px;
-                    border-radius: 25px;
-                    color: #fff;
-                    width: 50%;
-                }
-                .ant-form-explain{
-                    padding-top: 8px;
-                }
-            }
-            
-        }
-    }
-
-    .donaciones-content{            
-        margin-top:0px;
-        .title{
-            text-align: left;
-            margin-left: 0px;
-        }
-        .vertical-divider{
-            border-bottom: 3px solid $blue;            
-            margin-left: 0px;
-            height: 1px;
-            margin-bottom: 2%;
-            width: 40%;
-        }
-
-        .presentation-mode{
-            padding-top:10px;            
-            
-            .conten-slide{
-                .my-slide-content{
-                    @include backgroundImage;
-                    height: 466px;
-                    .margen-slogan{
-                        padding-bottom: 10%;
-                    }
-                    .slogan-content{                            
-                        width: 50%;
-                        background-color: rgba(187, 186, 186, 0.7);
-                        
-                        text-align: left;
-                        padding-left: 5%;
-                        .slogan{
-                            .purchased{
-                                @include QuickSandRegular(22pt);    
-                                @include backgroundImage;                                
-                                padding-left: 15px;
-                                font-weight: bold;
-                            }
-                            .valor{
-                                @include MyriadRegular(36pt);    
-                                color:#fff;
-                                opacity: 1;
-                            }
-                            .deal{
-                                @include MyriadRegular(22pt);    
-                                color:#fff;                                                                
-                                @include backgroundImage;                                
-                                padding-left: 15px;                                                              
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .information-container{
-        .information-icon{
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: 150px;
-        }
-        .information-title{
-            @include MyriadRegular(28pt); 
-            line-height: 1;
-            padding-top: 10%;
-        }
-        .information-description{
-            @include MyriadRegular(16pt); 
-            color: gray;
-            text-align: justify;
-            padding-left: 50px;
-            padding-right: 50px;
-        }
-
-        .border-bottom-information{
-            height: 15px;
-            background-image: linear-gradient(#f4971d, #fed532);    
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        .divider-information{
-            width: 2px;
-            background-color: #d2cece;
-            top: 1em;
-            height: 14em;
-        }
-    }
-
-    .promotions-container{
-        .menu-categories{            
-            .list-categories{
-                padding: 5%;
-                .category-item{
-                    padding-top: 25px;
-                    .title{
-                        @include MyriadRegular(16pt);    
-                        font-weight: bold;
-                    }
-                    .icon{
-                        width: 75px;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-
-        .list-promotions{
-            min-height: 500px;
-            border-left: 3px dashed gray;
-            .title-promotions-list{
-                @include MyriadRegular(30pt); 
-                margin-left: 15px;
-                width: 98%;
-                padding-left: 10px;
-            }
-            
-            .promotion-item{
-                @include backgroundImage;
-                padding: 15px;
-                margin: 15px;
-                height: 350px;
-                color:#fff;
-                .vertical-space{
-                    margin:15%;
-                }
-                .subcontent{
-                    width: 50%;
-                    background-color: rgba(107, 101, 101, 0.3);
-                    text-align: left;
-                    
-                    .slogan{
-                        margin-left: 5%;                       
-                        
-                        .purchased{
-                            padding-left: 5%;
-                            background-image: linear-gradient(#827e7a99, #b7acb63d);    
-                            @include MyriadRegular(14pt);    
-                        }
-
-                        .valor{
-                            padding-left: 5%;
-                            @include MyriadRegular(18pt);    
-
-
-                        }
-                        .deal{
-                            @include MyriadRegular(14pt);    
-                            padding-left: 5%;
-                            background-image: linear-gradient(#f4971d, #fed532);    
-                        }
-                    }
-                }
-
-                .sell-button{     
-                    position: absolute;
-                    bottom:10%;                                         
-                    text-align: center;
-                    left: auto;
-                    right: auto;
-                    width: 90%;
-                }
-            }
-            .description-item{
-                padding-left: 15px;
-                @include MyriadRegular(15pt);    
-                text-align: justify;
-            }
-        }
-
-        .border-bottom-promotions{
-            height: 15px;
-            background-image: linear-gradient(#f4971d, #fed532);    
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-    }
-
-    .buypromotion-content{
-        @include backgroundImage;
-        background-repeat: no-repeat;
-        background-position-x: center;
-        padding-top: 21%;
-        h3{
-            @include MyriadRegular(19pt);
-
-        }
-        .button-buypromotion{
-            color: #fff;
-            background-color: #729FCB;
-            @include MyriadRegular(19pt);
-            background-color: #729FCB;
-            height: 48px;
-            border-radius: 30px;
-            width: 35%;
-            margin-bottom: 5px;
-        }
-    }
-
-    .promotion-container{
-        .header{
-            height: 57px;
-            width: 100%;
-            background-color: #058bca;
-        }
-        .content{
-            margin-top: 20px;
-
-            .ant-tabs-card-bar{
-                .ant-tabs-tab{
-                    background-image: linear-gradient(#1f1b2d, #165a9d);
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px;
-                    color:#fff;
-                }
-            }
-            .promotion-images{
-                .main-image{
-                    img{
-                        height: 512px;
-                        width: 100%;
-                    }
-
-                }
-                .list-images{
-                    .list{
-                        @include backgroundImage;
-                        height: 148px;
-                        margin: 10px;
-                        margin-top: 20px;
-                        width: 31%;
-                        display: inline-block;
-                    }
-                }
-                .description{
-                    text-align: justify;
-                    @include MyriadRegular(16pt);
-                }
-                .time-promotion{
-                    margin-top: 20px;
-                    .img-clock{
-                        width: 90px;
-                    }
-                    .message{
-                        @include MyriadRegular(24pt);
-                        font-weight: bold;
-                    }
-                    .time{
-                        @include MyriadRegular(24pt);
-                        font-weight: bold;
-                        margin-left: 5%;
-                        .interval{
-                            background-color: #d0cece;
-                            padding: 5px;
-                        }
-                    }
-                }
-                .div-botton-donate{
-                    text-align: center;
-                    margin-bottom: 20px;
-                    margin-top: 20px;
-                    .botton-donate{
-                        color: #fff;
-                        background-image: linear-gradient(#1f1b2d, #165a9d);
-                        @include MyriadRegular(24pt);
-                        height: 60px;
-                        padding-top: 15px;
-                        border-radius: 50px;
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    }
-
-    .allies-container{
-        color: #000;            
-        margin: 25px;
-        .title{
-            text-align: center;
-            @include MyriadRegular(32pt);
-        }
-        .description{
-            margin-top: 25px;
-            text-align: justify;
-            @include MyriadRegular(18pt);
-        }
-    }
-
-    .footer-container{
-        height: 224px;
-        background-color: #272828;
-
-        .protect-data{
-            margin-top: 5%;
-            padding-left: 3%;
-            .title{
-                color: #fff;
-                @include MyriadRegular(18pt);
-                text-align: left;
-            }
-        }
-
-        .footer-seccion{            
-            height: 100%;
-        }
-        .logo-left{
-            text-align: center;
-            .logo{
-                margin-top: 12%;
-                margin-right: 10%;
-            }            
-        }
-    }
-
-    .menu-container{
-        background-color:rgb(221, 242, 245);
-        .ant-menu-item{
-            @include QuickSandRegular(15pt);
-            vertical-align: middle;
-            color: #000;
-            font-weight: bold;
-            padding-left: 5px;
-            padding-right: 5px;
-            a{
-                text-decoration: none;
-                color: #000;
-            }
-        }
-        .left-divider{
-            border-left: 1px solid red;
-            padding-left: 8px;
-            height: .9em;
-        }
-    }   
-
-    .confirmation-content{
-        margin-top: 25px;
+  .ant-modal-body {
+    //padding: 0px;
+    .addUser-container {
+      .logo-login {
+        height: 5%;
+        margin-bottom: 10%;
         text-align: center;
-        @include MyriadRegular(16pt);
-        .title{
-            @include MyriadRegular(24pt);
+        @include breakpoint(max-width 400px) {
+          height: 25%;
+        }
+        @include backgroundImage;
+        .logo-img {
+          width: 30%;
+          padding-top: 15%;
+          @include breakpoint(max-width 400px) {
+            width: 80%;
+            padding-top: 30%;
+          }
+        }
+        .title {
+          color: #57abde;
+          @include MyriadRegular(26pt);
+        }
+      }
+
+      .form-content {
+        .input-form-login {
+          @include MyriadRegular(14pt);
+          background-color: #ededed;
+          box-shadow: 0px 6px 1px 1px #ccc;
+          height: 44px;
+          color: #000;
+          border: 1px solid #ededed;
         }
 
-        .confirm-label{
+        .login-form-button {
+          @include MyriadRegular(26pt);
+          background-color: #57abde;
+          height: 60px;
+          border-radius: 25px;
+          color: #fff;
+          width: 50%;
+        }
+        .ant-form-explain {
+          padding-top: 8px;
+        }
+      }
+    }
+  }
+
+  .donaciones-content {
+    margin-top: 0px;
+    .title {
+      text-align: left;
+      margin-left: 0px;
+    }
+    .vertical-divider {
+      border-bottom: 3px solid $blue;
+      margin-left: 0px;
+      height: 1px;
+      margin-bottom: 2%;
+      width: 40%;
+    }
+
+    .presentation-mode {
+      padding-top: 10px;
+      .conten-slide {
+        background-color: #364d79;
+        .my-slide-content {
+          @include backgroundImage;
+          height: 600px;
+          width: 100%;
+
+          overflow: hidden;
+          .margen-slogan {
+            padding-bottom: 10%;
+          }
+          .slogan-content {
+            width: 100%;
+            background-color: rgba(187, 186, 186, 0.7);
+
+            text-align: left;
+            padding-left: 5%;
+            .slogan {
+              .purchased {
+                @include QuickSandRegular(22pt);
+                @include backgroundImage;
+                padding-left: 15px;
+                font-weight: bold;
+              }
+              .valor {
+                @include MyriadRegular(36pt);
+                color: #fff;
+                opacity: 1;
+              }
+              .deal {
+                @include MyriadRegular(22pt);
+                color: #fff;
+                @include backgroundImage;
+                padding-left: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .information-container {
+    margin-top: 15%;
+    .information-icon {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: right;
+      height: 75px;
+    }
+
+    .information-title {
+      @include MyriadRegular(24pt);
+      line-height: 1;
+      color: #414142;
+    }
+
+    .information-description {
+      @include MyriadRegular(11pt);
+      color: gray;
+      text-align: justify;
+      margin-right: 8%;
+      margin-left: 8%;
+      margin-bottom: 10%;
+      width: 60%;
+      float: right;
+    }
+
+    .divider-information {
+      width: 2px;
+      background-color: #d2cece;
+      top: 1em;
+      height: 100%;
+    }
+  }
+
+  .border-bottom-information {
+    height: 15px;
+    background-image: linear-gradient(to right, #f4981f, #ffd634);
+  }
+
+  .menu-categories {
+    background-color: #f5f5f4;
+    .list-categories {
+      border-bottom: 7px solid #d2cece;
+      margin-bottom: 2%;
+      background-color: #f5f5f4;
+      .category-item {
+        border-right: 2px solid #d2cece;
+        background-color: #f5f5f4;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-around;
+        cursor: pointer;
+        @include MyriadBold(11pt);
+        color: #000;
+        line-height: 1;
+        .cont-icon {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          .icon {
+            @include backgroundImage;
+            float: left;
+            height: 40px;
+            width: 40px;
+            background-size: 50% 50%;
+            line-height: 100%;
+            padding-right: 10%;
+          }
+        }
+      }
+    }
+  }
+
+  .promotions-container {
+    height: 600px;
+    margin-bottom: 3%;
+    .list-promotions {
+      margin-top: 2%;
+      min-height: 600px;
+      .title-promotions-list {
+        @include MyriadRegular(30pt);
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      .promotions-items-pagination {
+        text-align: center;
+      }
+
+      .promotion-item {
+        @include backgroundImage;
+        background-size: cover;
+        cursor: pointer;
+        min-height: 300px;
+        height: 600px;
+        color: #fff;
+        margin-bottom: 2%;
+
+        .vertical-space {
+          margin: 15%;
+        }
+        .subcontent {
+          width: 50%;
+          background-color: rgba(107, 101, 101, 0.3);
+          text-align: left;
+
+          .slogan {
+            margin-left: 5%;
+
+            .purchased {
+              padding-left: 5%;
+              background-image: linear-gradient(#827e7a99, #b7acb63d);
+              @include MyriadRegular(14pt);
+            }
+
+            .valor {
+              padding-left: 5%;
+              @include MyriadRegular(18pt);
+            }
+            .deal {
+              @include MyriadRegular(14pt);
+              padding-left: 5%;
+              background-image: linear-gradient(#f4971d, #fed532);
+            }
+          }
+        }
+
+        .sell-button {
+          position: absolute;
+          bottom: 10%;
+          text-align: center;
+          left: auto;
+          right: auto;
+          width: 90%;
+        }
+      }
+      .description-item {
+        padding-left: 15px;
+        @include MyriadRegular(12pt);
+        text-align: justify;
+      }
+    }
+
+    .border-bottom-promotions {
+      height: 15px;
+      background-image: linear-gradient(#f4971d, #fed532);
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .buypromotion-content {
+    @include backgroundImage;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    padding-top: 21%;
+    h3 {
+      @include MyriadRegular(19pt);
+    }
+    .button-buypromotion {
+      color: #fff;
+      background-color: #729fcb;
+      @include MyriadRegular(19pt);
+      background-color: #729fcb;
+      height: 48px;
+      border-radius: 30px;
+      width: 35%;
+      margin-bottom: 5px;
+    }
+  }
+
+  .promotion-container {
+    .header {
+      height: 57px;
+      width: 100%;
+      background-color: #058bca;
+    }
+    .content {
+      //margin-top: 20px;
+
+      .ant-tabs-card-bar {
+        .ant-tabs-tab {
+          background-image: linear-gradient(#1f1b2d, #165a9d);
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          color: #fff;
+        }
+      }
+
+      .promotion-map {
+        .title-map {
+          @include MyriadSemiBold(26pt);
+          color: #fff;
+          background-image: linear-gradient(to right, #085a9e, #000);
+          margin-bottom: 5%;
+        }
+        .img-map {
+          @include backgroundImage;
+          background-position: 50% 50%;
+          height: 50%;
+          width: 50%;
+          margin-top: 5%;
+        }
+      }
+      .promotion-description {
+        .title-body {
+          @include MyriadRegular(14pt);
+          text-align: justify;
+          padding: 2%;
+        }
+        .title-description {
+          @include MyriadRegular(24pt);
+          color: #000;
+          padding-left: 2%;
+          margin-top: 2%;
+          .interest-blue {
+            color: $blue;
+          }
+          .interest-bold {
             font-weight: bold;
-            border: 1px solid gray;
-            background-color: #44bccc;
+          }
         }
-        .confirm-value{
-            background-color: #d1d5d6;
-            border: 1px solid gray;
+      }
+
+      .promotion-images {
+        .left-images {
+          .marca-images {
+            @include MyriadBold(36pt);
+            color: #000;
+            letter-spacing: 0.2rem;
+            padding-top: 3%;
+            padding-left: 3%;
+          }
+          .shortd-images {
+            @include MyriadRegular(11pt);
+            padding-left: 3%;
+          }
+          .main-image {
+            border-right: 2px solid #d2cece;
+            padding-top: 2%;
+            padding-bottom: 3%;
+            img {
+              border-radius: 50px;
+              height: 600px;
+              width: 100%;
+              padding: 4%;
+            }
+          }
+        }
+        .list-images {
+          .list {
+            @include backgroundImage;
+            height: 148px;
+            margin: 10px;
+            margin-top: 20px;
+            width: 31%;
+            display: inline-block;
+          }
+        }
+        .description {
+          text-align: justify;
+          @include MyriadRegular(16pt);
         }
 
-        .botton-donate{
+        .div-botton-donate {
+          text-align: center;
+          margin-top: 20%;
+          .botton-donate {
             color: #fff;
-            background-image: linear-gradient(#1f1b2d, #165a9d);
+            background-image: #068bca;
             @include MyriadRegular(24pt);
             height: 60px;
             padding-top: 15px;
-            border-radius: 50px;
-            width: 150px;
+          }
         }
+
+        .description-image {
+          margin-top: 10%;
+          .detail-deal {
+            @include MyriadRegular(26pt);
+            margin-top: 3%;
+            text-align: center;
+            color: #000;
+            .donation {
+              background-color: #e6e7e9;
+            }
+            .valor {
+              font-weight: bold;
+            }
+            .underline {
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              font-weight: bold;
+              color: #6d6d6d;
+            }
+            .withdiscount {
+              color: $blue;
+              font-weight: bold;
+            }
+            .discount {
+              @include MyriadSemiBold(26pt);
+              color: #fff;
+              background-image: linear-gradient(to right, #085a9e, #000);
+              margin-bottom: 5%;
+            }
+
+            .countdown {
+              @include MyriadBold(18pt);
+              height: 50px;
+              text-align: left;
+              margin-top: 8%;
+              line-height: 1;
+              .img-countdown {
+                @include backgroundImage;
+                width: 70px;
+                height: 60px;
+                float: left;
+                margin-left: 3%;
+              }
+              .time-promotion {
+                margin-top: 20px;
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                .time {
+                  @include MyriadRegular(24pt);
+                  font-weight: bold;
+                  margin-left: 10%;
+                  .interval {
+                    margin-bottom: 2%;
+                    background-color: #d0cece;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+            .div-botton-donate {
+              margin-top: 3%;
+              padding-top: 3%;
+              border-top: 2px solid #d2cece;
+              text-align: center;
+              .botton-donate {
+                @include OpenSansSemiBold(24pt);
+                color: #fff;
+                background-color: #068bca;
+              }
+            }
+            .quantity {
+              margin-top: 10%;
+              background-color: #e6e7e9;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .allies-carrousel {
+    width: "25%";
+    text-align: "center";
+    background-color: #f5f5f4;
+    margin-bottom: 3%;
+    border-radius: 5em;
+
+  }
+
+  .allies-container {
+    background-color: #f5f5f4;
+    color: #000;
+    .title {
+      text-align: center;
+      @include MyriadRegular(32pt);
+    }
+    .description {
+      margin-top: 25px;
+      text-align: justify;
+      @include MyriadRegular(18pt);
+    }
+  }
+
+  .footer-container {
+    height: 224px;
+    background-color: #282828;
+
+    .footer-seccion {
+      margin-top: 4%;
+    }
+    .footer-list-title {
+      padding-left: 3%;
+      .title {
+        color: #fff;
+        @include MyriadRegular(10pt);
+        text-align: left;
+      }
+    }
+    .footer-list {
+      padding-left: 3%;
+      color: #fff;
+      @include MyriadRegular(9pt);
+      text-align: left;
     }
 
+    .logo-left {
+      text-align: center;
+      .logo {
+        margin-top: 10%;
+        margin-right: 10%;
+      }
+    }
+  }
+
+  .menu-container {
+    background-color: rgb(221, 242, 245);
+    .ant-menu-item {
+      @include QuickSandRegular(15pt);
+      vertical-align: middle;
+      color: #000;
+      font-weight: bold;
+      padding-left: 5px;
+      padding-right: 5px;
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+    .left-divider {
+      border-left: 1px solid red;
+      padding-left: 8px;
+      height: 0.9em;
+    }
+  }
+
+  .confirmation-content {
+    margin-top: 25px;
+    text-align: center;
+    @include MyriadRegular(16pt);
+    .title {
+      @include MyriadRegular(24pt);
+    }
+
+    .confirm-label {
+      font-weight: bold;
+      border: 1px solid gray;
+      background-color: #44bccc;
+    }
+    .confirm-value {
+      background-color: #d1d5d6;
+      border: 1px solid gray;
+    }
+
+    .botton-donate {
+      color: #fff;
+      background-image: linear-gradient(#1f1b2d, #165a9d);
+      @include MyriadRegular(24pt);
+      height: 60px;
+      padding-top: 15px;
+      border-radius: 50px;
+      width: 150px;
+    }
+  }
+
+  .title-promotions {
+    @include MyriadRegular(30pt);
+    background-color: $blue;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    .cond {
+      @include MyriadBoldCond(30pt);
+    }
+  }
+
+  .title-Interests {
+    @include MyriadRegular(32pt);
+    color: #000;
+    background-color: #f5f5f4;
+    .interest-blue {
+      @include MyriadRegular(32pt);
+      color: $blue;
+      background-color: #f5f5f4;
+    }
+    .interest-bold {
+      font-weight: bold;
+    }
+  }
+
+  .grid-promotions {
+    padding-top: 2%;
+    padding-right: 1.2%;
+    padding-left: 1.2%;
+    padding-bottom: 2%;
+    background-color: #f5f5f4;
+    .card-Promotion {
+      cursor: pointer;
+      background-color: #fff;
+      margin-bottom: 2%;
+      border-radius: 25px;
+      height: 400px;
+      width: 300px;
+      .card-photo {
+        background-size: 300px 200px;
+        height: 50%;
+        border-radius: 25px;
+      }
+      .card-text {
+        padding: 3%;
+        .card-title {
+          @include MyriadRegular(16pt);
+          font-weight: bold;
+          text-align: left;
+          color: #000;
+          margin-bottom: 4%;
+          margin-top: 2%;
+        }
+        .card-discount {
+          @include MyriadBold(14pt);
+          text-align: center;
+          background-color: #068bca;
+          color: #fff;
+          margin-bottom: 4%;
+          margin-top: 2%;
+        }
+        .card-description {
+          @include MyriadRegular(9pt);
+          text-align: justify;
+        }
+        .card-deal {
+          @include MyriadRegular(11pt);
+          margin-top: 3%;
+          text-align: center;
+          color: #000;
+          .valor {
+            font-weight: bold;
+          }
+          .underline {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-weight: bold;
+            color: #6d6d6d;
+          }
+          .withdiscount {
+            color: $blue;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .search {
+    margin-top: 5%;
+  }
+
+  .cities {
+    margin-top: 5%;
+    //border-radius: 5px;
+    //border: 1px solid #fff;
+  }
+
+  .ant-carousel .slick-slide {
+    text-align: center;
+    line-height: 600px;
+    overflow: hidden;
+  }
 }
-    

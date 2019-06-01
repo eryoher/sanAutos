@@ -1,83 +1,74 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPromotions }  from '../../actions';
-import { Col, Pagination } from 'antd';
+import { getPromotions } from '../../actions';
+import { Col, Carousel } from 'antd';
 import PromotionItem from './promotionItem';
 
 class ListPromotions extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
     }
 
-    componentWillMount(){        
-        this.searchPromotionsinit();
-    }
-
-    searchPromotionsinit = () => {
+    componentWillMount() {
         this.props.getPromotions({
-            page:1,
-            pageSize:10
+            page: 1,
+            pageSize: 3
         })
     }
 
-    renderPromotions(){
+    renderPromotions() {
         const { search } = this.props
         let rows = []
+
         search.data.forEach(promotion => {
             rows.push(
-                <Col span={12} key={promotion.id} >
-                    <PromotionItem
-                        promotion = {promotion}
-                    />
+                <Col span={24} key={promotion.id} >
+                    <PromotionItem promotion={promotion} />
                 </Col>
             )
         });
 
-        return rows;
-    }
-
-    handlePromotionPageChange = (current, size) => {
-        const {searchparamaters} = this.props;
-
-        this.props.getPromotions({
-            ...searchparamaters,
-            page:current,
-            pageSize:size            
-        })
-        
+        return (
+            <Carousel autoplay autoplaySpeed={'30'} className="presentation-mode" >
+                {rows}
+            </Carousel>
+        )
     }
 
     render() {
-        const {search} = this.props;
-        const bgTitle="../../static/img/bg-title-promotions.png";        
-        const initData =   {
-            "defaultCurrent": 1,
-            "current": (search) ? search.page : 1,
-            "pageSize": (search) ? search.limit : 10,
-            "total": ( search && search.totalCount ) ? search.totalCount : 0,        
-        };
+        const { search } = this.props;
+        // const initData = {
+        //     "defaultCurrent": 1,
+        //     "current": (search) ? search.page : 1,
+        //     "pageSize": (search) ? search.limit : 10,
+        //     "total": (search && search.totalCount) ? search.totalCount : 0,
+        // };
 
         return (
             <Col span={24} className={"list-promotions"} >
-                <Col span={24} className={"title-promotions-list"} style={{backgroundImage: `url(${bgTitle})`, cursor:'pointer'}} onClick={ () => this.searchPromotionsinit() } >
-                    <b>Ofertas </b> <span className={"color-white"}> de donación </span>
+                <Col span={24} className="promotions-items-pagination" >
+                    <Col span={24} style={{ cursor: 'pointer' }} >
+                        {search && this.renderPromotions()}
+                        {/* <Pagination
+                            defaultCurrent={initData.defaultCurrent} 
+                            current={initData.current} 
+                            total={initData.total} 
+                            pageSize={initData.pageSize} 
+                             /> */}
+                    </Col>
                 </Col>
-                { search && this.renderPromotions() }    
-                {search &&  <Col className="promotions-items-pagination" style={{textAlign:'center'}}  span={24} >
-                    <Pagination defaultCurrent={initData.defaultCurrent} current={initData.current} total={initData.total} pageSize={initData.pageSize} onChange={this.handlePromotionPageChange} />
-                </Col> }     
             </Col>
         )
     }
 }
 
-function mapStateToProps({ promotions }){
-    const {search, searchparamaters } = promotions
+function mapStateToProps({ promotions }) {
+    const { search, searchparamaters } = promotions
     return {
         search,
         searchparamaters
     }
 }
 
-export default connect (mapStateToProps,{getPromotions})(ListPromotions);
+export default connect(mapStateToProps, { getPromotions })(ListPromotions);

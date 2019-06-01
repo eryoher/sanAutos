@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Carousel } from 'antd';
+import { Col, Carousel, Alert } from 'antd';
 import Footer from '../common/footer';
 import { connect } from 'react-redux';
 import getConfig from 'next/config';
@@ -17,7 +17,7 @@ const infoColumn = {
 
 class Allies extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
@@ -27,23 +27,42 @@ class Allies extends Component {
 
     renderAllies = () => {
         const { listImages } = this.props;
-        const rows = [];
+        let rows = [];
+        let imgAllies = [];
+        let key = [];
+        var count;
+
+        count = 0
         listImages.forEach(images => {
             const urlImage = `${publicRuntimeConfig.apiUrl}/Images/allies/download/${images.name}`
-            rows.push(
-                <Col key={images.name} style={{width:'100%', textAlign:'center'}} >
-                    <img src = {urlImage} style={{width:'250px', margin:'0px auto'}} />                    
-                </Col>
-            )
+            imgAllies.push(urlImage)
+            key.push(images.name)
+            count++
+            if (count == 4){
+                rows.push(
+                    <Col key={key[0] + key[1] + key[2] + key[3] } span={24} className={'allies-carrousel'} >
+                        <Col key={key[0]} span={6} >
+                            <img src={imgAllies[0]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                        </Col>
+                        <Col key={key[1]} span={6} >
+                            <img src={imgAllies[1]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                        </Col>
+                        <Col key={key[2]} span={6}  >
+                            <img src={imgAllies[2]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                        </Col>
+                        <Col key={key[3]} span={6} >
+                            <img src={imgAllies[3]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                        </Col>
+                    </Col>
+                )
+                imgAllies = []
+                key = []
+                count=0
+            }
         });
 
         return (
-            <Carousel
-                autoplay
-                autoplaySpeed ={'30'}
-                className="presentation-mode"
-                dots = {false}
-            >
+            <Carousel autoplay autoplaySpeed={'30'} className="presentation-mode" dots={false} >
                 {rows}
             </Carousel>
         )
@@ -54,10 +73,10 @@ class Allies extends Component {
         return (
             <Col span={24} className={"allies-container"} >
                 <Col span={24} className={"title"}>
-                   Han apoyado a la fundacion <span className={'color-blue'} > <b> Portal Magico </b> </span> 
+                    Han apoyado a <span className={'color-blue'}>Fundación Portal Mágico</span>
                 </Col>
                 <Col span={21} offset={1} className={"description"}>
-                    { listImages && this.renderAllies() }
+                    {listImages && this.renderAllies()}
                 </Col>
                 <Col span={24} >
                     <Footer />
@@ -67,11 +86,11 @@ class Allies extends Component {
     }
 }
 
-function mapStateToProps({ images }){
+function mapStateToProps({ images }) {
     const { listImages } = images
     return {
         listImages
     }
 }
 
-export default connect (mapStateToProps,{getImagesByContainer})(Allies);
+export default connect(mapStateToProps, { getImagesByContainer })(Allies);

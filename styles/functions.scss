@@ -7,7 +7,22 @@
 
 @font-face {
     font-family: "MyriadProRegular";
-    src: url('./fonts/myriadpro/Myriad Pro Regular.ttf');
+    src: url('./fonts/myriadpro/MyriadProRegular.ttf');
+}
+
+@font-face {
+    font-family: "MyriadProBoldCond";
+    src: url('./fonts/myriadpro/MyriadPro-BoldCond.otf');
+}
+
+@font-face {
+    font-family: "MyriadProSemiBold";
+    src: url('./fonts/myriadpro/MyriadPro-SemiBold.otf');
+}
+
+@font-face {
+    font-family: "OpenSansSemiBold";
+    src: url('./fonts/openSans/OpenSans-Semibold.ttf');
 }
 
 @mixin QuickSandRegular($size) {
@@ -26,15 +41,31 @@
     font-weight: bold;
 }
 
-@mixin backgroundImage() {
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+@mixin MyriadSemiBold($size) {
+    font-size: $size;
+    font-family: MyriadProSemiBold;
+}
 
-$width-page:1200px;
-$height-footer-page:185px;
+@mixin MyriadBoldCond($size) {
+    font-size: $size;
+    font-family: MyriadProBoldCond;
+}
+
+@mixin OpenSansSemiBold($size) {
+    font-size: $size;
+    font-family: OpenSansSemiBold;
+}
+
+@mixin backgroundImage() {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+$width-page: auto;
+$height-footer-page:200px;
 $height-content-page : 800px;
 $min-page-md:676px;
 $min-page-width-md: max-width 767px;
 
-$blue:#44bccc;
+$blue:#068BCA;
