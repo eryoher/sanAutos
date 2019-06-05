@@ -34,7 +34,7 @@ export default class InformationPromotion extends Component {
                         <Col span={24} >
                             <Col span={12} style={{ backgroundImage: `url(${logoPencil})` }} className={"information-icon"} />
                             <Col span={12} className={"information-title"}>
-                                <div>Como</div>
+                                <div>Cómo</div>
                                 <div className={"color-blue"} >Registrarse</div>
                             </Col>
                         </Col>
@@ -43,7 +43,7 @@ export default class InformationPromotion extends Component {
                     <Col span={24} >
                         <Col span={12} style={{ backgroundImage: `url(${logoCard})` }} className={"information-icon"} />
                         <Col span={12} className={"information-title"}>
-                            <div>Como</div>
+                            <div>Cómo</div>
                             <div className={"color-blue"} >Donar</div>
                         </Col>
                         <Col span={20} className={"information-description"} >Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</Col>

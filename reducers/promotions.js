@@ -61,7 +61,7 @@ function rootReducer(state = initialState, action) {
         case GET_PROMOTIONSINTEREST:
             return { ...state, gridInterests: null, searchParamaters: action.payload }
         case GET_PROMOTIONSINTEREST_SUCCESS:
-            return { ...state, gridInterestspromotions: action.payload.data}
+            return { ...state, gridInterests: action.payload.data}
         default:
             return state
     }

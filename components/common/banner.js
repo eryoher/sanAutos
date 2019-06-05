@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { userSignOut } from '../../actions';
-import { Col, Icon, message, Divider, Input, Select } from 'antd';
+import { Row, Col, Icon, message, Divider, Input, Select, Button, Drawer } from 'antd';
 import Login from './login';
 import MenuAdmin from './menuAdmin';
+import Router from 'next/router'
+import MenuCategories from '../categories/menuCategories';
+
+const dividerColumn = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 24 },
+    lg: { span: 12 },
+    xl: { span: 12 },
+}
 
 class Banner extends Component {
 
@@ -41,9 +51,9 @@ class Banner extends Component {
 
         //listCities.forEach(city => {
         rows.push(
-            <Select key='no' defaultValue='Bogotá' style={{ width: 200 }}  size='large'>
+            <Select key='no' defaultValue='Bogotá' style={{ width: 200 }} size='large'>
                 <Option key='Bogotá' value='Bogotá'>Bogotá</Option>
-                <Option key="Cartagena"value="Cartagena">Cartagena</Option>
+                <Option key="Cartagena" value="Cartagena">Cartagena</Option>
                 <Option key="Cali" value="Cali">Cali</Option>
                 <Option key="Medellin" value="Medellin">Medellín</Option>
             </Select>
@@ -53,50 +63,92 @@ class Banner extends Component {
         return rows
     }
 
+    handleClickButton() {
+        Router.push({ pathname: '/' });
+    }
+
+    state = {
+        visible: false
+    }
+    showDrawer = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+    onClose = () => {
+        this.setState({
+            visible: false,
+        });
+    };
+
     render() {
         const { auth, title, menuAdmin } = this.props;
-        const bgBanner = "../../static/img/bg-banner.svg";
         const bannerLogo = "../../static/img/banner-logo.svg";
         const isLogin = (auth.user) ? true : false
         const Search = Input.Search;
         return (
-            <Col span={24} className={"banner-content"} style={{ backgroundImage: `url(${bgBanner})` }} >
-                <a href={'/'} >
-                    <Col span={10} className={"banner-logo"} style={{ backgroundImage: `url(${bannerLogo})` }} />
-                </a>
-                <Col span={4} className={'search'} >
-                    <Search  size="large" placeholder="SEARCH" />
-                </Col>
-                <Col span={4} className={'cities'}>
-                    {this.renderCities()}   
-                </Col>
-                <Col span={6}>
-                    {!isLogin &&
-                        <Col span={12} offset={12} className={"banner-row banner-login"} >
-                            <a onClick={() => this.onShowLogin()}>
-                                <Icon type="shopping-cart" />
-                                <Divider type="verical" />
-                                Login
+            <Row className={"banner-content"} >
+                <Row className={"banner-top"} >
+                    <Col span={4} >
+                        <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
+                            <span className="barsBtn"></span>
+                        </Button>
+
+                        <Drawer
+                            title="Categorias"
+                            placement="left"
+                            closable={false}
+                            onClose={this.onClose}
+                            visible={this.state.visible}
+                            onClick={this.onClose}
+                        >
+                            <MenuCategories />
+                        </Drawer>
+                    </Col>
+                    <Col span={20} >
+                        {!isLogin &&
+                            <Col span={12} offset={12} className={"banner-row banner-login"} >
+                                <a onClick={() => this.onShowLogin()}>
+                                    <Icon type="shopping-cart" />
+                                    <Divider type="verical" />
+                                    Login
                             </a>
-                        </Col>}
-                    {isLogin &&
-                        <Col span={12} offset={12} className={"banner-row banner-login"} >
-                            <a onClick={() => this.onLogout()}>
-                                <Icon type="logout" />
-                                <Divider type="verical" />
-                                Logout
+                            </Col>}
+                        {isLogin &&
+                            <Col span={12} offset={12} className={"banner-row banner-login"} >
+                                <a onClick={() => this.onLogout()}>
+                                    <Icon type="logout" />
+                                    <Divider type="verical" />
+                                    Logout
                             </a>
-                        </Col>}
-                    <Login
-                        showLogin={this.state.showLogin}
-                        onCancelLogin={this.handleCancelLogin}
-                        onShowLogin={this.handleShowLogin}
-                    />
+                            </Col>}
+                        <Login
+                            showLogin={this.state.showLogin}
+                            onCancelLogin={this.handleCancelLogin}
+                            onShowLogin={this.handleShowLogin}
+                        />
+                    </Col>
+                </Row>
+                <Col span={24} className={'banner-include'}>
+                    <Col {...dividerColumn} className={"banner-logo"}
+                        onClick={() => this.handleClickButton()}
+                        style={{ backgroundImage: `url(${bannerLogo})` }} >
+                    </Col>
+                    <Col {...dividerColumn} className={"banner-params"}>
+                        <Row>
+                            <Col span={10} className={'search'} >
+                                <Search size="large" placeholder="SEARCH" />
+                            </Col>
+                            <Col span={10} offset={1} className={'cities'}>
+                                {this.renderCities()}
+                            </Col>
+                        </Row>
+                    </Col>
                 </Col>
                 {
                     menuAdmin && <MenuAdmin showMenu />
                 }
-            </Col>
+            </Row>
         )
     }
 }

@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import { Col } from 'antd';
 import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
-
+const dividerColumn = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 24 },
+    lg: { span: 12 },
+    xl: { span: 12 },
+}
 
 export default class Footer extends Component {
     render() {
@@ -12,29 +18,26 @@ export default class Footer extends Component {
 
         return (
             <Col span={24} className={"footer-container"} >
-                <Col span={8} className={"footer-seccion logo-left"} >
-                    {/*<img src={"../../static/img/footer-logo-1.png"} className={"logo"} />*/}
-                </Col>
-                <Col span={8} className={"footer-seccion protect-data"} >
-                    <Col span={12} className={"footer-list-title"} >
-                        <div className={'title'} > Proteccion de datos </div>
-                        <div className={"description-data"} style={{ marginTop: '15px' }} >
+                <Col {...dividerColumn} className={"footer-seccion"} >
+                    <Col span={24} className={"footer-list-title"} >
+                        <div className={'title'} > Protección de datos </div>
+                        <div className={"description-data"} >
                             <div>
-                                <a href={urlFileTerm} target={"_blank"} > Terminos y condiciones </a>
+                                <a href={urlFileTerm} target={"_blank"} > Términos y condiciones </a>
                             </div>
                             <div>
-                                <a href={urlFilePrivate} target={"_blank"} > Politica de tratamiento de datos personales </a>
+                                <a href={urlFilePrivate} target={"_blank"} > Política de tratamiento de datos personales </a>
                             </div>
                             <div>
-                                <a href={urlFile} target={"_blank"} > Aviso privacidad </a>
+                                <a href={urlFile} target={"_blank"} > Aviso de privacidad </a>
                             </div>
                         </div>
                     </Col>
-                    <Col span={12} className={"footer-list-title"} >
-                    </Col>
                 </Col>
-                <Col span={8} className={"footer-seccion"} >
+                <Col {...dividerColumn} className={"footer-seccion"} >
+                    <Col className={'footer-img'}>
                     <img src={"../../static/img/footer-logo-2.png"} />
+                    </Col>
                 </Col>
             </Col>
         )

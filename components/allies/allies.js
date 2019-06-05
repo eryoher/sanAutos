@@ -6,15 +6,6 @@ import getConfig from 'next/config';
 import { getImagesByContainer } from '../../actions';
 const { publicRuntimeConfig } = getConfig();
 
-
-const infoColumn = {
-    xs: { span: 24 },
-    sm: { span: 24 },
-    md: { span: 24 },
-    lg: { span: 12 },
-    xl: { span: 12 },
-}
-
 class Allies extends Component {
 
     constructor(props) {
@@ -38,26 +29,27 @@ class Allies extends Component {
             imgAllies.push(urlImage)
             key.push(images.name)
             count++
-            if (count == 4){
+
+            if (count == 4 ) {
                 rows.push(
-                    <Col key={key[0] + key[1] + key[2] + key[3] } span={24} className={'allies-carrousel'} >
+                    <Col key={key[0] + key[1] + key[2] + key[3]} span={24} className={'allies-carrousel'} >
                         <Col key={key[0]} span={6} >
-                            <img src={imgAllies[0]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                            <img src={imgAllies[0]} className={'allies-img'} />
                         </Col>
                         <Col key={key[1]} span={6} >
-                            <img src={imgAllies[1]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                            <img src={imgAllies[1]} className={'allies-img'} />
                         </Col>
-                        <Col key={key[2]} span={6}  >
-                            <img src={imgAllies[2]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                        <Col key={key[2]} span={6} >
+                            <img src={imgAllies[2]} className={'allies-img'} />
                         </Col>
                         <Col key={key[3]} span={6} >
-                            <img src={imgAllies[3]} style={{ width: '250px', height: '150px', margin: '0px auto', borderRadius: '30px' }} />
+                            <img src={imgAllies[3]} className={'allies-img'} />
                         </Col>
                     </Col>
                 )
                 imgAllies = []
                 key = []
-                count=0
+                count = 0
             }
         });
 
@@ -73,9 +65,9 @@ class Allies extends Component {
         return (
             <Col span={24} className={"allies-container"} >
                 <Col span={24} className={"title"}>
-                    Han apoyado a <span className={'color-blue'}>Fundación Portal Mágico</span>
+                    Han Apoyado a <span className={'color-blue'}>Fundación Portal Mágico</span>
                 </Col>
-                <Col span={21} offset={1} className={"description"}>
+                <Col span={24} className={"description"}>
                     {listImages && this.renderAllies()}
                 </Col>
                 <Col span={24} >

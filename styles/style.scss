@@ -1,13 +1,9 @@
 @import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
 @import "../node_modules/compass-mixins/lib/compass";
 @import "~antd/dist/antd.css"; // import official less entry file
-@import "functions";
+@import "./functions.scss";
 
 body {
-  max-width: $width-page;
-  margin: 0px auto !important;
-  @include MyriadRegular(18pt);
-
   .color-orange {
     color: #d38148;
   }
@@ -20,41 +16,72 @@ body {
     color: #fff;
   }
 
-  .top-header {
-    background-repeat: repeat-x;
-    height: 46px;
-    background-size: cover;
-  }
-
   .banner-content {
-    @include breakpoint(max-width 400px) {
-      @include backgroundImage;
-    }
+    background-image: linear-gradient(to right, #005da0, #020f26);
     background-size: cover;
-    height: 190px;
-    .banner-logo {
-      height: 100%;
-      background-size: 40%;
-      background-repeat: no-repeat;
-      background-position-x: 33px;
-      background-position-y: 28px;
-      @include breakpoint(max-width 400px) {
-        height: 150%;
-        background-color: #1f1b2d;
+    height: 220px;
+    @include breakpoint(max-width 767px) {
+      height: 290px;
+    }
+
+    .banner-top {
+      background-image: linear-gradient(to right, #d58dac, #fae72c, #d38248, #93b85a, #4eabda);
+      height: 4px;
+      @include breakpoint(max-width 767px) {
+        height: 0px;
       }
     }
-    .banner-row {
-      height: 50px;
+    .banner-include {
+      height: 100%;
+      .banner-logo {
+        cursor: pointer;
+        height: 85%;
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position-x: 8%;
+        @include breakpoint(max-width 767px) {
+          height: 70%;
+          background-position: center;
+        }
+      }
+      .banner-params {
+        height: 15%;
+        @include breakpoint(max-width 767px) {
+          height: 30%;
+          background-position: center;
+        }
+        .search {
+          margin-top: 5%;
+
+          @include breakpoint(max-width 767px) {
+            margin-top: 0%;
+            padding-right: 5%;
+          }
+        }
+        .ant-input {
+          color: #3baec2;
+        }
+        .cities {
+          margin-top: 5%;
+          @include breakpoint(max-width 767px) {
+            margin-top: 0%;
+            padding-right: 5%;
+          }
+        }
+      }
     }
 
     .banner-login {
       a {
-        color: #fff;
         @include MyriadRegular(18pt);
+        color: #fff;
         font-weight: bold;
-        padding-right: 20px;
+        padding-right: 4%;
+        @include breakpoint(max-width 767px) {
+          @include MyriadRegular(14pt);
+        }
       }
-      padding-top: 20px;
+      padding-top: 2%;
       text-align: right;
     }
 
@@ -74,27 +101,26 @@ body {
   }
 
   .ant-modal-body {
-    //padding: 0px;
+    background-position-x: center;
+    text-align: center;
+    background-size: 100%;
     .addUser-container {
       .logo-login {
-        height: 5%;
-        margin-bottom: 10%;
-        text-align: center;
-        @include breakpoint(max-width 400px) {
-          height: 25%;
-        }
+        background-position-x: center;
         @include backgroundImage;
+        background-size: 80%;
+        padding-bottom: 5%;
+        text-align: center;
         .logo-img {
-          width: 30%;
+          width: 20%;
           padding-top: 15%;
-          @include breakpoint(max-width 400px) {
-            width: 80%;
+          @include breakpoint(max-width 767px) {
             padding-top: 30%;
           }
         }
         .title {
           color: #57abde;
-          @include MyriadRegular(26pt);
+          @include MyriadRegular(22pt);
         }
       }
 
@@ -103,18 +129,19 @@ body {
           @include MyriadRegular(14pt);
           background-color: #ededed;
           box-shadow: 0px 6px 1px 1px #ccc;
-          height: 44px;
+          height: 45px;
           color: #000;
           border: 1px solid #ededed;
+          width: 70%;
         }
 
         .login-form-button {
-          @include MyriadRegular(26pt);
+          @include MyriadRegular(22pt);
           background-color: #57abde;
           height: 60px;
           border-radius: 25px;
           color: #fff;
-          width: 50%;
+          width: 40%;
         }
         .ant-form-explain {
           padding-top: 8px;
@@ -216,114 +243,81 @@ body {
   }
 
   .border-bottom-information {
-    height: 15px;
+    height: 10px;
     background-image: linear-gradient(to right, #f4981f, #ffd634);
   }
 
   .menu-categories {
+    @include breakpoint(max-width 767px) {
+      display: none;
+    }
     background-color: #f5f5f4;
-    .list-categories {
-      border-bottom: 7px solid #d2cece;
-      margin-bottom: 2%;
+    border-bottom: 7px solid #d2cece;
+    margin-bottom: 2%;
+    background-color: #f5f5f4;
+    .category-item {
+      border-right: 2px solid #d2cece;
       background-color: #f5f5f4;
-      .category-item {
-        border-right: 2px solid #d2cece;
-        background-color: #f5f5f4;
-        height: 90px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        justify-content: space-around;
-        cursor: pointer;
-        @include MyriadBold(11pt);
-        color: #000;
-        line-height: 1;
-        .cont-icon {
-          display: flex;
-          justify-content: left;
-          align-items: center;
-          .icon {
-            @include backgroundImage;
-            float: left;
-            height: 40px;
-            width: 40px;
-            background-size: 50% 50%;
-            line-height: 100%;
-            padding-right: 10%;
-          }
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-around;
+      cursor: pointer;
+      @include MyriadBold(11pt);
+      color: #000;
+      line-height: 1;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      .icon {
+        @include backgroundImage;
+        float: left;
+        height: 64px;
+        width: 64px;
+        @include breakpoint(max-width 767px) {
+          height: 32px;
+          width: 32px;
         }
+        background-size: 50% 50%;
+        line-height: 100%;
+        padding-right: 5%;
+        padding-left: 5%;
       }
     }
   }
 
   .promotions-container {
-    height: 600px;
     margin-bottom: 3%;
     .list-promotions {
-      margin-top: 2%;
-      min-height: 600px;
+      padding-right: 1%;
+      height: 600px;
+      @include breakpoint(max-width 767px) {
+        padding-left: 3%;
+        padding-right: 3%;
+        height: 300px;
+      }
       .title-promotions-list {
         @include MyriadRegular(30pt);
         text-align: center;
-        width: 100%;
-        height: 100%;
         cursor: pointer;
       }
       .promotions-items-pagination {
         text-align: center;
+        cursor: pointer;
       }
 
       .promotion-item {
-        @include backgroundImage;
-        background-size: cover;
-        cursor: pointer;
-        min-height: 300px;
         height: 600px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
         color: #fff;
-        margin-bottom: 2%;
 
-        .vertical-space {
-          margin: 15%;
+        @include breakpoint(max-width 767px, min-width 320px) {
+          height: 300px;
+          border-radius: 3em;
         }
-        .subcontent {
-          width: 50%;
-          background-color: rgba(107, 101, 101, 0.3);
-          text-align: left;
-
-          .slogan {
-            margin-left: 5%;
-
-            .purchased {
-              padding-left: 5%;
-              background-image: linear-gradient(#827e7a99, #b7acb63d);
-              @include MyriadRegular(14pt);
-            }
-
-            .valor {
-              padding-left: 5%;
-              @include MyriadRegular(18pt);
-            }
-            .deal {
-              @include MyriadRegular(14pt);
-              padding-left: 5%;
-              background-image: linear-gradient(#f4971d, #fed532);
-            }
-          }
-        }
-
-        .sell-button {
-          position: absolute;
-          bottom: 10%;
-          text-align: center;
-          left: auto;
-          right: auto;
-          width: 90%;
-        }
-      }
-      .description-item {
-        padding-left: 15px;
-        @include MyriadRegular(12pt);
-        text-align: justify;
       }
     }
 
@@ -542,44 +536,67 @@ body {
     }
   }
 
-  .allies-carrousel {
-    width: "25%";
-    text-align: "center";
-    background-color: #f5f5f4;
-    margin-bottom: 3%;
-    border-radius: 5em;
-
-  }
-
   .allies-container {
     background-color: #f5f5f4;
     color: #000;
     .title {
       text-align: center;
       @include MyriadRegular(32pt);
+      @include breakpoint(max-width 767px) {
+        @include MyriadRegular(20pt);
+      }
     }
     .description {
       margin-top: 25px;
       text-align: justify;
       @include MyriadRegular(18pt);
     }
+    .allies-carrousel {
+      text-align: "center";
+      background-color: #f5f5f4;
+      margin-bottom: 3%;
+      margin-left: 3%;
+
+      .allies-img {
+        height: 150px;
+        width: 250px;
+        border-radius: 30px;
+        @include breakpoint(max-width 767px) {
+          height: 50px;
+          width: 80px;
+          border-radius: 15px;
+        }
+      }
+    }
   }
 
   .footer-container {
-    height: 224px;
+    padding-bottom: 3%;
     background-color: #282828;
-
     .footer-seccion {
       margin-top: 4%;
-    }
-    .footer-list-title {
-      padding-left: 3%;
-      .title {
-        color: #fff;
-        @include MyriadRegular(10pt);
-        text-align: left;
+      .footer-list-title {
+        padding-left: 40%;
+        @include breakpoint(max-width 767px) {
+          padding-left: 5%;
+        }
+        .title {
+          color: #fff;
+          @include MyriadRegular(10pt);
+          text-align: left;
+        }
+        .description-data {
+          margin-top: 3%;
+        }
+      }
+      .footer-img {
+        margin-left: 30%;
+        @include breakpoint(max-width 767px) {
+          margin-left: 10%;
+        }
       }
     }
+
     .footer-list {
       padding-left: 3%;
       color: #fff;
@@ -647,23 +664,25 @@ body {
   }
 
   .title-promotions {
-    @include MyriadRegular(30pt);
+    @include MyriadRegular(32pt);
+    @include breakpoint(max-width 767px) {
+      @include MyriadRegular(20pt);
+    }
     background-color: $blue;
     text-align: center;
     width: 100%;
     height: 100%;
     cursor: pointer;
-    .cond {
-      @include MyriadBoldCond(30pt);
-    }
   }
 
   .title-Interests {
     @include MyriadRegular(32pt);
     color: #000;
     background-color: #f5f5f4;
+    @include breakpoint(max-width 767px) {
+      @include MyriadRegular(20pt);
+    }
     .interest-blue {
-      @include MyriadRegular(32pt);
       color: $blue;
       background-color: #f5f5f4;
     }
@@ -736,19 +755,67 @@ body {
     }
   }
 
-  .search {
-    margin-top: 5%;
-  }
-
-  .cities {
-    margin-top: 5%;
-    //border-radius: 5px;
-    //border: 1px solid #fff;
-  }
-
   .ant-carousel .slick-slide {
     text-align: center;
     line-height: 600px;
     overflow: hidden;
+  }
+
+  .barsMenu {
+    float: left;
+    height: 32px;
+    padding: 1%;
+    margin-top: 1%;
+    display: none;
+    background: none;
+    border-color: transparent;
+    @include breakpoint(max-width 767px) {
+      display: inline-block;
+    }
+  }
+  .barsBtn {
+    display: block;
+    width: 20px;
+    height: 3px;
+    top: -6px;
+    background: #fff;
+    position: relative;
+  }
+  .barsBtn:hover {
+    content: attr(x);
+    width: 20px;
+    position: absolute;
+    top: -6px;
+    left: 0;
+    height: 3px;
+    background: #de6130;
+  }
+  .barsBtn:after,
+  .barsBtn:before {
+    content: attr(x);
+    width: 20px;
+    position: absolute;
+    top: -6px;
+    left: 0;
+    height: 3px;
+    background: #fff;
+  }
+  .barsBtn:after {
+    top: auto;
+    bottom: -6px;
+  }
+  .ant-drawer-body {
+    padding: 0;
+  }
+  .ant-drawer-body .ant-menu-horizontal > .ant-menu-item,
+  .ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
+    display: inline-block;
+    width: 100%;
+  }
+  .ant-drawer-body .ant-menu-horizontal {
+    border-bottom: none;
+  }
+  .ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
+    border-bottom-color: transparent;
   }
 }

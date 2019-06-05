@@ -188,7 +188,7 @@ class PromotionDetail extends Component {
                         <span>Condiciones </span> <span className={"interest-blue"} >de uso</span>
                     </Col>
                     <Col span={24} className={"title-body"} >
-                        {promotion.description}
+                        {promotion.condition}
                     </Col>
                 </Col>
                 <Col span={24} className={'promotion-map'} >

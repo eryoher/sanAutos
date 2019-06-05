@@ -14,11 +14,11 @@ const dividerColumn = {
 }
 
 const infoColumn = {
-    xs: { span: 24 },
+    xs: { span: 24},
     sm: { span: 24 },
-    md: { span: 12 },
-    lg: { span: 12 },
-    xl: { span: 7 },
+    md: { span: 12, offset: 6},
+    lg: { span: 12, offset: 6 },
+    xl: { span: 7, offset: 8 },
 }
 
 class LoginAdmin extends Component {
@@ -33,8 +33,8 @@ class LoginAdmin extends Component {
 
     render() {
         return (
-            <Row {...infoColumn}>                
-                <Col offset={6} span={24} className={'ant-modal-body'} >
+            <Row {...infoColumn} >                
+                <Col span={24} className={'ant-modal-body'} >
                     <LoginForm />
                 </Col>
             </Row>

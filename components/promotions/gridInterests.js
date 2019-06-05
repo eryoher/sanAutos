@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getPromotionsInterest } from '../../actions';
-import InterestsItem from './promotionItems';
+import InterestsItem from './InterestsItem';
 import { Col, Row } from 'antd';
 
 class GridInterests extends Component {
@@ -13,41 +13,36 @@ class GridInterests extends Component {
     componentWillMount() {
         this.props.getPromotionsInterest({
             pageSize: 4
-        })
+        });
     }
 
     renderInterests() {
-        let { gridpromotions } = this.props;
+        let { gridInterests } = this.props;
         let rows = [];
-        let count = 0;
 
-        gridpromotions.data.forEach(promotion => {
-            count++
-            if (count <= 4) {
-                console.log('contador: ', count)
+        gridInterests.data.forEach(interest => {
                 rows.push(
-                    <InterestsItem key={promotion.id} promotion={promotion} />
+                    <InterestsItem key={interest.id} interest={interest} />
                 )
-            }
         });
         return rows;
     }
 
     render() {
-        const { gridpromotions } = this.props;
+        const { gridInterests } = this.props;
 
         return (
             <Row type="flex" justify="space-around" align="middle" className={"grid-promotions"} >
-                {gridpromotions && this.renderInterests()}
+                {gridInterests && this.renderInterests()}
             </Row>
         )
     }
 }
 
 function mapStateToProps({ promotions }) {
-    const { gridpromotions, searchparamaters } = promotions
+    const { gridInterests, searchparamaters } = promotions
     return {
-        gridpromotions,
+        gridInterests,
         searchparamaters
     }
 }

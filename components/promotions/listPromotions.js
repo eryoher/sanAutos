@@ -46,9 +46,9 @@ class ListPromotions extends Component {
         // };
 
         return (
-            <Col span={24} className={"list-promotions"} >
-                <Col span={24} className="promotions-items-pagination" >
-                    <Col span={24} style={{ cursor: 'pointer' }} >
+            <Col span={24} className={'promotions-container'} >
+                <Col span={24} className={"list-promotions"} >
+                    <Col span={24} className={"promotions-items-pagination"} >
                         {search && this.renderPromotions()}
                         {/* <Pagination
                             defaultCurrent={initData.defaultCurrent} 

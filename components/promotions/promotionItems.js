@@ -32,6 +32,7 @@ export default class PromotionItems extends Component {
                     <Col span={4} className={'card-discount'} >{promotion.discount}%</Col>
                     <Col span={24} className={'card-description'}>{promotion.shortdescription}</Col>
                     <Col span={24} className={'card-deal'}>
+                        <Col span={24} className={'valor'}> Donación:</Col>
                         <Col span={24}>{donation}</Col>
                         <Col span={24} className={'valor'}>  Valor Comercial:</Col>
                         <Col span={24} className={'underline'} style={{ backgroundImage: `url(${imgUnderline})` }} >

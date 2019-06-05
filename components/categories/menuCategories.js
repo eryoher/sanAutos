@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getCategoriesWithProduct, getPromotions } from '../../actions';
-import CategoryItem from './categoryItem';
-import { Col, Row, Menu } from 'antd';
+import CategoryMenuItem from './categoryMenuItem';
+import { Menu } from 'antd';
 
-class ListCategories extends Component {
+class MenuCategories extends Component {
 
     constructor(props) {
         super(props);
@@ -29,7 +29,7 @@ class ListCategories extends Component {
 
         categories.data.forEach(category => {
             rows.push(
-                <CategoryItem key={category.id} data={category} onSelecteCategory={this.handleSelectCategory} />
+                <CategoryMenuItem key={category.id} data={category} onSelecteCategory={this.handleSelectCategory} />
             )
         });
         return rows;
@@ -38,9 +38,9 @@ class ListCategories extends Component {
     render() {
         const { categories } = this.props;
         return (
-            <Col span={24} >
+            <Menu className={"menu-categories"} mode={'vertical'} >
                 {categories && this.renderCategories()}
-            </Col>
+            </Menu>
         )
     }
 }
@@ -53,4 +53,4 @@ function mapStateToProps({ categories, promotions }) {
     }
 }
 
-export default connect(mapStateToProps, { getCategoriesWithProduct, getPromotions })(ListCategories);
+export default connect(mapStateToProps, { getCategoriesWithProduct, getPromotions })(MenuCategories);

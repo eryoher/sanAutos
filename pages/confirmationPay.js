@@ -39,7 +39,7 @@ class ConfirmationPay extends Component {
               paymentConfirm && 
               <Row className={"confirmation-content"} >
                 <Col span={24} >  
-                  <Col className={"title"} > Confirmacion Pago </Col>
+                  <Col className={"title"} > Confirmación Pago </Col>
                   <Col span={12} className={"confirm-label"} > Nombre </Col>
                   <Col span={12} className={"confirm-value"} > { paymentConfirm.description } </Col>
                   <Col span={12} className={"confirm-label"} > Estado </Col>
@@ -48,12 +48,12 @@ class ConfirmationPay extends Component {
                   <Col span={12} className={"confirm-value"} > { paymentConfirm.transaction_amount.toLocaleString()  } </Col>
                   <Col span={12} className={"confirm-label"} > Moneda </Col>
                   <Col span={12} className={"confirm-value"} > { paymentConfirm.currency_id } </Col>
-                  <Col span={12} className={"confirm-label"} > Fecha de Aprobacion </Col>
+                  <Col span={12} className={"confirm-label"} > Fecha de Aprobación </Col>
                   <Col span={12} className={"confirm-value"} > {  moment(paymentConfirm.date_approved).format(dateFormat) } </Col>
                 </Col>
                 { promotion && <Col span={24}>                  
-                  <Col className={"title"} > Promocion </Col>
-                  <Col span={12} className={"confirm-label"} > Donacion </Col>
+                  <Col className={"title"} > Promoción </Col>
+                  <Col span={12} className={"confirm-label"} > Donación </Col>
                   <Col span={12} className={"confirm-value"} > { promotion.donation.toLocaleString() } </Col>
                   <Col span={12} className={"confirm-label"} > Descuento </Col>
                   <Col span={12} className={"confirm-value"} > { `${promotion.discount}%` } </Col>
