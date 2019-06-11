@@ -136,10 +136,10 @@ class Banner extends Component {
                     </Col>
                     <Col {...dividerColumn} className={"banner-params"}>
                         <Row>
-                            <Col span={10} className={'search'} >
+                            <Col span={14} className={'search'} >
                                 <Search size="large" placeholder="SEARCH" />
                             </Col>
-                            <Col span={10} offset={1} className={'cities'}>
+                            <Col span={10} className={'cities'}>
                                 {this.renderCities()}
                             </Col>
                         </Row>

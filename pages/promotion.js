@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { getPromotion }  from '../actions';
+import { getPromotion } from '../actions';
 import { Row, Col, Modal } from 'antd';
 import * as qs from 'qs';
 import PromotionDetail from '../components/promotions/promotionDetail';
@@ -8,12 +8,12 @@ import Banner from '../components/common/banner';
 import Interests from '../components/promotions/Interests';
 import Allies from '../components/allies/allies';
 
-class Promotions extends Component {    
+class Promotions extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            promotionId:null
+            promotionId: null
         }
     }
 
@@ -28,31 +28,31 @@ class Promotions extends Component {
     }
 
     render() {
-        const {promotion, auth} = this.props
+        const { promotion, auth } = this.props
         return (
-           <Row>
-                <Col span={24} className={"promotion-container"}>                    
-                    <Col span={24}><Banner title /></Col> 
+            <Row>
+                <Col span={24} className={"promotion-container"}>
+                    <Col span={24}><Banner title /></Col>
                     <Col span={24} className={"content"} >
-                        { promotion && <PromotionDetail promotion={promotion} auth = {auth} />}
-                    </Col>  
+                        {promotion && <PromotionDetail promotion={promotion} auth={auth} />}
+                    </Col>
                     <Col span={24} ><Interests /></Col>
-                    <Col span={24} ><Allies /></Col>       
+                    <Col span={24} ><Allies /></Col>
                 </Col>
-           </Row>
+            </Row>
         )
     }
 }
 
-function mapStateToProps({ promotions, auth }){
+function mapStateToProps({ promotions, auth }) {
     const { search, promotion } = promotions
     return {
         search,
-        promotion, 
-        auth        
+        promotion,
+        auth
     }
 }
 
 
 
-export default connect (mapStateToProps,{ getPromotion })(Promotions);
+export default connect(mapStateToProps, { getPromotion })(Promotions);

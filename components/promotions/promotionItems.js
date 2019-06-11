@@ -35,10 +35,10 @@ export default class PromotionItems extends Component {
                         <Col span={24} className={'valor'}> Donación:</Col>
                         <Col span={24}>{donation}</Col>
                         <Col span={24} className={'valor'}>  Valor Comercial:</Col>
-                        <Col span={24} className={'underline'} style={{ backgroundImage: `url(${imgUnderline})` }} >
+                        <Col span={10} offset={2} className={'underline'} style={{ backgroundImage: `url(${imgUnderline})` }} >
                             {price}
                         </Col>
-                        <Col span={24} className={'withdiscount'} >{discount}</Col>
+                        <Col span={10} className={'withdiscount'} >{discount}</Col>
                     </Col>
                 </Col>
             </Col>

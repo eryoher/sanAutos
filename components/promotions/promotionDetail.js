@@ -7,6 +7,13 @@ import { connect } from 'react-redux';
 import { createPreference } from '../../actions';
 import getConfig from 'next/config';
 import ListCategories from '../categories/listCategories';
+const dividerColumn = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 24 },
+    lg: { span: 12 },
+    xl: { span: 12 },
+}
 
 const { publicRuntimeConfig } = getConfig();
 const TabPane = Tabs.TabPane;
@@ -123,8 +130,8 @@ class PromotionDetail extends Component {
                 </Col>
                 <Col span={24} className={'promotion-images'} >
                     <Col span={14} className={'left-images'} >
-                        <Col span={24} className={'marca-images'} >{ companyName }</Col>
-                        <Col span={24} className={'shortd-images'} >{ promotion.shortdescription }</Col>
+                        <Col span={24} className={'marca-images'} >{companyName}</Col>
+                        <Col span={24} className={'shortd-images'} >{promotion.shortdescription}</Col>
                         <Col span={24} className={'main-image'} >
                             <img src={urlImage} />
                         </Col>
@@ -134,23 +141,27 @@ class PromotionDetail extends Component {
                     </Col>
                     <Col span={10} className={'description-image'}>
                         <Col span={24} className={'detail-deal'} >
-                            <Col span={14} className={'donation'} >Donación: {donation}</Col>
+                            <Col span={12} className={'donation'} >Donación: {donation}</Col>
                             <Col span={18} className={'discount'} >Bono de descuento: {promotion.discount}%</Col>
-                            <Col span={24} className={'valor'} >  Valor Comercial:</Col>
+                            <Col span={24} className={'valor'} >Valor Comercial:</Col>
                             <Col span={24} className={'underline'} style={{ backgroundImage: `url(${imgUnderline})` }} >{price}</Col>
                             <Col span={24} className={'withdiscount'} >{discount}</Col>
-                            <Col span={24} className={'countdown'} >
-                                <Col span={24} className={'time-promotion'}>
-                                    <img className={'img-countdown'} src={imgClock} />Tiempo <br></br>  Restante
-                                    <Countdown className={'interval'} date={endDate.getTime()} renderer={this.renderer} />
-                                </Col>
+                            <Col span={24} className={'countdown time-promotion'} >
+                                
+                                    <Col {...dividerColumn} className={'time-promotion'}>
+                                        <img className={'img-countdown'} src={imgClock} />Tiempo <br></br>  Restante
+                                    </Col>
+                                    <Col {...dividerColumn} className={'time-promotion'}>
+                                        <Countdown className={'interval'} date={endDate.getTime()} renderer={this.renderer} />
+                                    </Col>
+                                
                             </Col>
                             <Col span={24} className={'quantity'} >Donaciones disponibles: {promotion.quantity}</Col>
                             <Col span={24} className={"div-botton-donate"} >
                                 <Button href={urlButton}
                                     target={target}
                                     className={"botton-donate"}
-                                    onClick={() => this.handleCallPaid()} > {nameButton} </Button>
+                                    onClick={() => this.handleCallPaid()} >{nameButton}</Button>
                                 <Login
                                     showLogin={this.state.showLogin}
                                     onCancelLogin={this.handleCancelLogin}
@@ -179,7 +190,7 @@ class PromotionDetail extends Component {
                             <span>Descripción de la </span> <span className={"interest-blue"} >Promoción</span>
                         </Col>
                         <Col span={24} className={"title-body"} >
-                            {promotion.description}
+                            <span>{promotion.description}</span>
                         </Col>
                     </Col>
                 </Col>
@@ -188,13 +199,19 @@ class PromotionDetail extends Component {
                         <span>Condiciones </span> <span className={"interest-blue"} >de uso</span>
                     </Col>
                     <Col span={24} className={"title-body"} >
-                        {promotion.condition}
+                        <span>{promotion.condition}</span>
                     </Col>
                 </Col>
                 <Col span={24} className={'promotion-map'} >
-                    <Col span={5} className={'title-map'} >Localización</Col>
-                    <img className={'img-map'} src={imgMap} />
-
+                    <Col span={7} className={'title-map'} >Localización</Col>
+                    <Col span={24} className="img-map">
+                        <iframe
+                            height="100%"
+                            width="100%"
+                            className="embed-responsive-item"
+                            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD-VoxbjICMaLVt7ME3VEjCEThsVQf2DHM&q=${promotion.address}`}>
+                        </iframe>
+                    </Col>
                 </Col>
             </Row >
         )
