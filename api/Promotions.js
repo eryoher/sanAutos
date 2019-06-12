@@ -7,7 +7,7 @@ export const getPromotions = async (params) => {
 }
 
 export const getPromotion = async (promotionId) => {  
-    const response = await Axios.get(`/promotions/${promotionId}?filter={"include": [{"relation": "assets"}, {"relation": "inventory"}]}`);
+    const response = await Axios.get(`/promotions/${promotionId}?filter={"include": [{"relation": "assets"}, {"relation": "inventory"}, {"relation": "company"}]}`);
     return response;
 }  
 
@@ -28,5 +28,15 @@ export const getTopPromotions = async () => {
 
 export const searchPromotions = async (params) => {  
     const response = await Axios.post('/promotions/adminSearch', params);
+    return response;
+}
+
+export const getPromotionsCategory = async (params) => {  
+    const response = await Axios.post('/promotions/getPromotionsCategory', params);
+    return response;
+}
+
+export const getPromotionsInterest = async (params) => {  
+    const response = await Axios.post('/promotions/getPromotionsInterest', params);
     return response;
 }

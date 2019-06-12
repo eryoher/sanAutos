@@ -5,6 +5,22 @@ import HeaderAdmin from '../components/common/headerAdmin';
 import LoginForm from '../components/users/loginForm';
 import Router from 'next/router'
 
+const dividerColumn = {
+    xs: { span: 1 },
+    sm: { span: 2 },
+    md: { span: 4 },
+    lg: { span: 6 },
+    xl: { span: 8 },
+}
+
+const infoColumn = {
+    xs: { span: 24},
+    sm: { span: 24 },
+    md: { span: 12, offset: 6},
+    lg: { span: 12, offset: 6 },
+    xl: { span: 7, offset: 8 },
+}
+
 class LoginAdmin extends Component {
 
     componentDidUpdate = (prevProps) => {
@@ -17,8 +33,8 @@ class LoginAdmin extends Component {
 
     render() {
         return (
-            <Row>                
-                <Col offset={6} span={12} className={'ant-modal-body'} >
+            <Row {...infoColumn} >                
+                <Col span={24} className={'ant-modal-body'} >
                     <LoginForm />
                 </Col>
             </Row>

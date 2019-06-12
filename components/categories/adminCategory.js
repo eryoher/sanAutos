@@ -95,4 +95,3 @@ function mapStateToProps({ categories }){
 }
 
 export default connect (mapStateToProps,{setCategory})(AdminCategory);
-

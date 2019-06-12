@@ -2,64 +2,55 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getCategoriesWithProduct, getPromotions } from '../../actions';
 import CategoryItem from './categoryItem';
-import { Col } from 'antd';
+import { Col, Row, Menu } from 'antd';
 
 class ListCategories extends Component {
 
-    constructor(props){
-        super(props);    
+    constructor(props) {
+        super(props);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.getCategoriesWithProduct()
-        
     }
 
     handleSelectCategory = (categoryId) => {
-        const {searchparamaters} = this.props;
-        
+        const { searchparamaters } = this.props;
+
         this.props.getPromotions({
             ...searchparamaters,
-            categoryId:categoryId,
-            page:1
+            categoryId: categoryId
         })
     }
 
-    renderCategories(){       
+    renderCategories() {
         let { categories } = this.props;
         let rows = [];
-        
+
         categories.data.forEach(category => {
             rows.push(
-                <CategoryItem key={category.id}
-                    data = { category }
-                    onSelecteCategory = {  this.handleSelectCategory }
-                />
-            ) 
-        }); 
-
-        return rows;       
+                <CategoryItem key={category.id} data={category} onSelecteCategory={this.handleSelectCategory} />
+            )
+        });
+        return rows;
     }
 
     render() {
-        const {categories} = this.props;
+        const { categories } = this.props;
         return (
-            <Col span={24} className={"list-categories"} >
-                { categories && this.renderCategories() }
+            <Col span={24} >
+                {categories && this.renderCategories()}
             </Col>
         )
     }
 }
 
-
-function mapStateToProps({categories, promotions }){
-    const {searchparamaters} = promotions
-    return {        
-        categories : categories.categoriesCount,
+function mapStateToProps({ categories, promotions }) {
+    const { searchparamaters } = promotions
+    return {
+        categories: categories.categoriesCount,
         searchparamaters
     }
 }
 
-
-
-export default connect (mapStateToProps,{getCategoriesWithProduct, getPromotions})(ListCategories);
+export default connect(mapStateToProps, { getCategoriesWithProduct, getPromotions })(ListCategories);

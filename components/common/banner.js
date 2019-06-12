@@ -1,75 +1,151 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { userSignOut } from '../../actions';
-import { Col, Icon, message, Divider } from 'antd';
+import { Row, Col, Icon, message, Divider, Input, Select, Button, Drawer } from 'antd';
 import Login from './login';
 import MenuAdmin from './menuAdmin';
+import Router from 'next/router'
+import MenuCategories from '../categories/menuCategories';
+
+const dividerColumn = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 24 },
+    lg: { span: 12 },
+    xl: { span: 12 },
+}
 
 class Banner extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
-            showLogin:false
+        this.state = {
+            showLogin: false
         }
     }
 
-    onShowLogin = () =>{
-        this.setState({showLogin:true})
+    onShowLogin = () => {
+        this.setState({ showLogin: true })
     }
 
     handleCancelLogin = () => {
-        this.setState({showLogin:false})
+        this.setState({ showLogin: false })
     }
-    
+
     onLogout = () => {
         this.props.userSignOut();
     }
-
     componentDidUpdate = (prevProps) => {
-        if( prevProps.auth.user !== this.props.auth.user && !this.props.auth.user){
+        if (prevProps.auth.user !== this.props.auth.user && !this.props.auth.user) {
             message.success('El usuario se deslogeo correctamente.');
         }
     }
 
     handleShowLogin = () => {
-        
     }
 
-    render() {
-        const {auth, title, menuAdmin, notext} = this.props;        
-        const bgBanner ="../../static/img/bg-banner.png";
-        const bannerLogo = "../../static/img/banner-logo.png";
-        const isLogin = (auth.user) ? true: false
-        return (
-            <Col span={24} className={"banner-content"}  style={{backgroundImage: `url(${bgBanner})`}}>
-                <Col span={9} style={{backgroundImage: `url(${bannerLogo})`}} className={"banner-logo"} />
-                <Col span={15}>
-                    { !isLogin && <Col span={12} offset={12} className={"banner-row banner-login"} >
-                        <a onClick={() => this.onShowLogin() }>                                  
-                            <Icon type="shopping-cart" />        
-                            <Divider type="verical" />
-                            Login
-                        </a>
-                    </Col>}
-                    { isLogin && <Col span={12} offset={12} className={"banner-row banner-login"} >
-                        <a onClick={() => this.onLogout() }>
-                            <Icon type="logout" />      
-                            <Divider type="verical" />
-                            Logout
-                        </a>
-                    </Col>}
+    renderCities = () => {
+        //const { listCities } = this.props;
+        const rows = [];
+        const Option = Select.Option;
 
-                    <Col span={12} style={{textAlign:'right'}} >
-                        <img src={"../../static/img/logo-white.png"} style={{height:'114px'}} className={"logo"} />
+        //listCities.forEach(city => {
+        rows.push(
+            <Select key='no' defaultValue='Bogotá' style={{ width: 200 }} size='large'>
+                <Option key='Bogotá' value='Bogotá'>Bogotá</Option>
+                <Option key="Cartagena" value="Cartagena">Cartagena</Option>
+                <Option key="Cali" value="Cali">Cali</Option>
+                <Option key="Medellin" value="Medellin">Medellín</Option>
+            </Select>
+        )
+        //});
+
+        return rows
+    }
+
+    handleClickButton() {
+        Router.push({ pathname: '/' });
+    }
+
+    state = {
+        visible: false
+    }
+    showDrawer = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+    onClose = () => {
+        this.setState({
+            visible: false,
+        });
+    };
+
+    render() {
+
+        const { auth, title, menuAdmin, notext } = this.props;
+        const bannerLogo = "../../static/img/banner-logo.svg";
+        const isLogin = (auth.user) ? true : false
+        const Search = Input.Search;
+
+        return (
+            <Row className={"banner-content"} >
+                <Row className={"banner-top"} >
+                    <Col span={4} >
+                        <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
+                            <span className="barsBtn"></span>
+                        </Button>
+
+                        <Drawer
+                            title="Categorias"
+                            placement="left"
+                            closable={false}
+                            onClose={this.onClose}
+                            visible={this.state.visible}
+                            onClick={this.onClose}
+                        >
+                            <MenuCategories />
+                        </Drawer>
                     </Col>
-                    <Col span={12} className={"banner-row"} ></Col>
-                    <Col span={24} className={"banner-row banner-message"} >Dotamos a hospitales infantiles <span className={"color-orange"}> con material didactico </span></Col>
-                    <Login
-                        showLogin = { this.state.showLogin }
-                        onCancelLogin = { this.handleCancelLogin }
-                        onShowLogin = { this.handleShowLogin }
-                    />
+                    <Col span={20} >
+                        {!isLogin &&
+                            <Col span={12} offset={12} className={"banner-row banner-login"} >
+                                <a onClick={() => this.onShowLogin()}>
+                                    <Icon type="shopping-cart" />
+                                    <Divider type="verical" />
+                                    Login
+                            </a>
+                            </Col>}
+                        {isLogin &&
+                            <Col span={12} offset={12} className={"banner-row banner-login"} >
+                                <a onClick={() => this.onLogout()}>
+                                    <Icon type="logout" />
+                                    <Divider type="verical" />
+                                    Logout
+                            </a>
+                            </Col>}
+                        <Login
+                            showLogin={this.state.showLogin}
+                            onCancelLogin={this.handleCancelLogin}
+                            onShowLogin={this.handleShowLogin}
+                        />
+                    </Col>
+                </Row>
+                <Col span={24} className={'banner-include'}>
+                    <Col {...dividerColumn} className={"banner-logo"}
+                        onClick={() => this.handleClickButton()}
+                        style={{ backgroundImage: `url(${bannerLogo})` }} >
+                    </Col>
+                    <Col {...dividerColumn} className={"banner-params"}>
+                        <Row>
+                            <Col span={14} className={'search'} >
+                                <Search size="large" placeholder="SEARCH" />
+                            </Col>
+                            <Col span={10} className={'cities'}>
+                                {this.renderCities()}
+                            </Col>
+                        </Row>
+                    </Col>
                 </Col>
                 { !notext && !title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
                     Ofertas de donación <span className={"color-blue"} > Destacadas </span>
@@ -77,16 +153,17 @@ class Banner extends Component {
                 { !notext && title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
                     Ofertas de donación 
                 </Col>}
+
                 {
                     menuAdmin && <MenuAdmin showMenu />
                 }
-            </Col>
+            </Row>
         )
     }
 }
 
-const mapStateToProps = ({auth}) => {
-    return { auth }  
+const mapStateToProps = ({ auth }) => {
+    return { auth }
 };
 
-export default connect(mapStateToProps, {userSignOut})(Banner);
+export default connect(mapStateToProps, { userSignOut })(Banner);

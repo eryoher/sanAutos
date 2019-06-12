@@ -24,10 +24,10 @@ export default class BuyPromotion extends Component {
             items: [
               {
                 id: promotion.id,
-                title: (promotion.name) ? promotion.name: 'Promocion Nombre' ,
+                title: (promotion.name) ? promotion.name: 'Promoción Nombre' ,
                 quantity: parseInt( this.state.cantidad ),
                 currency_id: 'COP',
-                unit_price: promotion.price
+                unit_price: promotion.donation
               }
             ],
             payer: {
@@ -85,13 +85,13 @@ export default class BuyPromotion extends Component {
                     >
                         { user.city }
                     </FormItem>
-                <Divider><h3>Datos de la Promocion</h3></Divider>
+                <Divider><h3>Datos de la Donación</h3></Divider>
                 <Col {...formLayout}>
                     <FormItem
                         {...smItemLayout}                    
-                        label={'Precio'}
+                        label={'Donación'}
                     >
-                        { promotion.price.toLocaleString() }
+                        { promotion.donation.toLocaleString() }
                     </FormItem>
                 </Col>
                 
@@ -120,11 +120,12 @@ export default class BuyPromotion extends Component {
                         {...smItemLayout}                    
                         label={'Total'}
                     >
-                        { (promotion.price * cantidad).toLocaleString() }
+                        { (promotion.donation * cantidad).toLocaleString() }
                     </FormItem>
                 </Col>
                 <Col span={24} style={{textAlign:'center'}} >
-                    <Button onClick={this.handleSubmitbuy}  htmlType="button" className={"button-buypromotion"}  disabled={ !(cantidad > 0) }>
+                    <Button onClick={this.handleSubmitbuy} htmlType="button" 
+                        className={"button-buypromotion"} disabled={ !(cantidad > 0) }>
                         {'Confirmar'}
                     </Button>
                 </Col>

@@ -28,7 +28,7 @@ class AdminPromotions extends Component {
           width: 200,
       
       }, {
-          title: "Precio",
+          title: "Valor",
           dataIndex: 'price',
           key: 'price',
           width: 200,

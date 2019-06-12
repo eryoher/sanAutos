@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'next/router'
 import { Formik } from 'formik';
@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import { Alert, Layout, Form, Icon, Input, Button, Row, Col } from 'antd';
 
 import { userSignIn, clearError } from '../../actions';
-import {showError} from '../../actions/Common';
+import { showError } from '../../actions/Common';
 
 const { Content } = Layout;
 const FormItem = Form.Item;
@@ -15,27 +15,25 @@ const FormItem = Form.Item;
 class LoginForm extends Component {
 
   render() {
-    const { error, register } = this.props    
-    
+    const { error, register } = this.props
+
     const UrlBgLogo = '../../static/img/bg_login_form.png'
     const UrlLogo = '../../static/img/logo_login_form.png'
-    return (      
-        <Content className="addUser-container">
-          <div className={'logo-login'} style={{backgroundImage: `url(${UrlBgLogo})`}} >
-            <img className={'logo-img'} src={UrlLogo} />
-            <div className={'title'} > INICIO DE SESION </div>
-          </div>
-          <Content className="form-content">            
-            <Row style={{ paddingTop: 15 }}>
-              <Col span={20} offset={2}>
-                {error &&
-                  <Alert
-                    message={error}
-                    type="error"
-                  />
-                }
-
-                <Formik
+    return (
+      <Content className="addUser-container">
+        <div className={'logo-login'} style={{ backgroundImage: `url(${UrlBgLogo})` }} >
+          <img className={'logo-img'} src={UrlLogo} />
+          <div className={'title'} > INICIO DE SESION </div>
+        </div>
+        <Content className="form-content">
+          <Row style={{ paddingTop: 15 }}>
+          <Col span={20} offset={2}>
+            {error &&
+              <Alert
+                message={error}
+                type="error"
+              />
+            }   <Formik
                     onSubmit={(values, actions) => {
                         this.props.clearError();
                         this.props.userSignIn(values);
@@ -98,8 +96,8 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = ({common}) => {
-    return { error:common.error }  
+const mapStateToProps = ({ common }) => {
+  return { error: common.error }
 };
 
 export default connect(mapStateToProps, { userSignIn, clearError })(LoginForm);

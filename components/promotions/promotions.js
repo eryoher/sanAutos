@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
-import { Col } from 'antd';
-import ListCategories from '../categories/listCategories';
-import ListPromotions from './listPromotions';
+import { Col, Row } from 'antd';
+import GridPromotions from '../promotions/gridPromotions';
 
-export default class Promotions extends Component {   
+export default class Promotions extends Component {
 
     render() {
         return (
-            <Col span={24} className={"promotions-container"} >
-                <Col span={7} className={"menu-categories"} >
-                    <ListCategories />
+            <Row>
+                <Col span={24} >
+                    <Col span={24} className={"title-promotions"}>
+                        <b className={"cond"} >OFERTAS</b>{/*  <span className={"color-white"}>de donación</span> */}
+                    </Col>
+                    <GridPromotions />
                 </Col>
-                <Col span={17} >
-                    <ListPromotions />
-                    
+                <Col span={24}>
+                    <div className={"border-bottom-information"} />
                 </Col>
-                <Col span={24} className={"border-bottom-promotions"} />
-
-            </Col>
+            </Row>
         )
     }
 }
