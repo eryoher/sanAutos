@@ -22,8 +22,7 @@ export default class PromotionItems extends Component {
         }
         let donation = promotion.donation.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
         let price = promotion.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
-        let discount = (promotion.price * (promotion.discount / 100)).toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
-
+        let discount = (promotion.price - (promotion.price * (promotion.discount / 100))).toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
         return (
             <Col span={6} className={'card-Promotion'} onClick={() => this.handleClickButton()} type={'primary'} >
                 <Col span={24} className={'card-photo'} style={{ backgroundImage: `url(${imgUrl})` }} />
