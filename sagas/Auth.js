@@ -44,7 +44,9 @@ function* signInUser({ payload }) {
     } catch (err) {
         if (err.response && err.response.status == 401) {
             yield put(showError('Usuario o password incorrecto'));
-        } else {
+        }else if (err.response && err.response.status == 403) {          
+          yield put(showError(err.response.data.error.message));
+        }else {
             yield put(showError('Error de conexion'));
         }
     }
@@ -63,8 +65,7 @@ function* signOutUser() {
 
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
-    localStorage.removeItem('user');
-    localStorage.removeItem('currentQuotationId');  
+    localStorage.removeItem('user');    
     delete Axios.defaults.headers.common['Authorization'];
     Router.push('/')
     yield put(userSignOutSuccess());

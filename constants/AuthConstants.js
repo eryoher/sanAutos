@@ -3,11 +3,11 @@ export const ROLES = {
     UNAUTHENTICATED: "_UNAUTHENTICATED",
     ADMIN: "Administrador",
     CLIENT: "Cliente",
-    SALESMAN: "vendedor"
+    COMPANY: "Empresas"
 };
 
 export const ROLE_TO_HOME_MAPPING = {
     [ROLES.ADMIN]: "/admin",
     [ROLES.CLIENT]: "/",
-    [ROLES.SALESMAN]: "/catalog"
+    [ROLES.COMPANY]: "/checkCodes"
 }

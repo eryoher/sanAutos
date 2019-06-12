@@ -5,6 +5,14 @@ export const formLayout = {
     lg: { span: 24 },
     xl: { span: 24 },
 }
+
+export const formMidleLayout = {
+    xs: { span: 10, offset:2 },
+    sm: { span: 10, offset:2 },
+    md: { span: 10, offset:2 },
+    lg: { span: 10, offset:2 },
+    xl: { span: 10, offset:2 },
+}
   
 export const largeItemLayout = {
     labelCol: { span: 5, offset: 1 },

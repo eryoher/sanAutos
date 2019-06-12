@@ -9,6 +9,7 @@ import inventoryReducer from './inventories';
 import companyReducer from './companies';
 import userReducer from './Users';
 import imageReducer from './images';
+import authorizationReducer from './authorizationCode';
 
 const rootReducer = combineReducers({
     auth:authReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     inventories:inventoryReducer,
     companies:companyReducer,
     users: userReducer,
-    images: imageReducer
+    images: imageReducer,
+    authorizationCode: authorizationReducer
 });
 
 export default rootReducer;

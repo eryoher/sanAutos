@@ -37,7 +37,7 @@ class Banner extends Component {
     }
 
     render() {
-        const {auth, title, menuAdmin} = this.props;        
+        const {auth, title, menuAdmin, notext} = this.props;        
         const bgBanner ="../../static/img/bg-banner.png";
         const bannerLogo = "../../static/img/banner-logo.png";
         const isLogin = (auth.user) ? true: false
@@ -71,10 +71,10 @@ class Banner extends Component {
                         onShowLogin = { this.handleShowLogin }
                     />
                 </Col>
-                {!title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
+                { !notext && !title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
                     Ofertas de donación <span className={"color-blue"} > Destacadas </span>
                 </Col>}
-                {title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
+                { !notext && title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
                     Ofertas de donación 
                 </Col>}
                 {

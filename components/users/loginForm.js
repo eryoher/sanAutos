@@ -83,6 +83,9 @@ class LoginForm extends Component {
                             </Col>                            
                             { register && <Col span={12} style={{ paddingTop: 5, paddingBottom: 15 }} >
                                 <a className="login-form-action" onClick={this.props.onChangeModal} href="#"> {'Registrarse'} </a>
+                            </Col>}
+                            { register && <Col span={12} style={{ paddingTop: 5, paddingBottom: 15, textAlign:'right' }} >
+                                <a className="login-form-action" href="/resetPassword"> {'Recordar contraseña'} </a>
                             </Col>}                            
                         </Form>
                     )}

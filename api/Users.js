@@ -1,5 +1,4 @@
 import Axios from 'axios';
-//const response = await Axios.get('/lineasCatalogos/' + catalogId + '?filter={"include":[ {"relation": "segmentos"},{ "relation":  "lineas", "scope": { "include": "sublinea"}},{"relation":  "marca"}]}');
 
 export const getUser = async (userId) => {
     const response = await Axios.get(`/users/${userId}?filter={"include": {"relation": "Role"}}`);
@@ -9,4 +8,19 @@ export const getUser = async (userId) => {
 export const addUser = async (params) => {
     const response = await Axios.post('/users/createUser', params);
     return response;
+}
+
+export const activationCode = async (code) => {
+    const response = await Axios.post('/users/checkCode', {code});
+    return response.data;
+}
+
+export const emailToRecoverUser = async (params) => {
+    const response = await Axios.post('/users/emailToRecoverUser', params);
+    return response.data;
+}
+
+export const changePasswordUser = async (params) => {
+    const response = await Axios.post('/users/changePasswordUser', params);
+    return response.data;
 }

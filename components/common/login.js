@@ -53,9 +53,12 @@ class Login extends Component {
                     onCancel= { () => this.handleCancelForm() }
                     footer={[]}
                 >     
-                    {this.state.showCreateUser && <CreateUser 
-                        handleChangeModal = { () => this.onChangeModal() }
-                    />}
+                    {
+                    this.state.showCreateUser && 
+                        <CreateUser 
+                            handleChangeModal = { () => this.onChangeModal() }
+                        />
+                    }
                 </Modal>
             </div>            
         )

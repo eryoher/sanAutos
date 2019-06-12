@@ -92,12 +92,12 @@ class AdminCompany extends Component {
                                             }}
                                         />
                                     </Col>
-                                    <Col span={2} offset={10} >
+                                    <Col span={11} style={{textAlign:'right'}} >
                                         <Button className="ant-btn" type={'primary'} htmlType="submit">
                                             {'Aceptar'}
                                         </Button>
                                     </Col>
-                                    <Col span={2}  >
+                                    <Col span={11} offset={1} style={{textAlign:'left'}} >
                                         <Button  href={'/adminCompanies'}  className="ant-btn" type={'primary'} >
                                             {'Cancelar'}
                                         </Button>

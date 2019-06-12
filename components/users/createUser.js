@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Layout, Form, Button, Row, Col } from 'antd';
+import { Layout, Form, Button, Row, Col, message } from 'antd';
 import { addUser } from '../../actions';
 import { formLayout } from '../../constants/TypeForm';
 import UserFormInput from './userFormInput';
@@ -11,6 +11,19 @@ const { Content } = Layout;
 
 
 class CreateUser extends Component {
+
+  componentDidUpdate = (prevProps) => {
+    const {response} = this.props;
+
+    if( prevProps.response != response && response ){
+      if( response.status == '200' ){
+        this.props.handleChangeModal();
+        message.success( response.message );
+      }else {
+        message.error( response.message );
+      }
+    }
+  }
 
   render() {
 
@@ -34,9 +47,10 @@ class CreateUser extends Component {
                   initialValues={{ ...initValues }}
                   onSubmit={(values, actions) => {
                       values.roleId = 2;
+                      values.active = false;
                       this.props.addUser(values);
                       actions.setSubmitting(false);
-                      this.props.handleChangeModal()
+                      
                   }}
                   validationSchema={Yup.object().shape({
                       name: Yup.string().required('El nombre es requerido'),
@@ -80,8 +94,9 @@ class CreateUser extends Component {
   }
 }
 
-const mapStateToProps = ({auth}) => {
-    return { auth }  
+const mapStateToProps = ({users}) => {
+    const {response} = users
+    return { response }  
 };
 
 export default connect(mapStateToProps, { addUser })(CreateUser);

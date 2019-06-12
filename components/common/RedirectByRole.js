@@ -10,8 +10,7 @@ function redirectByRole(WrappedComponent, authorizedRoles, roleToHomeMapping) {
   class RedirectByRole extends React.Component {
 
     constructor(props) {
-      super(props);
-           
+      super(props);            
       authorizedRoles = authorizedRoles ? authorizedRoles : [ROLES.ANY];
       roleToHomeMapping = roleToHomeMapping ? roleToHomeMapping : ROLE_TO_HOME_MAPPING;
 
@@ -30,8 +29,7 @@ function redirectByRole(WrappedComponent, authorizedRoles, roleToHomeMapping) {
     }
 
     render() {
-      const access = isRoleAllowed(this.props.auth, authorizedRoles);
-      
+      const access = isRoleAllowed(this.props.auth, authorizedRoles);                 
       return (
         <>
           {access && <WrappedComponent

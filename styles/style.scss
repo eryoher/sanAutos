@@ -388,6 +388,12 @@ body{
                 }
             }
         }
+
+        .checkValidate{
+            text-align: justify;
+            @include MyriadRegular(18pt);
+            padding-left:'10px';
+        }
     }
 
     .allies-container{
@@ -477,6 +483,33 @@ body{
             padding-top: 15px;
             border-radius: 50px;
             width: 150px;
+        }
+    }
+
+    .form-checkCode{
+        .title{
+            color:#57abde;
+            @include MyriadRegular(26pt);    
+
+        }
+    }
+
+    .confirmation-user{
+        
+        .title{
+            color:#57abde;
+            @include MyriadRegular(26pt);
+            text-align: center;            
+        }
+        
+        .botton-home{
+            color: #fff;
+            background-image: linear-gradient(#1f1b2d, #165a9d);
+            @include MyriadRegular(24pt);
+            height: 60px;
+            padding-top: 15px;
+            border-radius: 50px;
+            width: 25%;
         }
     }
 

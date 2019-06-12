@@ -33,8 +33,7 @@ class ConfirmationPay extends Component {
   render() {
     const {paymentConfirm, promotion} = this.props;
     return (
-        <Row>
-          <Layaout>
+        <Row>          
             {
               paymentConfirm && 
               <Row className={"confirmation-content"} >
@@ -66,8 +65,7 @@ class ConfirmationPay extends Component {
                   <Button href={'/'} style={{marginTop:'25px'}} className={"botton-donate"}> Inicio </Button>
                 </Col>
               </Row>
-            }
-          </Layaout>
+            }          
         </Row>
     )
   }
