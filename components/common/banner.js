@@ -51,7 +51,7 @@ class Banner extends Component {
 
         //listCities.forEach(city => {
         rows.push(
-            <Select key='no' defaultValue='Bogotá' style={{ width: 200 }} size='large'>
+            <Select key='no' defaultValue='Bogotá' size='large'>
                 <Option key='Bogotá' value='Bogotá'>Bogotá</Option>
                 <Option key="Cartagena" value="Cartagena">Cartagena</Option>
                 <Option key="Cali" value="Cali">Cali</Option>
@@ -93,9 +93,9 @@ class Banner extends Component {
                 <Row className={"banner-top"} >
                     <Col span={4} >
                         <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
-                            <span className="barsBtn"></span>
+                            {/* <span className="barsBtn"></span> */}
+                            <Icon type={this.state.visible ? 'close' : 'menu'} />
                         </Button>
-
                         <Drawer
                             title="Categorias"
                             placement="left"

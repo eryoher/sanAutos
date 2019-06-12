@@ -3,6 +3,13 @@ import { connect } from 'react-redux';
 import { getCategoriesWithProduct, getPromotions } from '../../actions';
 import CategoryItem from './categoryItem';
 import { Col, Row, Menu } from 'antd';
+const dividerColumn = {
+    xs: { span: 0 },
+    sm: { span: 0 },
+    md: { span: 0 },
+    lg: { span: 24 },
+    xl: { span: 24 },
+}
 
 class ListCategories extends Component {
 
@@ -38,7 +45,7 @@ class ListCategories extends Component {
     render() {
         const { categories } = this.props;
         return (
-            <Col span={24} >
+            <Col {...dividerColumn} >
                 {categories && this.renderCategories()}
             </Col>
         )

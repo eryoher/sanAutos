@@ -22,8 +22,7 @@ export default class PromotionItems extends Component {
         }
         let donation = interest.donation.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
         let price = interest.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
-        let discount = (interest.price * (interest.discount / 100)).toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
-
+        let discount = (interest.price - (interest.price * (interest.discount / 100))).toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
         return (
             <Col span={6} className={'card-Promotion'} onClick={() => this.handleClickButton()} type={'primary'} >
                 <Col span={24} className={'card-photo'} style={{ backgroundImage: `url(${imgUrl})` }} />
@@ -35,9 +34,7 @@ export default class PromotionItems extends Component {
                         <Col span={24} className={'valor'}> Donación:</Col>
                         <Col span={24}>{donation}</Col>
                         <Col span={24} className={'valor'}>  Valor Comercial:</Col>
-                        <Col span={10} offset={2} className={'underline'} style={{ backgroundImage: `url(${imgUnderline})` }} >
-                            {price}
-                        </Col>
+                        <Col span={10} offset={2} className={'underline'} style={{ backgroundImage: `url(${imgUnderline})` }} >{price}</Col>
                         <Col span={10} className={'withdiscount'} >{discount}</Col>
                     </Col>
                 </Col>
