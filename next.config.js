@@ -1,7 +1,7 @@
 const withSass = require('@zeit/next-sass')
 const withFonts = require('next-fonts');
-const lineBase = "http://localhost:3001/api"; //localhost
-//const lineBase = "https://api.unamarcatepremia.org/api"; //portalmagico
+//const lineBase = "http://localhost:3001/api"; //localhost
+const lineBase = "https://api.unamarcatepremia.org/api"; //portalmagico
 
 module.exports = {
   exportPathMap: function() {

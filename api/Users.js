@@ -24,3 +24,18 @@ export const changePasswordUser = async (params) => {
     const response = await Axios.post('/users/changePasswordUser', params);
     return response.data;
 }
+
+export const searchUsers = async (params) => {
+    const response = await Axios.post('/users/search', params);
+    return response.data;
+}
+
+export const getRoles = async () => {
+    const response = await Axios.get('/Roles');
+    return response.data;
+}
+
+export const searchUser = async ({payload}) => {    
+    const response = await Axios.post('/users/getUser', payload);
+    return response.data;
+}

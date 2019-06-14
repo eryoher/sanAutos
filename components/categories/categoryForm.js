@@ -11,11 +11,6 @@ export default class CategoryForm extends Component {
     constructor(props){
         super(props)
         this.state = {};
-    }
-
-    handleSave = (imagesToUpdate) => {
-        const {setFieldValue} = this.props;
-        setFieldValue( 'allImages', imagesToUpdate );        
     }    
 
     render() {

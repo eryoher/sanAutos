@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Form, Input, Checkbox } from 'antd';
-import { formLayout, fullItemLayout } from '../../constants/TypeForm';
+import { formLayout, fullItemLayout, smItemLayout } from '../../constants/TypeForm';
 import getConfig from 'next/config';
 const FormItem = Form.Item;
 const { publicRuntimeConfig } = getConfig();
@@ -13,8 +13,10 @@ class UserFormInput extends Component {
     }
 
     render() {
-        const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, isSubmitting, disabled } = this.props;
+        const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, isSubmitting, disabled, inputLabel } = this.props;
+
         const urlFile =`${publicRuntimeConfig.appUrl}/static/files/clausula_consentimiento_web.pdf`;
+        const customLayout = ( inputLabel ) ? smItemLayout : fullItemLayout;
         
         return (
             <Row>
@@ -22,9 +24,9 @@ class UserFormInput extends Component {
                     <Row>                    
                         <Col {...formLayout}>
                             <FormItem
-                                {...fullItemLayout}
-                                className={errors.name && touched.name ? 'has-error' : ''}
-                                label={false}
+                                {...customLayout}
+                                className={errors.name && touched.name ? 'has-error' : ''}                                
+                                label={ (inputLabel) ? 'Nombre' : false}
                             >
                                 <Input
                                     id="name"
@@ -41,9 +43,9 @@ class UserFormInput extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...fullItemLayout}
+                                {...customLayout}
                                 className={errors.lastname && touched.lastname ? 'has-error' : ''}
-                                label={false}
+                                label={ (inputLabel) ? 'Apellido' : false}
                             >
                                 <Input
                                     id="lastname"
@@ -60,14 +62,15 @@ class UserFormInput extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...fullItemLayout}
+                                {...customLayout}
                                 className={errors.username && touched.username ? 'has-error' : ''}
-                                label={false}
+                                label={ (inputLabel) ? 'Usuario' : false}
                             >
                                 <Input
                                     id="username"
                                     type="text"
                                     name="username"
+                                    disabled={(values.id)?true:false}
                                     placeholder={'Usuario *'}
                                     className={'input-form-login'}
                                     value={values.username}
@@ -79,9 +82,9 @@ class UserFormInput extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...fullItemLayout}
+                                {...customLayout}
                                 className={errors.city && touched.city ? 'has-error' : ''}
-                                label={false}
+                                label={ (inputLabel) ? 'Ciudad' : false}
                             >
                                 <Input
                                     id="city"
@@ -98,15 +101,15 @@ class UserFormInput extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...fullItemLayout}
+                                {...customLayout}
                                 className={errors.phone && touched.phone ? 'has-error' : ''}
-                                label={false}
+                                label={ (inputLabel) ? 'Teléfono' : false}
                             >
                                 <Input
                                     id="phone"
                                     type="text"
                                     name="phone"
-                                    placeholder={'Telefono'}
+                                    placeholder={'Teléfono'}
                                     className={'input-form-login'}
                                     value={values.phone}
                                     onChange={handleChange}
@@ -117,14 +120,15 @@ class UserFormInput extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...fullItemLayout}
+                                {...customLayout}
                                 className={errors.email && touched.email ? 'has-error' : ''}
-                                label={false}
+                                label={ (inputLabel) ? 'E-mail' : false}
+
                             >
                                 <Input
                                     id="email"
                                     type="email"
-                                    name="email"
+                                    name="email"                                    
                                     placeholder={'E-mail *'}
                                     className={'input-form-login'}
                                     value={values.email}
@@ -134,49 +138,54 @@ class UserFormInput extends Component {
                                 {errors.email && touched.email && <div className="ant-form-explain">{errors.email}</div>}
                             </FormItem>
                         </Col>
+                        { !values.id && 
+                            <Col {...formLayout}>
+                                <FormItem
+                                    {...customLayout}
+                                    className={errors.password && touched.password ? 'has-error' : ''}
+                                    label={ (inputLabel) ? 'Contraseña' : false}
+                                >
+                                    <Input
+                                        id="password"
+                                        type="password"
+                                        name="password"
+                                        placeholder={'Contraseña *'}
+                                        className={'input-form-login'}
+                                        value={values.password}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.password && touched.password && <div className="ant-form-explain">{errors.password}</div>}
+                                </FormItem>
+                            </Col>
+                        }
+                        { !values.id &&
+                            <Col {...formLayout}>
+                                <FormItem
+                                    {...customLayout}
+                                    className={errors.repeatPassword && touched.repeatPassword ? 'has-error' : ''}
+                                    label={ (inputLabel) ? 'Repetir contraseña' : false}
+                                    
+                                >
+                                    <Input
+                                        id="repeatPassword"
+                                        type="password"
+                                        name="repeatPassword"
+                                        placeholder={'Repita la contraseña *'}
+                                        className={'input-form-login'}
+                                        value={values.repeatPassword}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.repeatPassword && touched.repeatPassword && <div className="ant-form-explain">{errors.repeatPassword}</div>}
+                                </FormItem>
+                            </Col>
+                        }
                         <Col {...formLayout}>
                             <FormItem
-                                {...fullItemLayout}
-                                className={errors.password && touched.password ? 'has-error' : ''}
-                                label={false}
-                            >
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    placeholder={'Contraseña *'}
-                                    className={'input-form-login'}
-                                    value={values.password}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.password && touched.password && <div className="ant-form-explain">{errors.password}</div>}
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...fullItemLayout}
-                                className={errors.repeatPassword && touched.repeatPassword ? 'has-error' : ''}
-                                label={false}
-                            >
-                                <Input
-                                    id="repeatPassword"
-                                    type="password"
-                                    name="repeatPassword"
-                                    placeholder={'Repita la contraseña *'}
-                                    className={'input-form-login'}
-                                    value={values.repeatPassword}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.repeatPassword && touched.repeatPassword && <div className="ant-form-explain">{errors.repeatPassword}</div>}
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...fullItemLayout}
+                                {...customLayout}
                                 className={errors.consentWeb && touched.consentWeb ? 'has-error' : ''}
-                                label={false}
+                                label={':'}
                             >
                                 <Checkbox
                                     id="consentWeb"

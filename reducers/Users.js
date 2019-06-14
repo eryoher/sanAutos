@@ -1,10 +1,11 @@
-import { ADD_USER, ADD_USER_SUCCESS, ACTIVATION_CODE, ACTIVATION_CODE_SUCCESS, CHANGE_PASSWORD_USER, CHANGE_PASSWORD_USER_SUCCESS, EMAIL_RECOVER_USER , EMAIL_RECOVER_USER_SUCCESS} from "../constants/ActionsTypes";
+import { ADD_USER, ADD_USER_SUCCESS, ACTIVATION_CODE, ACTIVATION_CODE_SUCCESS, CHANGE_PASSWORD_USER, CHANGE_PASSWORD_USER_SUCCESS, EMAIL_RECOVER_USER , EMAIL_RECOVER_USER_SUCCESS, SEARCH_USERS, SEARCH_USERS_SUCCESS, GET_ROLES, GET_ROLES_SUCCESS, GET_USER, GET_USER_SUCCESS} from "../constants/ActionsTypes";
 
 const initialState = {    
     response: null,
     activateCode:null,
     changeSuccess:null,
-    recoverSuccess:null
+    recoverSuccess:null,
+    roles:[]
 }
 
 function rootReducer(state = initialState, action) {
@@ -25,7 +26,18 @@ function rootReducer(state = initialState, action) {
             return { ...state, recoverSuccess:null}         
         case EMAIL_RECOVER_USER_SUCCESS:
             return {...state, recoverSuccess:action.payload}
-
+        case SEARCH_USERS:
+            return {...state, search:null}
+        case SEARCH_USERS_SUCCESS:
+            return {...state, search:action.payload}
+        case GET_ROLES:
+            return {...state, roles:[]}
+        case GET_ROLES_SUCCESS:
+            return {...state, roles:action.payload}        
+        case GET_USER:
+            return {...state, user:null}        
+        case GET_USER_SUCCESS:
+            return {...state, user:action.payload.data}        
         default:
             return state
     }
