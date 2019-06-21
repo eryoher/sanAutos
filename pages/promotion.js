@@ -7,6 +7,7 @@ import PromotionDetail from '../components/promotions/promotionDetail';
 import Banner from '../components/common/banner';
 import Interests from '../components/promotions/Interests';
 import Allies from '../components/allies/allies';
+import ListCategories from '../components/categories/listCategories';
 
 class Promotions extends Component {
 
@@ -33,6 +34,9 @@ class Promotions extends Component {
             <Row>
                 <Col span={24} className={"promotion-container"}>
                     <Col span={24}><Banner title /></Col>
+                    <Col span={24} className={'menu-categories'} >
+                        <ListCategories />
+                    </Col>
                     <Col span={24} className={"content"} >
                         {promotion && <PromotionDetail promotion={promotion} auth={auth} />}
                     </Col>

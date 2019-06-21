@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { userSignOut } from '../../actions';
-import { Row, Col, Icon, message, Divider, Input, Select, Button, Drawer } from 'antd';
+import { Row, Col, Icon, message, Divider, Input, Select, Button, Drawer, Affix } from 'antd';
 import Login from './login';
 import MenuAdmin from './menuAdmin';
 import Router from 'next/router'
@@ -10,7 +10,7 @@ import MenuCategories from '../categories/menuCategories';
 const dividerColumn = {
     xs: { span: 24 },
     sm: { span: 24 },
-    md: { span: 24 },
+    md: { span: 12 },
     lg: { span: 12 },
     xl: { span: 12 },
 }
@@ -20,7 +20,8 @@ class Banner extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showLogin: false
+            showLogin: false,
+            visible: false
         }
     }
 
@@ -35,6 +36,7 @@ class Banner extends Component {
     onLogout = () => {
         this.props.userSignOut();
     }
+
     componentDidUpdate = (prevProps) => {
         if (prevProps.auth.user !== this.props.auth.user && !this.props.auth.user) {
             message.success('El usuario se deslogeo correctamente.');
@@ -66,10 +68,7 @@ class Banner extends Component {
     handleClickButton() {
         Router.push({ pathname: '/' });
     }
-
-    state = {
-        visible: false
-    }
+    
     showDrawer = () => {
         this.setState({
             visible: true,
@@ -92,14 +91,15 @@ class Banner extends Component {
             <Row className={"banner-content"} >
                 <Row className={"banner-top"} >
                     <Col span={4} >
-                        <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
-                            {/* <span className="barsBtn"></span> */}
-                            <Icon type={this.state.visible ? 'close' : 'menu'} />
-                        </Button>
+                        {/* <Affix offset={5} > */}
+                            <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
+                                <Icon type={this.state.visible ? 'close' : 'menu'} />
+                            </Button>
+                        {/*     </Affix> */}
                         <Drawer
                             title="Categorias"
                             placement="left"
-                            closable={false}
+                            closable={true}
                             onClose={this.onClose}
                             visible={this.state.visible}
                             onClick={this.onClose}
@@ -107,6 +107,7 @@ class Banner extends Component {
                             <MenuCategories />
                         </Drawer>
                     </Col>
+
                     <Col span={20} >
                         {!isLogin &&
                             <Col span={12} offset={12} className={"banner-row banner-login"} >
@@ -131,6 +132,7 @@ class Banner extends Component {
                         />
                     </Col>
                 </Row>
+
                 <Col span={24} className={'banner-include'}>
                     <Col {...dividerColumn} className={"banner-logo"}
                         onClick={() => this.handleClickButton()}
@@ -147,13 +149,6 @@ class Banner extends Component {
                         </Row>
                     </Col>
                 </Col>
-                { !notext && !title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
-                    Ofertas de donación <span className={"color-blue"} > Destacadas </span>
-                </Col>}
-                { !notext && title && !menuAdmin && <Col span={24} className={"title-top-promotions"} >
-                    Ofertas de donación 
-                </Col>}
-
                 {
                     menuAdmin && <MenuAdmin showMenu />
                 }

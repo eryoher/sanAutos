@@ -28,32 +28,38 @@
 @mixin QuickSandRegular($size) {
     font-size: $size;
     font-family: QuicksandR;
+    font-display: swap;
 }
 
 @mixin MyriadRegular($size) {
     font-size: $size;
     font-family: MyriadProRegular;
+    font-display: swap;
 }
 
 @mixin MyriadBold($size) {
     font-size: $size;
     font-family: MyriadProRegular;
     font-weight: bold;
+    font-display: swap;
 }
 
 @mixin MyriadSemiBold($size) {
     font-size: $size;
     font-family: MyriadProSemiBold;
+    font-display: swap;
 }
 
 @mixin MyriadBoldCond($size) {
     font-size: $size;
     font-family: MyriadProBoldCond;
+    font-display: swap;
 }
 
 @mixin OpenSansSemiBold($size) {
     font-size: $size;
     font-family: OpenSansSemiBold;
+    font-display: swap;
 }
 
 @mixin backgroundImage() {
