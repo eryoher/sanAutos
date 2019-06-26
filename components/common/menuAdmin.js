@@ -42,7 +42,12 @@ export default class MenuAdmin extends Component {
                     <Menu.Item key={'categories'}>                            
                         <Link href={{ pathname: '/adminCategories'}}><a>Categorias</a></Link>
                     </Menu.Item>
-
+                    <Menu.Item key={"test4"} disabled>
+                        <Divider type={"vertical"} />
+                    </Menu.Item>
+                    <Menu.Item key={'usuarios'}>                            
+                        <Link href={{ pathname: '/adminusers'}}><a>Usuarios</a></Link>
+                    </Menu.Item>
                 </Menu>}
             </Col>                       
         );
