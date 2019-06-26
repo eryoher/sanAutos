@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col } from 'antd';
 import Information from './informationPromotion';
 import ListPromotions from '../promotions/listPromotions';
+import TopPromotions from '../promotions/topPromotions'
 const dividerColumn = {
     xs: { span: 0 },
     sm: { span: 0 },
@@ -27,7 +28,7 @@ export default class Promotions extends Component {
                     <Information />
                 </Col>
                 <Col {...dividerColumnProd} >
-                    <ListPromotions />
+                    <TopPromotions />
                 </Col>
                 <Col span={24}>
                     <div className={"border-bottom-information"} />

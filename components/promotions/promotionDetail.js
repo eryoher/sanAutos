@@ -8,11 +8,26 @@ import { createPreference } from '../../actions';
 import getConfig from 'next/config';
 import ListCategories from '../categories/listCategories';
 const dividerColumn = {
-    xs: { span: 24 },
-    sm: { span: 24 },
-    md: { span: 24 },
+    xs: { span: 12 },
+    sm: { span: 12 },
+    md: { span: 12 },
     lg: { span: 12 },
     xl: { span: 12 },
+}
+
+const dividerImg = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 14 },
+    lg: { span: 14 },
+    xl: { span: 14 },
+}
+const dividerDesc = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 10 },
+    lg: { span: 10 },
+    xl: { span: 10 },
 }
 
 const { publicRuntimeConfig } = getConfig();
@@ -125,11 +140,8 @@ class PromotionDetail extends Component {
         let discount = (promotion.price - (promotion.price * (promotion.discount / 100))).toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })
         return (
             <Row>
-                <Col span={24} className={'menu-categories'} >
-                    <ListCategories />
-                </Col>
                 <Col span={24} className={'promotion-images'} >
-                    <Col span={14} className={'left-images'} >
+                    <Col {...dividerImg} className={'left-images'} >
                         <Col span={24} className={'marca-images'} >{companyName}</Col>
                         <Col span={24} className={'shortd-images'} >{promotion.shortdescription}</Col>
                         <Col span={24} className={'main-image'} >
@@ -139,29 +151,28 @@ class PromotionDetail extends Component {
                             {this.renderListImg()}
                         </Col>
                     </Col>
-                    <Col span={10} className={'description-image'}>
+                    <Col {...dividerDesc} className={'description-image'}>
                         <Col span={24} className={'detail-deal'} >
                             <Col span={12} className={'donation'} >Donación: {donation}</Col>
                             <Col span={18} className={'discount'} >Bono de descuento: {promotion.discount}%</Col>
                             <Col span={24} className={'valor'} >Valor Comercial:</Col>
                             <Col span={24} className={'underline'} style={{ backgroundImage: `url(${imgUnderline})` }} >{price}</Col>
                             <Col span={24} className={'withdiscount'} >{discount}</Col>
-                            <Col span={24} className={'countdown time-promotion'} >
-                                
-                                    <Col {...dividerColumn} className={'time-promotion'}>
-                                        <img className={'img-countdown'} src={imgClock} />Tiempo <br></br>  Restante
-                                    </Col>
-                                    <Col {...dividerColumn} className={'time-promotion'}>
+                            <Col span={24} className={'countdown'} >
+                                <Col span={24} className={'time-promotion'} >
+                                    <img className={'img-countdown'} src={imgClock} />Tiempo <br></br>  Restante
                                         <Countdown className={'interval'} date={endDate.getTime()} renderer={this.renderer} />
-                                    </Col>
-                                
+                                </Col>
+
                             </Col>
                             <Col span={24} className={'quantity'} >Donaciones disponibles: {promotion.quantity}</Col>
                             <Col span={24} className={"div-botton-donate"} >
                                 <Button href={urlButton}
                                     target={target}
                                     className={"botton-donate"}
-                                    onClick={() => this.handleCallPaid()} >{nameButton}</Button>
+                                    onClick={() => this.handleCallPaid()} >
+                                    {nameButton}
+                                </Button>
                                 <Login
                                     showLogin={this.state.showLogin}
                                     onCancelLogin={this.handleCancelLogin}
@@ -185,13 +196,13 @@ class PromotionDetail extends Component {
                     </Col>
                 </Col>
                 <Col span={24} className={'promotion-description'} >
-                    <Col span={24}>
-                        <Col span={24} className={"title-description"} >
-                            <span>Descripción de la </span> <span className={"interest-blue"} >Promoción</span>
-                        </Col>
-                        <Col span={24} className={"title-body"} >
-                            <span>{promotion.description}</span>
-                        </Col>
+                    <Col span={24} className={"title-description"} >
+                        <span>Descripción de la </span> <span className={"interest-blue"} >Promoción</span>
+                    </Col>
+                    <Col span={24} className={"title-body"} >
+                        <div>
+                            <pre>{promotion.description}</pre>
+                        </div>
                     </Col>
                 </Col>
                 <Col span={24} className={'promotion-description'} >
@@ -199,11 +210,13 @@ class PromotionDetail extends Component {
                         <span>Condiciones </span> <span className={"interest-blue"} >de uso</span>
                     </Col>
                     <Col span={24} className={"title-body"} >
-                        <span>{promotion.condition}</span>
+                        <div>
+                            <pre>{promotion.condition}</pre>
+                        </div>
                     </Col>
                 </Col>
                 <Col span={24} className={'promotion-map'} >
-                    <Col span={7} className={'title-map'} >Localización</Col>
+                    <Col span={10} className={'title-map'} >Localización</Col>
                     <Col span={24} className="img-map">
                         <iframe
                             height="100%"

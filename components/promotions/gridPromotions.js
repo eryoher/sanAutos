@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getPromotionsCategory } from '../../actions';
-import PromotionItems from './promotionItems';
+import PromotionItems from './gridPromotionItem';
 import { Col, Row } from 'antd';
 
 class GridPromotions extends Component {

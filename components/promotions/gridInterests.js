@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { getPromotionsInterest } from '../../actions';
+import { getPromotions } from '../../actions';
 import InterestsItem from './InterestsItem';
-import { Col, Row } from 'antd';
+import { Row } from 'antd';
 
 class GridInterests extends Component {
 
@@ -11,16 +11,17 @@ class GridInterests extends Component {
     }
 
     componentWillMount() {
-        this.props.getPromotionsInterest({
+        this.props.getPromotions({
+            page: 1,
             pageSize: 4
-        });
+        })
     }
 
     renderInterests() {
-        let { gridInterests } = this.props;
+        let { search } = this.props;
         let rows = [];
 
-        gridInterests.data.forEach(interest => {
+        search.data.forEach(interest => {
                 rows.push(
                     <InterestsItem key={interest.id} interest={interest} />
                 )
@@ -29,22 +30,22 @@ class GridInterests extends Component {
     }
 
     render() {
-        const { gridInterests } = this.props;
+        const { search } = this.props;
 
         return (
             <Row type="flex" justify="space-around" align="middle" className={"grid-promotions"} >
-                {gridInterests && this.renderInterests()}
+                {search && this.renderInterests()}
             </Row>
         )
     }
 }
 
 function mapStateToProps({ promotions }) {
-    const { gridInterests, searchparamaters } = promotions
+    const { search, searchparamaters } = promotions
     return {
-        gridInterests,
+        search,
         searchparamaters
     }
 }
 
-export default connect(mapStateToProps, { getPromotionsInterest })(GridInterests);
+export default connect(mapStateToProps, { getPromotions })(GridInterests);

@@ -20,7 +20,7 @@ class MenuCategories extends Component {
         this.props.getPromotions({
             ...searchparamaters,
             categoryId: categoryId
-        })
+        });
     }
 
     renderCategories() {

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Carousel } from 'antd';
+import { Col, Carousel } from 'antd';
 import { topPromotions } from '../../actions';
 import getConfig from 'next/config';
+import Router from 'next/router'
+import TopPromotionItem from './topPromotionItem';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -17,12 +19,17 @@ class TopPromotions extends Component {
         this.props.topPromotions();
     }
 
+    handleClickButton() {
+        const { promotion } = this.props
+        Router.push({ pathname: '/promotion', query: { id: promotion.id } });
+    }
+
     renderCarousel() {
         const { toppromotions } = this.props
 
         if (toppromotions.length) {
             return (
-                <Carousel autoplay autoplaySpeed={'30'} >
+                <Carousel autoplay autoplaySpeed={'30'} className="presentation-mode" >
                     {this.divgallerie(toppromotions)}
                 </Carousel>
             );
@@ -32,31 +39,10 @@ class TopPromotions extends Component {
     divgallerie(promotions) {
         var rows = [];
         promotions.forEach(promotion => {
-
-            const imgUrl = (promotion.assets.length) ? `${publicRuntimeConfig.promotionImagesBasePath}${promotion.assets[0].name}` : "../../static/img/no-imagen.jpg";
-            const bgQuantity = '../../static/img/bg-quantity-promotion.png';
-            const bgdiscount = '../../static/img/bg-discount-promotion.png';
-
-            let discount = promotion.price * (promotion.discount / 100)
             rows.push(
-                <div key={promotion.id} className="conten-slide">
-                    <div className="my-slide-content" style={{ backgroundImage: `url(${imgUrl})` }} >
-                        <div className={'margen-slogan'} />
-                        <div className="slogan-content">
-                            <div className="slogan">
-                                <div className={'purchased'} style={{ backgroundImage: `url(${bgQuantity})` }}  >
-                                    {`Cantidad: ${promotion.quantity}`}
-                                </div>
-                                <div className="valor">
-                                    {`Donacion: ${parseInt(promotion.price - discount).toLocaleString()}`}
-                                </div>
-                                <div className={'deal'} style={{ backgroundImage: `url(${bgdiscount})` }} >
-                                    {`Bono de descuento: ${discount.toLocaleString()}  (${promotion.discount}%)`}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Col span={24} key={promotion.id} >
+                    <TopPromotionItem promotion={promotion} />
+                </Col>
             );
         });
         return rows;
@@ -66,9 +52,13 @@ class TopPromotions extends Component {
     render() {
         const { toppromotions } = this.props;
         return (
-            <div className={'donaciones-content'} >
-                {toppromotions && this.renderCarousel()}
-            </div>
+            <Col span={24} className={'promotions-container'} >
+                <Col span={24} className={"list-promotions"} >
+                    <Col span={24} className={"promotions-items-pagination"} >
+                        {toppromotions && this.renderCarousel()}
+                    </Col>
+                </Col>
+            </Col>
         )
     }
 }
