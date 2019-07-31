@@ -4,6 +4,14 @@
 @import "./functions.scss";
 
 body {
+
+  .indexpopup{
+    .ant-carousel{
+      .slick-slide{
+        line-height: 0px;
+      }
+    }
+  }
   .color-orange {
     color: #d38148;
   }
