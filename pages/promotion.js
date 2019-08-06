@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { getPromotion } from '../actions';
 import { Row, Col, Modal } from 'antd';
 import * as qs from 'qs';
-import PromotionDetail from '../components/promotions/promotionDetail';
-import Banner from '../components/common/banner';
-import Interests from '../components/promotions/Interests';
-import Allies from '../components/allies/allies';
-import ListCategories from '../components/categories/listCategories';
-
+import PromotionDetail from '../components/common/promotionDetail';
+import Footer from '../components/common/footer';
+import Head from 'next/head';
 class Promotions extends Component {
 
     constructor(props) {
@@ -31,19 +28,19 @@ class Promotions extends Component {
     render() {
         const { promotion, auth } = this.props
         return (
-            <Row>
-                <Col span={24} className={"promotion-container"}>
-                    <Col span={24}><Banner title /></Col>
-                    <Col span={24} className={'menu-categories'} >
-                        <ListCategories />
+            <div>
+                <Head>
+                    <title>Cyber days Renault</title>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    <link href="../static/favicon.ico" rel="icon" type="image/x-icon" />
+                </Head>
+                <Row>
+                    <Col span={24} className={"body-cont"} style={{ backgroundImage: `url(../../static/img/fondo.png)` }} >
+                        <PromotionDetail />
                     </Col>
-                    <Col span={24} className={"content"} >
-                        {promotion && <PromotionDetail promotion={promotion} auth={auth} />}
-                    </Col>
-                    <Col span={24} ><Interests /></Col>
-                    <Col span={24} ><Allies /></Col>
-                </Col>
-            </Row>
+                    <Col span={24} ><Footer /></Col>
+                </Row>
+            </div>
         )
     }
 }

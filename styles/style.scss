@@ -3,896 +3,236 @@
 @import "~antd/dist/antd.css"; // import official less entry file
 @import "./functions.scss";
 
-body {
+.header-cont {
+  height: 20rem;
+  background-repeat: repeat;
+  background-size: 80%;
 
-  .indexpopup{
-    .ant-carousel{
-      .slick-slide{
-        line-height: 0px;
-      }
-    }
-  }
-  .color-orange {
-    color: #d38148;
+  @include breakpoint(max-width 767px) {
+    height: 15rem;
   }
 
-  .color-blue {
-    color: #058bca;
-  }
+  .header-logo {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 20% 20%, 45% 100%;
+    background-position: top right, bottom;
 
-  .color-white {
-    color: #fff;
-  }
-
-  .banner-content {
-    background-image: linear-gradient(to right, #005da0, #020f26);
-    background-size: cover;
-    height: 220px;
     @include breakpoint(max-width 767px) {
-      height: 280px;
+      background-size: 20% 20%, 50% 100%;
     }
-    @include breakpoint(min-width 1599px) {
-      height: 300px;
-    }
-    .banner-top {
-      background-image: linear-gradient(to right, #d58dac, #fae72c, #d38248, #93b85a, #4eabda);
-      height: 4px;
+  }
+}
+
+.footer-cont {
+  background-color: #fff;
+  border-color: #364d79;
+  height: 10rem;
+  padding: 1rem;
+
+  //@include breakpoint(max-width 767px) {}
+  .footer-top {
+    height: 70%;
+    padding: 1rem;
+
+    .footer-v {
+      height: 250%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
       @include breakpoint(max-width 767px) {
-        height: 0px;
+        padding: 0.5rem;
       }
     }
-    .banner-include {
-      height: 80%;
-      .banner-logo {
-        cursor: pointer;
-        height: 80%;
-        background-size: 50%;
-        background-position: 10% 5%;
-        background-repeat: no-repeat;
 
-        @include breakpoint(max-width 767px) {
-          height: 70%;
-          background-size: 70%;
-          background-position: 80% bottom;
-        }
+    .footer-term {
+      padding: 1rem;
+      text-align: justify;
+      @include RenaultLifeBold(11pt);
+
+      @include breakpoint(max-width 767px) {
+        padding: 0.5rem;
+        @include RenaultLifeBold(8pt);
+      }
+    }
+
+    .footer-logos {
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include breakpoint(max-width 767px) {
+        height: 300%;
+      }
+    }
+  }
+}
+
+.body-cont {
+  background-repeat: repeat;
+  background-size: 60%;
+
+  @include breakpoint(max-width 767px) {
+    height: 20rem;
+  }
+
+  .body-carrusel {
+    height: 25rem;
+
+    @include breakpoint(max-width 767px) {
+      height: 10rem;
+    }
+
+    .carrusel-cont {
+      height: 25rem;
+          
+
+      @include breakpoint(max-width 767px) {
+        height: 20rem;
       }
 
-      .banner-params {
-        height: 45px;
+      .carrusel-item {
+        height: 310px;
+
+        @include breakpoint(max-width 767px) {
+          height: 60%;
+        }
+
         background-position: center;
-        .search {
-          margin-top: 5%;
-          padding-right: 0%;
-          @include MyriadRegular(16pt);
-          @include breakpoint(max-width 767px) {
-            padding-right: 5%;
-            padding-left: 5%;
-            @include MyriadRegular(12pt);
-          }
-        }
-        .ant-input {
-          color: #3baec2;
-          @include MyriadRegular(14pt);
-          .ant-input-search-icon {
-            color: #3baec2;
-          }
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 0.5rem;
+        cursor: pointer;
+
+        .big {
+          height: 150%;
         }
 
-        .cities {
-          margin-top: 5%;
-          @include breakpoint(max-width 767px) {
-          }
-          .ant-select {
-            color: #fff;
-            @include breakpoint(max-width 767px) {
-              width: 120px;
-            }
-          }
-          .ant-select-selection {
-            background-color: #3baec2;
-            @include MyriadRegular(16pt);
-            @include breakpoint(max-width 767px) {
-              width: 120px;
-            }
-          }
-        }
+        //width: 15rem;
       }
     }
+  }
 
-    .banner-login {
-      a {
-        @include MyriadRegular(18pt);
-        color: #fff;
-        font-weight: bold;
-        padding-right: 4%;
-        @include breakpoint(max-width 767px) {
-          @include MyriadRegular(14pt);
-        }
-      }
-      padding-top: 2%;
-      text-align: right;
-    }
+  .body-buttons {
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
 
-    .banner-message {
+    .boton {
+      @include RenaultLifeBold(16pt);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
       color: #fff;
       text-align: center;
-      @include MyriadRegular(18pt);
-    }
-
-    .title-top-promotions {
-      @include MyriadRegular(22pt);
-      color: #000;
-      padding-left: 35px;
-      font-weight: bold;
-      padding-top: 15px;
-    }
-  }
-
-  .ant-modal-body {
-    background-position-x: center;
-    text-align: center;
-    background-size: 100%;
-    .addUser-container {
-      .logo-login {
-        background-position-x: center;
-        @include backgroundImage;
-        background-size: 80%;
-        padding-bottom: 5%;
-        text-align: center;
-        .logo-img {
-          width: 20%;
-          padding-top: 15%;
-          @include breakpoint(max-width 767px) {
-            padding-top: 30%;
-          }
-        }
-        .title {
-          color: #57abde;
-          @include MyriadRegular(22pt);
-        }
-      }
-
-      .form-content {
-        .input-form-login {
-          @include MyriadRegular(14pt);
-          background-color: #ededed;
-          box-shadow: 0px 6px 1px 1px #ccc;
-          height: 45px;
-          color: #000;
-          border: 1px solid #ededed;
-          width: 70%;
-        }
-
-        .login-form-button {
-          @include MyriadRegular(18pt);
-          background-color: #57abde;
-          height: 50px;
-          color: #fff;
-          width: 90%;
-        }
-        .ant-form-explain {
-          padding-top: 8px;
-        }
-      }
-    }
-  }
-
-  .donaciones-content {
-    margin-top: 0px;
-    .title {
-      text-align: left;
-      margin-left: 0px;
-    }
-    .vertical-divider {
-      border-bottom: 3px solid $blue;
-      margin-left: 0px;
-      height: 1px;
-      margin-bottom: 2%;
-      width: 40%;
-    }
-
-    .presentation-mode {
-      padding-top: 10px;
-      .conten-slide {
-        background-color: #364d79;
-        .my-slide-content {
-          @include backgroundImage;
-          height: 600px;
-          width: 100%;
-
-          overflow: hidden;
-          .margen-slogan {
-            padding-bottom: 10%;
-          }
-          .slogan-content {
-            width: 100%;
-            background-color: rgba(187, 186, 186, 0.7);
-
-            text-align: left;
-            padding-left: 5%;
-            .slogan {
-              .purchased {
-                @include QuickSandRegular(22pt);
-                @include backgroundImage;
-                padding-left: 15px;
-                font-weight: bold;
-              }
-              .valor {
-                @include MyriadRegular(36pt);
-                color: #fff;
-                opacity: 1;
-              }
-              .deal {
-                @include MyriadRegular(22pt);
-                color: #fff;
-                @include backgroundImage;
-                padding-left: 15px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .information-container {
-    margin-top: 15%;
-    .information-icon {
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: right;
-      height: 75px;
-    }
-
-    .information-title {
-      @include MyriadRegular(24pt);
-      line-height: 1;
-      color: #414142;
-    }
-
-    .information-description {
-      @include MyriadRegular(11pt);
-      color: gray;
-      text-align: justify;
-      margin-right: 8%;
-      margin-left: 8%;
-      margin-bottom: 10%;
-      width: 60%;
-      float: right;
-    }
-
-    .divider-information {
-      width: 2px;
-      background-color: #d2cece;
-      top: 1em;
-      height: 100%;
-    }
-  }
-
-  .border-bottom-information {
-    height: 10px;
-    background-image: linear-gradient(to right, #f4981f, #ffd634);
-  }
-
-  .menu-categories {
-    background-color: #f5f5f4;
-    border-bottom: 7px solid #d2cece;
-    margin-bottom: 2%;
-    background-color: #f5f5f4;
-    .category-item {
-      border-right: 2px solid #d2cece;
-      background-color: #f5f5f4;
-      height: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      justify-content: space-around;
+      vertical-align: middle;
+      padding: 1%;
       cursor: pointer;
-      @include MyriadBold(11pt);
-      color: #000;
-      line-height: 1;
-      display: flex;
-      justify-content: left;
-      align-items: center;
-      .icon {
-        @include backgroundImage;
-        float: left;
-        height: 64px;
-        width: 64px;
-        @include breakpoint(max-width 767px) {
-          // height: 32px;
-          // width: 32px;
-        }
-        background-size: 50% 50%;
-        line-height: 100%;
-        padding-right: 5%;
-        padding-left: 5%;
+
+      @include breakpoint(max-width 767px) {
+        @include RenaultLifeBold(12pt);
       }
     }
   }
+}
 
-  .promotions-container {
-    margin-bottom: 3%;
-    .list-promotions {
-      padding-right: 1%;
-      height: 500px;
-      @include breakpoint(max-width 767px) {
-        padding-left: 1.5%;
-        padding-right: 1.5%;
-        height: 300px;
-      }
-      .title-promotions-list {
-        @include MyriadRegular(30pt);
-        text-align: center;
-        cursor: pointer;
-      }
-      .promotions-items-pagination {
-        text-align: center;
-        cursor: pointer;
-      }
+.promotion-cont {
+  background-repeat: repeat;
+  background-size: 60%;
 
-      .promotion-item {
+  .left-promo {
+    padding-left: 3rem;
+
+    .title {
+      padding-left: 1.5rem;
+      padding-top: 2rem;
+      color: #fff;
+      @include RenaultLifeBold(24pt);
+    }
+
+    .main-image {
+      padding-top: 2%;
+      padding-bottom: 3%;
+
+      img {
+        border-radius: 2.5rem;
         height: 500px;
+        width: 80%;
+        padding: 4%;
+
+        @include breakpoint(max-width 768px) {
+          height: 300px;
+        }
+      }
+    }
+
+    .list-images {
+      .list {
         background-size: cover;
         background-repeat: no-repeat;
-        cursor: pointer;
-        color: #fff;
-        margin-top: 2%;
-        @include breakpoint(max-width 767px, min-width 320px) {
-          height: 300px;
-          border-radius: 1em;
-        }
+        height: 100px;
+        margin: 2%;
+        width: 120px;
+        display: inline-block;
       }
     }
 
-    .border-bottom-promotions {
-      height: 15px;
-      background-image: linear-gradient(#f4971d, #fed532);
-      margin-top: 15px;
-      margin-bottom: 15px;
+    .tag-sale {
+      height: 20rem;
+      background-position: top center;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 
-  .buypromotion-content {
-    @include backgroundImage;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    padding-top: 21%;
-    h3 {
-      @include MyriadRegular(19pt);
-    }
-    .button-buypromotion {
-      color: #fff;
-      background-color: #729fcb;
-      @include MyriadRegular(19pt);
-      background-color: #729fcb;
-      height: 48px;
-      border-radius: 30px;
-      width: 35%;
-      margin-bottom: 5px;
-    }
-  }
+  .description-promo {
+    padding: 2rem;
+    padding-top: 3rem;
+    padding-right: 3rem;
+    text-align: center;
 
-  .promotion-container {
-    .header {
-      height: 57px;
-      width: 100%;
-      background-color: #058bca;
-    }
-    .content {
-      .ant-tabs-card-bar {
-        .ant-tabs-tab {
-          background-image: linear-gradient(#1f1b2d, #165a9d);
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          color: #fff;
-        }
-      }
-
-      .promotion-map {
-        .title-map {
-          @include MyriadSemiBold(26pt);
-          color: #fff;
-          background-image: linear-gradient(to right, #085a9e, #000);
-          margin-bottom: 2%;
-          @include breakpoint(max-width 767px) {
-            @include MyriadSemiBold(18pt);
-          }
-        }
-        .img-map {
-          //background-position: 50% 50%;
-          padding: 3%;
-          height: 500px;
-          @include breakpoint(max-width 767px) {
-            height: 350px;
-          }
-        }
-      }
-      .promotion-description {
-        .title-body {
-          text-align: justify;
-          padding: 4%;
-          pre {
-            display: block;
-            white-space: pre-line;
-            flex-wrap: wrap;
-            @include MyriadRegular(14pt);
-            @include breakpoint(max-width 767px) {
-              @include MyriadRegular(11pt);
-              padding: 3%;
-            }
-          }
-        }
-        .title-description {
-          @include MyriadRegular(24pt);
-          @include breakpoint(max-width 767px) {
-            @include MyriadRegular(20pt);
-          }
-          color: #000;
-          padding-left: 2%;
-          margin-top: 2%;
-          .interest-blue {
-            color: $blue;
-          }
-          .interest-bold {
-            font-weight: bold;
-          }
-        }
-      }
-
-      .promotion-images {
-        .left-images {
-          .marca-images {
-            @include MyriadBold(36pt);
-            color: #000;
-            letter-spacing: 0.2rem;
-            padding-top: 3%;
-            padding-left: 3%;
-          }
-          .shortd-images {
-            @include MyriadRegular(16pt);
-            padding-left: 3%;
-          }
-          .main-image {
-            border-right: 2px solid #d2cece;
-            padding-top: 2%;
-            padding-bottom: 3%;
-            img {
-              border-radius: 2.5em;
-              height: 600px;
-              width: 100%;
-              padding: 4%;
-              @include breakpoint(max-width 768px) {
-                height: 300px;
-              }
-            }
-          }
-        }
-        .list-images {
-          .list {
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 100px;
-            margin: 2%;
-            width: 120px;
-            display: inline-block;
-          }
-        }
-        .description {
-          text-align: justify;
-          @include MyriadRegular(16pt);
-        }
-        .div-botton-donate {
-          margin-top: 3%;
-          padding-top: 4%;
-          border-top: 2px solid #d2cece;
-          height: 60px;
-          @include breakpoint(max-width 767px) {
-            height: 50px;
-          }
-          .botton-donate {
-            @include OpenSansSemiBold(20pt);
-            color: #fff;
-            background-color: #068bca;
-            width: 90%;
-            height: 100%;
-            border-radius: 0.3em;
-            text-align: center;
-            align-items: center;
-          }
-        }
-
-        .description-image {
-          margin-top: 10%;
-          @include MyriadRegular(26pt);
-          @include breakpoint(max-width 767px) {
-            @include MyriadRegular(16pt);
-          }
-          .detail-deal {
-            margin-top: 3%;
-            text-align: center;
-            color: #000;
-            .donation {
-              background-color: #e6e7e9;
-            }
-            .valor {
-              font-weight: bold;
-            }
-            .underline {
-              background-size: contain;
-              background-repeat: no-repeat;
-              background-position: center;
-              font-weight: bold;
-              color: #6d6d6d;
-            }
-            .withdiscount {
-              color: $blue;
-              font-weight: bold;
-            }
-            .discount {
-              color: #fff;
-              background-image: linear-gradient(to right, #085a9e, #000);
-              margin-bottom: 5%;
-            }
-
-            .countdown {
-              @include MyriadBold(18pt);
-              @include breakpoint(max-width 767px) {
-                @include MyriadRegular(12pt);
-              }
-              height: 50px;
-              text-align: left;
-              margin-top: 8%;
-              line-height: 1;
-              .img-countdown {
-                @include backgroundImage;
-                width: 70px;
-                height: 60px;
-                float: left;
-                margin-left: 3%;
-              }
-              .time-promotion {
-                margin-top: 20px;
-                display: flex;
-                justify-content: left;
-                align-items: center;
-                .time {
-                  @include MyriadRegular(24pt);
-                  font-weight: bold;
-                  margin-left: 10%;
-                  @include breakpoint(max-width 767px) {
-                    margin-left: 2%;
-                    @include MyriadRegular(18pt);
-                  }
-                  .interval {
-                    margin-bottom: 2%;
-                    background-color: #d0cece;
-                    text-align: center;
-                  }
-                }
-              }
-            }
-            .div-botton-donate {
-              margin-top: 3%;
-              padding-top: 4%;
-              border-top: 2px solid #d2cece;
-              height: 60px;
-              @include breakpoint(max-width 767px) {
-                height: 50px;
-              }
-              .botton-donate {
-                @include OpenSansSemiBold(20pt);
-                color: #fff;
-                background-color: #068bca;
-                width: 90%;
-                height: 100%;
-                border-radius: 0.3em;
-                text-align: center;
-                align-items: center;
-              }
-            }
-            .quantity {
-              margin-top: 10%;
-              background-color: #e6e7e9;
-            }
-          }
-        }
-        .checkValidate {
-          text-align: justify;
-          @include MyriadRegular(18pt);
-          padding-left: "10px";
-        }
-      }
-    }
-  }
-
-  .allies-container {
-    background-color: #f5f5f4;
-    color: #000;
     .title {
-      text-align: center;
-      @include MyriadRegular(32pt);
-      @include breakpoint(max-width 767px) {
-        @include MyriadRegular(20pt);
-      }
+      color: #f4d828;
+      @include RenaultLifeBold(24pt);
     }
+
     .description {
-      margin-top: 25px;
-      text-align: justify;
-      @include MyriadRegular(18pt);
-    }
-    .allies-carrousel {
-      text-align: "center";
-      background-color: #f5f5f4;
-      margin-bottom: 3%;
-      margin-left: 3%;
-
-      .allies-img {
-        height: 150px;
-        width: 250px;
-        border-radius: 2.5em;
-        @include breakpoint(max-width 767px) {
-          height: 50px;
-          width: 80px;
-          border-radius: 1em;
-        }
-        @include breakpoint(768px 1024px) {
-          height: 100px;
-          width: 150px;
-          border-radius: 1.5em;
-        }
-      }
-    }
-  }
-
-  .footer-container {
-    padding-bottom: 3%;
-    background-color: #282828;
-    .footer-seccion {
-      margin-top: 4%;
-      .footer-list-title {
-        padding-left: 40%;
-        @include breakpoint(max-width 767px) {
-          padding-left: 5%;
-        }
-        .title {
-          color: #fff;
-          @include MyriadRegular(10pt);
-          text-align: left;
-        }
-        .description-data {
-          margin-top: 3%;
-        }
-      }
-      .footer-img {
-        margin-left: 30%;
-        @include breakpoint(max-width 767px) {
-          margin-left: 10%;
-        }
-      }
-    }
-
-    .footer-list {
-      padding-left: 3%;
       color: #fff;
-      @include MyriadRegular(9pt);
-      text-align: left;
-    }
+      padding: 0.5rem;
+      @include RenaultLifeBold(18pt);
 
-    .logo-left {
-      text-align: center;
-      .logo {
-        margin-top: 10%;
-        margin-right: 10%;
-      }
-    }
-  }
-
-  .menu-container {
-    background-color: rgb(221, 242, 245);
-    .ant-menu-item {
-      @include QuickSandRegular(15pt);
-      vertical-align: middle;
-      color: #000;
-      font-weight: bold;
-      padding-left: 5px;
-      padding-right: 5px;
-      a {
-        text-decoration: none;
-        color: #000;
-      }
-    }
-    .left-divider {
-      border-left: 1px solid red;
-      padding-left: 8px;
-      height: 0.9em;
-    }
-  }
-
-  .confirmation-content {
-    margin-top: 25px;
-    text-align: center;
-    @include MyriadRegular(16pt);
-    .title {
-      @include MyriadRegular(24pt);
-    }
-
-    .confirm-label {
-      font-weight: bold;
-      border: 1px solid gray;
-      background-color: #44bccc;
-    }
-    .confirm-value {
-      background-color: #d1d5d6;
-      border: 1px solid gray;
-    }
-
-    .botton-donate {
-      color: #fff;
-      background-image: linear-gradient(#1f1b2d, #165a9d);
-      @include MyriadRegular(24pt);
-      height: 60px;
-      padding-top: 15px;
-      border-radius: 50px;
-      width: 150px;
-    }
-  }
-
-  .title-promotions {
-    @include MyriadRegular(32pt);
-    @include breakpoint(max-width 767px) {
-      @include MyriadRegular(20pt);
-    }
-    background-color: $blue;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
-
-  .title-Interests {
-    @include MyriadRegular(32pt);
-    color: #000;
-    background-color: #f5f5f4;
-    @include breakpoint(max-width 767px) {
-      @include MyriadRegular(20pt);
-    }
-    .interest-blue {
-      color: $blue;
-      background-color: #f5f5f4;
-    }
-    .interest-bold {
-      font-weight: bold;
-    }
-  }
-
-  .grid-promotions {
-    padding-top: 2%;
-    padding-right: 1.2%;
-    padding-left: 1.2%;
-    padding-bottom: 2%;
-    background-color: #f5f5f4;
-    .card-Promotion {
-      cursor: pointer;
-      background-color: #fff;
-      margin-bottom: 2%;
-      border-radius: 1em;
-      height: 400px;
-      width: 300px;
       @include breakpoint(max-width 767px) {
-        height: 150px;
-        width: 100%;
-        border-radius: 0em;
-      }
-      .card-photo {
-        background-size: 300px 200px;
-        height: 50%;
-        border-radius: 1em;
-        @include breakpoint(max-width 767px) {
-          background-size: cover;
-          height: 100%;
-          border-radius: 0em;
-        }
-      }
-      .card-text {
-        padding: 3%;
-        @include MyriadRegular(14pt);
-        @include breakpoint(max-width 767px) {
-          @include MyriadRegular(12pt);
-        }
-        .card-title {
-          font-weight: bold;
-          text-align: left;
-          color: #000;
-          margin-bottom: 4%;
-          margin-top: 2%;
-        }
-        .card-discount {
-          text-align: center;
-          background-color: #068bca;
-          color: #fff;
-          margin-bottom: 4%;
-          margin-top: 2%;
-        }
-        .card-description {
-          @include MyriadRegular(9pt);
-          text-align: justify;
-          @include breakpoint(max-width 767px) {
-            @include MyriadRegular(7pt);
-          }
-        }
-        .card-deal {
-          @include MyriadRegular(11pt);
-          margin-top: 3%;
-          text-align: center;
-          color: #000;
-          @include breakpoint(max-width 767px) {
-            @include MyriadRegular(9pt);
-          }
-          .valor {
-            font-weight: bold;
-          }
-          .underline {
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            font-weight: bold;
-            color: #6d6d6d;
-          }
-          .withdiscount {
-            color: $blue;
-            font-weight: bold;
-          }
-        }
-      }
-    }
-    .form-checkCode {
-      .title {
-        color: #57abde;
-        @include MyriadRegular(26pt);
-      }
-    }
-
-    .confirmation-user {
-      .title {
-        color: #57abde;
-        @include MyriadRegular(26pt);
-        text-align: center;
-      }
-
-      .botton-home {
-        color: #fff;
-        background-image: linear-gradient(#1f1b2d, #165a9d);
-        @include MyriadRegular(24pt);
-        height: 60px;
-        padding-top: 15px;
-        border-radius: 50px;
-        width: 25%;
+        @include RenaultLifeBold(14pt);
       }
     }
   }
 
-  .ant-carousel .slick-slide {
-    text-align: center;
-    line-height: 600px;
-    overflow: hidden;
-  }
+  .button {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
 
-  .barsMenu {
-    float: left;
-    height: 40px;
-    width: 41px;
-    padding: 3%;
-    margin-top: 3%;
-    margin-left: 6%;
-    display: none;
-    background: #005da0;
-    border-color: transparent;
-    @include breakpoint(max-width 1024px) {
-      display: inline-block;
+    .boton {
+      //height: 50%;
+      @include RenaultLifeBold(12pt);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      color: #fff;
+      text-align: center;
+      vertical-align: middle;
+      padding: 1.5rem;
+      cursor: pointer;
+
+      @include breakpoint(max-width 767px) {
+        @include RenaultLifeBold(8pt);
+      }
     }
-  }
-  .ant-drawer-body {
-    padding: 0%;
   }
 }

@@ -1,77 +1,34 @@
 @import '../node_modules/compass-mixins/lib/compass';
 
 @font-face {
-    font-family: "QuicksandR";
-    src: url('./fonts/Quicksand/Quicksand-Regular.otf');
+    font-family: "RenaultLifeRegular";
+    src: url('./fonts/RenaultLife-Regular.ttf');
 }
 
 @font-face {
-    font-family: "MyriadProRegular";
-    src: url('./fonts/myriadpro/MyriadProRegular.ttf');
+    font-family: "RenaultLifeBold";
+    src: url('./fonts/RenaultLife-Bold.ttf');
 }
 
 @font-face {
-    font-family: "MyriadProBoldCond";
-    src: url('./fonts/myriadpro/MyriadPro-BoldCond.otf');
+    font-family: "RenaultLifeBoldItalic";
+    src: url('./fonts/RenaultLife-BoldItalic.ttf');
 }
 
-@font-face {
-    font-family: "MyriadProSemiBold";
-    src: url('./fonts/myriadpro/MyriadPro-SemiBold.otf');
-}
-
-@font-face {
-    font-family: "OpenSansSemiBold";
-    src: url('./fonts/openSans/OpenSans-Semibold.ttf');
-}
-
-@mixin QuickSandRegular($size) {
+@mixin RenaultLifeRegular($size) {
     font-size: $size;
-    font-family: QuicksandR;
+    font-family: RenaultLifeRegular;
     font-display: swap;
 }
 
-@mixin MyriadRegular($size) {
+@mixin RenaultLifeBold($size) {
     font-size: $size;
-    font-family: MyriadProRegular;
+    font-family: RenaultLifeBold;
     font-display: swap;
 }
-
-@mixin MyriadBold($size) {
-    font-size: $size;
-    font-family: MyriadProRegular;
-    font-weight: bold;
-    font-display: swap;
-}
-
-@mixin MyriadSemiBold($size) {
-    font-size: $size;
-    font-family: MyriadProSemiBold;
-    font-display: swap;
-}
-
-@mixin MyriadBoldCond($size) {
-    font-size: $size;
-    font-family: MyriadProBoldCond;
-    font-display: swap;
-}
-
-@mixin OpenSansSemiBold($size) {
-    font-size: $size;
-    font-family: OpenSansSemiBold;
-    font-display: swap;
-}
-
-@mixin backgroundImage() {
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
 
 $width-page: auto;
 $height-footer-page:200px;
 $height-content-page : 800px;
 $min-page-md:676px;
 $min-page-width-md: max-width 767px;
-
-$blue:#068BCA;
