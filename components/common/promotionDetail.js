@@ -7,7 +7,11 @@ import { connect } from 'react-redux';
 import { createPreference } from '../../actions';
 import getConfig from 'next/config';
 import ListCategories from '../categories/listCategories';
+
 import SendInformation from '../quotes/sendInformation';
+
+import Router from 'next/router'
+
 const dividerColumn = {
     xs: { span: 12 },
     sm: { span: 12 },
@@ -46,6 +50,10 @@ class PromotionDetail extends Component {
         }
     }
 
+    handleClickButton() {
+        Router.push({ pathname: '/' });
+    }
+
     onChangeMain = (file) => {
         const url = `${publicRuntimeConfig.promotionImagesBasePath}${file.name}`;
         this.setState({ urlMainImg: url, assetSelected: file.id });
@@ -72,11 +80,16 @@ class PromotionDetail extends Component {
     render() {
         const { product, preference } = this.props
         const imageUrl = '../../static/img/1.png'
-        const saleTag = '../../static/img/sale-tag.svg'
         const boton = '../../static/img/button_det.png'
         const nameProduct = (product) ? product.name : '';
+        const saleTag = '../../static/img/sale-tag.png'        
+        const renaultLogo = "../../static/img/logo-renault.png";
+
         return (
             <Row>
+                <Col span={24} className={"header-cont"}>
+                    <Col span={24} className={"header-top"} style={{ backgroundImage: `url(${renaultLogo})` }} onClick={() => this.handleClickButton()} ></Col>
+                </Col>
                 <Col span={24} className={'promotion-cont'}>
                     <Col {...dividerImg} className={'left-promo'} >
                         <Col span={24} className={'title'} >{nameProduct}</Col>
@@ -97,16 +110,11 @@ class PromotionDetail extends Component {
                     </Col>
                     <Col {...dividerDesc} className={'description-promo'}>
                         <Col span={24} className={'title'}>Descripción</Col>
+
                         {product && <Col span={24} className={'description'}>
                             {product.description}
                         </Col>}
                         <SendInformation />
-                    </Col>
-                    <Col span={24} className={'button'} >
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
                     </Col>
                 </Col>
             </Row>
