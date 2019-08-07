@@ -47,10 +47,10 @@ class Gallery extends Component {
         let imgUrl1 = '../../static/img/carrusel_1.jpg'
         let imgUrl2 = '../../static/img/carrusel_2.jpg'
         let imgUrl3 = '../../static/img/carrusel_3.jpg'
-        
+        const copy = '../../static/img/copy.png'
 
         return (
-            <Col span={24} className={"body-cont"} >
+            <Col span={24}>
                 {/* {search && this.renderPromotions()} */}
                 {/* Esto se borra por que va en el render */}
                 <Carousel autoplay autoplaySpeed={'30'} className={"body-carrusel"} >
@@ -91,6 +91,8 @@ class Gallery extends Component {
                         </Col>
                     </Col>
                 </Carousel>
+
+                <Col className={'carrusel-copy'} span={24} style={{ backgroundImage: `url(${copy})` }}></Col>
             </Col>
         )
     }

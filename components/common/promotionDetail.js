@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { createPreference } from '../../actions';
 import getConfig from 'next/config';
 import ListCategories from '../categories/listCategories';
+import Router from 'next/router'
 const dividerColumn = {
     xs: { span: 12 },
     sm: { span: 12 },
@@ -45,6 +46,10 @@ class PromotionDetail extends Component {
         }
     }
 
+    handleClickButton() {
+        Router.push({ pathname: '/' });
+    } 
+
     onChangeMain = (file) => {
         const url = `${publicRuntimeConfig.promotionImagesBasePath}${file.name}`;
         this.setState({ urlMainImg: url, assetSelected: file.id });
@@ -71,11 +76,14 @@ class PromotionDetail extends Component {
     render() {
         const { promotion, preference } = this.props
         const imageUrl = '../../static/img/1.png'
-        const saleTag = '../../static/img/sale-tag.svg'
-        const boton = '../../static/img/button_det.png'
-
+        const saleTag = '../../static/img/sale-tag.png'
+        const form = '../../static/img/form.png'
+        const renaultLogo = "../../static/img/logo-renault.png";
         return (
             <Row>
+                <Col span={24} className={"header-cont"}>
+                    <Col span={24} className={"header-top"} style={{ backgroundImage: `url(${renaultLogo})` }} onClick={() => this.handleClickButton()} ></Col>
+                </Col>
                 <Col span={24} className={'promotion-cont'}>
                     <Col {...dividerImg} className={'left-promo'} >
                         <Col span={24} className={'title'} >RENAULT LOGAN LIFE</Col>
@@ -103,12 +111,7 @@ class PromotionDetail extends Component {
                             voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                             non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </Col>
-                    </Col>
-                    <Col span={24} className={'button'}>
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
-                        <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
+                        <Col span={24} className={'form'} style={{ backgroundImage: `url(${form})` }}></Col>
                     </Col>
                 </Col>
             </Row>

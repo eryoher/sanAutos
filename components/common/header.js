@@ -17,7 +17,9 @@ export default class Header extends Component {
 
         return (
             <Col span={24} className={"header-cont"} >
-                <Col span={24} className={"header-logo"} style={{ backgroundImage: `url(${renaultLogo}), url(${banner})` }} >
+                <Col span={24} className={"header-top"} style={{ backgroundImage: `url(${renaultLogo})` }} >
+                </Col>
+                <Col span={24} className={"header-logo"} style={{ backgroundImage: `url(${banner})` }} >
                 </Col>
             </Col>
         )

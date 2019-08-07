@@ -15,6 +15,12 @@
     src: url('./fonts/RenaultLife-BoldItalic.ttf');
 }
 
+@font-face {
+    font-family: "RenaultLifeLight";
+    src: url('./fonts/RenaultLife-Light.ttf');
+}
+
+
 @mixin RenaultLifeRegular($size) {
     font-size: $size;
     font-family: RenaultLifeRegular;
@@ -24,6 +30,12 @@
 @mixin RenaultLifeBold($size) {
     font-size: $size;
     font-family: RenaultLifeBold;
+    font-display: swap;
+}
+
+@mixin RenaultLifeLight($size) {
+    font-size: $size;
+    font-family: RenaultLifeLight;
     font-display: swap;
 }
 
