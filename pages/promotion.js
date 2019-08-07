@@ -6,12 +6,15 @@ import * as qs from 'qs';
 import PromotionDetail from '../components/common/promotionDetail';
 import Footer from '../components/common/footer';
 import Head from 'next/head';
+
+
+
 class Promotions extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            promotionId: null
+            productId: null
         }
     }
 
@@ -19,9 +22,9 @@ class Promotions extends Component {
         const { location } = window;
         if (location && location.search) {
             const parsedString = qs.parse(location.search.slice(1));
-            const promotionId = parsedString.id;
-            this.setState({ promotionId });
-            this.props.getPromotion(promotionId);
+            const productId = parsedString.id;
+            this.setState({ productId });
+            this.props.getPromotion(productId);
         }
     }
 
@@ -36,9 +39,11 @@ class Promotions extends Component {
                 </Head>
                 <Row>
                     <Col span={24} className={"body-cont"} style={{ backgroundImage: `url(../../static/img/fondo.png)` }} >
-                        <PromotionDetail />
+                        <PromotionDetail product = {promotion} />
                     </Col>
-                    <Col span={24} ><Footer /></Col>
+                    <Col span={24} >
+                        <Footer />
+                    </Col>
                 </Row>
             </div>
         )

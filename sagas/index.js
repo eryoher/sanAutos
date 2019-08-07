@@ -8,6 +8,7 @@ import companySaga from './Companies';
 import userSaga from './Users';
 import imageSaga from './Images';
 import authorizationSaga from './AuthorizationCode';
+import quotesSaga from './Quotes';
 
 export default function* rootSaga(getState) {
     yield all([
@@ -19,7 +20,8 @@ export default function* rootSaga(getState) {
         companySaga(),
         userSaga(),
         imageSaga(),
-        authorizationSaga()
+        authorizationSaga(),
+        quotesSaga()
     ])
 }
   

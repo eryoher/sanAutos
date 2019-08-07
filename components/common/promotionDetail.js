@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { createPreference } from '../../actions';
 import getConfig from 'next/config';
 import ListCategories from '../categories/listCategories';
+import SendInformation from '../quotes/sendInformation';
 const dividerColumn = {
     xs: { span: 12 },
     sm: { span: 12 },
@@ -69,16 +70,16 @@ class PromotionDetail extends Component {
     }
 
     render() {
-        const { promotion, preference } = this.props
+        const { product, preference } = this.props
         const imageUrl = '../../static/img/1.png'
         const saleTag = '../../static/img/sale-tag.svg'
         const boton = '../../static/img/button_det.png'
-
+        const nameProduct = (product) ? product.name : '';
         return (
             <Row>
                 <Col span={24} className={'promotion-cont'}>
                     <Col {...dividerImg} className={'left-promo'} >
-                        <Col span={24} className={'title'} >RENAULT LOGAN LIFE</Col>
+                        <Col span={24} className={'title'} >{nameProduct}</Col>
                         <Col span={24} className={'main-image'} >
                             <img src={imageUrl} />
                             {/* <img src={urlImage} /> */}
@@ -96,15 +97,12 @@ class PromotionDetail extends Component {
                     </Col>
                     <Col {...dividerDesc} className={'description-promo'}>
                         <Col span={24} className={'title'}>Descripción</Col>
-                        <Col span={24} className={'description'}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </Col>
+                        {product && <Col span={24} className={'description'}>
+                            {product.description}
+                        </Col>}
+                        <SendInformation />
                     </Col>
-                    <Col span={24} className={'button'}>
+                    <Col span={24} className={'button'} >
                         <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
                         <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>
                         <Col span={6} className="boton" style={{ backgroundImage: `url(${boton})` }} >Logan Life</Col>

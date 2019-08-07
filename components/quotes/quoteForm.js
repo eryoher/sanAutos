@@ -1,0 +1,133 @@
+import React, { Component } from 'react';
+import { Row, Col, Form, Input, Select, AutoComplete, Button, Modal, DatePicker, TimePicker, Upload, Icon, Checkbox } from 'antd';
+import { formLayout, largeItemLayout } from '../../constants/TypeForm';
+import TextArea from 'antd/lib/input/TextArea';
+import { dateFormat, apiDateFormatOutHour } from '../../lib/DateFormat';
+import moment from 'moment-business-days';
+import UploadFiles from '../common/uploadFiles';
+
+
+const SelectOption = Select.Option;
+const FormItem = Form.Item;
+const { RangePicker } = DatePicker;
+
+
+export default class QuoteForm extends Component {   
+    
+    constructor(props){
+        super(props)
+        this.state = {};
+    }  
+
+    render() {
+        const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, uploadedFiles, listCategories } = this.props;
+
+        return (
+            <Row>
+                <Col span={24}>
+                    <Row>                    
+                        <Col {...formLayout}>
+                            <FormItem
+                                {...largeItemLayout}
+                                className={errors.name && touched.name ? 'has-error' : ''}
+                                label={false}
+                            >
+                                <Input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    placeholder={'Nombre y Apellido *'}
+                                    className={'input-form-login'}
+                                    value={values.name}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.name && touched.name && <div className="ant-form-explain">{errors.name}</div>}
+                            </FormItem>
+                        </Col>
+                        <Col {...formLayout}>
+                            <FormItem
+                                {...largeItemLayout}
+                                className={errors.cedula && touched.cedula ? 'has-error' : ''}
+                                label={false}
+                            >
+                                <Input
+                                    id="cedula"
+                                    type="text"
+                                    name="cedula"
+                                    placeholder={'Numero de Cedula *'}
+                                    className={'input-form-login'}
+                                    value={values.cedula}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.cedula && touched.cedula && <div className="ant-form-explain">{errors.cedula}</div>}
+                            </FormItem>
+                        </Col>
+                        <Col {...formLayout}>
+                            <FormItem
+                                {...largeItemLayout}
+                                className={errors.phone && touched.phone ? 'has-error' : ''}
+                                label={false}
+                            >
+                                <Input
+                                    id="phone"
+                                    type="text"
+                                    name="phone"
+                                    placeholder={'Numero de Celular *'}
+                                    className={'input-form-login'}
+                                    value={values.phone}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.phone && touched.phone && <div className="ant-form-explain">{errors.phone}</div>}
+                            </FormItem>
+                        </Col>
+                        <Col {...formLayout}>
+                            <FormItem
+                                {...largeItemLayout}
+                                className={errors.email && touched.email ? 'has-error' : ''}
+                                label={false}
+                            >
+                                <Input
+                                    id="email"
+                                    type="text"
+                                    name="email"
+                                    placeholder={'Email *'}
+                                    className={'input-form-login'}
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.email && touched.email && <div className="ant-form-explain">{errors.email}</div>}
+                            </FormItem>
+                        </Col>
+                        <Col {...formLayout}>
+                            <FormItem                                
+                                className={errors.acceptTerms && touched.acceptTerms ? 'has-error' : ''}
+                                label={false}
+                            >
+                                <Checkbox
+                                    id="acceptTerms"
+                                    name="acceptTerms"        
+                                    onChange={(value) => { setFieldValue("acceptTerms", value.target.checked); touched.acceptTerms = true }}
+                                    checked={ values.acceptTerms }
+                                    onBlur={handleBlur}
+
+                                />
+                                    <label style={{paddingLeft:'10px'}} > 
+                                        <span>Acepto política de </span>
+                                        <a target={"_blank"}  >
+                                            {'protección de datos personales' } 
+                                        </a>
+                                    </label>
+                                {errors.acceptTerms && touched.acceptTerms && <div className="ant-form-explain">{errors.acceptTerms}</div>}
+                            </FormItem>
+                        </Col>
+                                                                                        
+                    </Row>
+                </Col>
+            </Row>
+        )
+    }
+}

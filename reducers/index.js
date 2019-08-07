@@ -10,6 +10,7 @@ import companyReducer from './companies';
 import userReducer from './Users';
 import imageReducer from './images';
 import authorizationReducer from './authorizationCode';
+import quotesReducer from './quotes';
 
 const rootReducer = combineReducers({
     auth:authReducer,
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
     companies:companyReducer,
     users: userReducer,
     images: imageReducer,
-    authorizationCode: authorizationReducer
+    authorizationCode: authorizationReducer,
+    quote:quotesReducer
 });
 
 export default rootReducer;

@@ -8,3 +8,4 @@ export * from './Companies';
 export * from './Users';
 export * from './Images';
 export * from './AuthorizationCode';
+export * from './Quotes';

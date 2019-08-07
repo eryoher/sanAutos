@@ -6,8 +6,9 @@ export const getPromotions = async (params) => {
     return response;
 }
 
-export const getPromotion = async (promotionId) => {  
-    const response = await Axios.get(`/promotions/${promotionId}?filter={"include": [{"relation": "assets"}, {"relation": "inventory"}, {"relation": "company"}]}`);
+export const getPromotion = async (productsId) => {  
+    console.log(productsId, 'prorocooco')
+    const response = await Axios.get(`/products/${productsId}?filter={"include": [{"relation": "assets"}]}`);
     return response;
 }  
 
