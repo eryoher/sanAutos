@@ -13,16 +13,16 @@ export default class PromotionItem extends Component {
     }
 
     render() {
-        const { promotion } = this.props
-        let imgUrl = '../../static/img/no-imagen.png'
+        const { promotion } = this.props        
+        let imgUrl = '../../static/img/no-imagen.jpg'
         
         if (promotion.assets.length) {
-            imgUrl = `${publicRuntimeConfig.promotionImagesBasePath}${promotion.assets[0].name}`;
+            imgUrl = `${publicRuntimeConfig.productImagesBasePath}${promotion.assets[0].name}`;
         }
 
         return (
-            <Col span={24} className={'carrucel-item'}
-                style={{ backgroundImage: `url(${imgUrl})` }}
+            <Col span={24} className={'carrusel-item'}
+                style={{ backgroundImage: `url(${imgUrl})`}}
                 onClick={() => this.handleClickButton()}
                 type={'primary'} >
             </Col>

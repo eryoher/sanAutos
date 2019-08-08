@@ -46,7 +46,7 @@ class AdminCategory extends Component {
                         }}
                         validationSchema={Yup.object().shape({
                             name: Yup.string().required('El nombre es requerido.'),
-                            icon: Yup.string().required('El Icono es requerido.'),                                
+                                                       
                         })}
                         render={({ values, handleBlur, handleChange, errors, touched, isSubmitting, isValid, handleSubmit, setFieldValue, setFieldTouched }) => (
                             <Form onSubmit={handleSubmit}>

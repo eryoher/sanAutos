@@ -1,45 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { searchCategories, removeCategory } from '../actions';
+import { searchSubCategories, getCategories } from '../actions';
 import Link from 'next/link'
 import { Row, Col, Icon, Table, Button, Modal, message, Divider } from 'antd';
 import Layout from '../components/common/layout';
-import AdminCategory from '../components/categories/adminCategory';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
-
-
-const listIcons = [
-    {
-        label: 'Caja',
-        value: 'box'
-    },
-    {
-        label: 'Tenedor Cuchara',
-        value: 'fork'
-    },
-    {
-        label: 'Paracaida',
-        value: 'parachute'
-    },
-    {
-        label: 'Avion',
-        value: 'plane'
-    },
-    {
-        label: 'Tijeras',
-        value: 'scissors'
-    },
-    {
-        label: 'Destornillador',
-        value: 'screwdriver'
-    },
-    {
-        label: 'Piedras',
-        value: 'stones'
-    }
-
-];
+import AdminSubCategory from '../components/subCategories/adminSubCategory';
 
 class AdminCategories extends Component {
 
@@ -60,6 +27,17 @@ class AdminCategories extends Component {
                 dataIndex: 'name',
                 key: 'name',
                 width: 200,
+            },
+            {
+                title: "Tipo",
+                dataIndex: 'category',
+                key: 'category',
+                width: 200,
+                render: (text, record) => {
+                    return(
+                        record.categories.name
+                    )
+                }
             },
 
             {
@@ -88,10 +66,10 @@ class AdminCategories extends Component {
                                 onCancel={() => this.handleCloseModal()}
                                 footer={[]}
                             >
-                                <AdminCategory
+                                <AdminSubCategory
                                     onCancel={() => this.handleCloseModal()}
-                                    category={record}
-                                    listIcons={listIcons}
+                                    subCategory={record}
+                                    categories={this.props.listCategories}
                                 />
                             </Modal>
                             <Modal
@@ -124,11 +102,11 @@ class AdminCategories extends Component {
     componentDidUpdate = (prevProps) => {
         if (prevProps.success !== this.props.success && this.props.success) {
             const category = this.state.recordSelected;
-            let msn = (category) ? 'Se actualizo la categoria correctamente.' : 'Se creo la categoria correctamente';
+            let msn = (category) ? 'Se actualizo la sub categoria correctamente.' : 'Se creo la sub categoria correctamente';
             msn = (this.props.success.count) ? 'La categoria se elimino correctamente.' : msn;
             if (this.props.success) {
                 message.success(msn);
-                this.props.searchCategories({
+                this.props.searchSubCategories({
                     page: 1,
                     pageSize: 10
                 })
@@ -136,23 +114,13 @@ class AdminCategories extends Component {
         }
     }
 
-    returnIcon = (icon) => {
-        let response = ''
-        listIcons.forEach(iconItem => {
-            if (iconItem.value == icon) {
-                response = iconItem.label;
-                return true;
-            }
-        });
-
-        return response;
-    }
-
     componentWillMount = () => {
-        this.props.searchCategories({
+        this.props.searchSubCategories({
             page: 1,
             pageSize: 10
         })
+
+        this.props.getCategories();
     }
 
     handleCloseModal = () => {
@@ -168,19 +136,19 @@ class AdminCategories extends Component {
     }
 
     handleRemove = (category) => {
-        this.props.removeCategory(category.id);
+        this.props.getCategories(category.id);
 
     }
 
     handleTableChange = (pagination) => {
-        this.props.searchCategories({
+        this.props.searchSubCategories({
             'page': pagination.current,
             'pageSize': pagination.pageSize
         });
     }
 
     render() {
-        const { search } = this.props;
+        const { search, listCategories } = this.props;
         let pagination = {};
         if (search) {
             pagination = {
@@ -195,7 +163,7 @@ class AdminCategories extends Component {
             <Row >
                 <Layout>
                     <div style={{ marginTop: '50px' }} >
-                        <Col span={12} offset={6} > <h1>Categorias</h1> </Col>
+                        <Col span={12} offset={6} > <h1>Sub Categorias</h1> </Col>
                         <Col span={6}>
                             <Button type={'primary'} onClick={() => { this.setState({ showModalCreate: true }) }} > Crear <Icon type={'plus'} />   </Button>
                         </Col>
@@ -208,9 +176,9 @@ class AdminCategories extends Component {
                                 onCancel={() => this.handleCloseModalCreate()}
                                 footer={[]}
                             >
-                                <AdminCategory
-                                    onCancel={() => this.handleCloseModalCreate()}
-                                    listIcons={listIcons}
+                                <AdminSubCategory
+                                    onCancel={() => this.handleCloseModalCreate()}                                    
+                                    categories={listCategories}
                                 />
                             </Modal>}
                         </Col>
@@ -221,12 +189,14 @@ class AdminCategories extends Component {
     }
 }
 
-function mapStateToProps({ categories }) {
-    const { search, success } = categories
+function mapStateToProps({ subCategories, categories }) {
+    const { search, success } = subCategories
+    const listCategories = categories.categories;
     return {
         search,
-        success
+        success,
+        listCategories
     }
 }
 
-export default connect(mapStateToProps, { searchCategories, removeCategory })(AdminCategories);
+export default connect(mapStateToProps, { searchSubCategories, getCategories })(AdminCategories);
