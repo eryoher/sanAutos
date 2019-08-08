@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import * as qs from 'qs';
 import PromotionFormInput from '../components/promotions/promotionFormInut';
 import { formLayout } from '../constants/TypeForm';
-import { getPromotion, getCategories, updatePromotion, createPromotion, createInventory, getCompanies }  from '../actions';
+import { getPromotion, getSubCategories, updatePromotion, createPromotion, createInventory, getCompanies }  from '../actions';
 import moment from 'moment-business-days';
 import Router from 'next/router'
 import getConfig from 'next/config';
@@ -51,11 +51,10 @@ class AdminPromotion extends Component {
     }
 
     componentWillMount = () => {
-        this.props.getCategories();
-        this.props.getCompanies();
+        this.props.getSubCategories();        
     }
 
-    onSubmitPromotion = (values) => {
+    onSubmitProduct = (values) => {
         const formData = new FormData();
         if(values.allImages){
             const { toSave, toRemove } = values.allImages;
@@ -67,9 +66,7 @@ class AdminPromotion extends Component {
             });
             delete values.allImages;
         }
-        values.start_time = (values.start_time) ? moment( values.start_time).format('HH:mm:ss') : null;
-        values.end_time = (values.end_time) ? moment( values.end_time ).format('HH:mm:ss') : null;
-        delete values.vigencia;        
+
         formData.append("all", JSON.stringify(values));  
                                 
         if(this.state.promotionId){
@@ -82,7 +79,7 @@ class AdminPromotion extends Component {
     buildUploadedFiles = (imagesFiles) => {
         const files = imagesFiles || []
         return files.map(filename => {
-            const url = `${publicRuntimeConfig.promotionImagesBasePath}${filename.name}`
+            const url = `${publicRuntimeConfig.productImagesBasePath}${filename.name}`
             return {
                 uid: filename.name,
                 name: filename.name,
@@ -100,13 +97,10 @@ class AdminPromotion extends Component {
     }
 
     render() {
-        const {promotion, listCategories, listCompanies} = this.props;        
+        const {promotion, subcategoriesList} = this.props;        
         
         const initialValues = {
-            donation:null,
-            vigencia:[],
-            start_time:null,
-            end_time:null
+            
         }
 
         const initial = (this.state.promotionId !== null) ? promotion : initialValues;    
@@ -131,7 +125,7 @@ class AdminPromotion extends Component {
                         { initial && <Formik
                             initialValues = {{...initial}}
                             onSubmit={(values, actions) => {                                                                
-                                this.onSubmitPromotion( values );
+                                this.onSubmitProduct( values );
                                 actions.setSubmitting(false);
                             }}
                             validationSchema={Yup.object().shape({
@@ -157,8 +151,7 @@ class AdminPromotion extends Component {
                                                 handleSubmit,
                                                 setFieldValue,
                                                 setFieldTouched,
-                                                listCategories,
-                                                listCompanies
+                                                subcategoriesList
                                             }}
                                         />
                                     </Col>
@@ -175,14 +168,7 @@ class AdminPromotion extends Component {
                                 </Form>
                             )}
                         />}
-                        </Col>
-                        <Col span={24} style={{paddingTop:'25px'}} >
-                           { promotion &&  
-                            <InventoryForm 
-                                promotion={promotion}  
-                                onSubmitInventory = { this.handleSubmitInventory }
-                            />}
-                        </Col>
+                        </Col>                       
                     </Row>                                
                 </Content>
             </LayoutAdmin>
@@ -190,10 +176,11 @@ class AdminPromotion extends Component {
     }
 }
 
-function mapStateToProps({ promotions, categories, auth, inventories, companies }){
+function mapStateToProps({ promotions, categories, auth, inventories, companies, subCategories }){
     const {search, promotion, success} = promotions
     const {inventory} = inventories;
     const listCompanies = (companies.companies) ? companies.companies:[]
+    const { subcategoriesList } = subCategories;
     return {
         search,
         promotion,
@@ -201,9 +188,10 @@ function mapStateToProps({ promotions, categories, auth, inventories, companies 
         success,
         auth,
         inventory,
-        listCompanies
+        listCompanies,
+        subcategoriesList
     }
 }
 
-export default connect (mapStateToProps,{getPromotion, getCategories, updatePromotion, createPromotion, createInventory, getCompanies})(AdminPromotion);
+export default connect (mapStateToProps,{getPromotion, getSubCategories, updatePromotion, createPromotion, createInventory, getCompanies})(AdminPromotion);
 

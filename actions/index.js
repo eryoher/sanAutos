@@ -9,3 +9,4 @@ export * from './Users';
 export * from './Images';
 export * from './AuthorizationCode';
 export * from './Quotes';
+export * from './SubCategories';

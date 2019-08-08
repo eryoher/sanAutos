@@ -9,6 +9,7 @@ import userSaga from './Users';
 import imageSaga from './Images';
 import authorizationSaga from './AuthorizationCode';
 import quotesSaga from './Quotes';
+import subcategoriesSaga from './SubCategories';
 
 export default function* rootSaga(getState) {
     yield all([
@@ -21,7 +22,8 @@ export default function* rootSaga(getState) {
         userSaga(),
         imageSaga(),
         authorizationSaga(),
-        quotesSaga()
+        quotesSaga(),
+        subcategoriesSaga()
     ])
 }
   

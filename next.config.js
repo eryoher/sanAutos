@@ -21,6 +21,6 @@ module.exports = withFonts ( withSass({
     apiUrl: process.env.API_URL || lineBase,
     allowedImageFileTypes: ['image/jpeg', 'image/png', "image/jpg"],
     allowedImageFileSize: 1, // max file Size in MB
-    promotionImagesBasePath: process.env.IMG_BASE_PATH ? (process.env.IMG_BASE_PATH + '/promotions/') : ((process.env.API_URL || lineBase) + "/Promotions/downloadImage?filename="),
+    productImagesBasePath: process.env.IMG_BASE_PATH ? (process.env.IMG_BASE_PATH + '/products/') : ((process.env.API_URL || lineBase) + "/Products/downloadImage?filename="),
   }
 }))

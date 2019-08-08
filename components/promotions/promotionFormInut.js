@@ -50,7 +50,7 @@ export default class PromotionFormInput extends Component {
     }
 
     render() {
-        const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, uploadedFiles, listCategories, listCompanies } = this.props;
+        const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, uploadedFiles, subcategoriesList } = this.props;
 
         return (
             <Row>
@@ -74,66 +74,7 @@ export default class PromotionFormInput extends Component {
                                 />
                                 {errors.name && touched.name && <div className="ant-form-explain">{errors.name}</div>}
                             </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                className={errors.companyId && touched.companyId ? 'has-error' : ''}
-                                label={'Empresa'}
-                            >
-                                <Select
-                                    value={values.companyId}
-                                    name="companyId"
-                                    style={{ width: 200 }}
-                                    onChange={(value) => {
-                                        setFieldValue('companyId', value);
-                                    }}
-                                >
-                                    {listCompanies.map(company => (
-                                        <SelectOption value={company.id} key={company.id} >{company.name}</SelectOption>
-                                    ))}
-                                </Select>
-                                {errors.companyId && touched.companyId && <div className="ant-form-explain">{errors.companyId}</div>}
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                className={errors.donation && touched.donation ? 'has-error' : ''}
-                                label={'Donacion'}
-                            >
-                                <Input
-                                    id="donation"
-                                    type="text"
-                                    name="donation"
-                                    placeholder={'Ingrese la donacion'}
-                                    className={'input-form-login'}
-                                    value={values.donation}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.donation && touched.donation && <div className="ant-form-explain">{errors.donation}</div>}
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                className={errors.discount && touched.discount ? 'has-error' : ''}
-                                label={'Descuento'}
-                            >
-                                <Input
-                                    id="discount"
-                                    type="text"
-                                    name="discount"
-                                    placeholder={'Ingrese el descuento'}
-                                    className={'input-form-login'}
-                                    value={values.discount}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.discount && touched.discount && <div className="ant-form-explain">{errors.discount}</div>}
-                            </FormItem>
-                        </Col>
+                        </Col>                        
                         <Col {...formLayout}>
                             <FormItem
                                 {...largeItemLayout}
@@ -156,44 +97,43 @@ export default class PromotionFormInput extends Component {
                         <Col {...formLayout}>
                             <FormItem
                                 {...largeItemLayout}
-                                className={errors.quantity && touched.quantity ? 'has-error' : ''}
-                                label={'Cantidad'}
+                                className={errors.promotion && touched.promotion ? 'has-error' : ''}
+                                label={'Descuento'}
                             >
-                                {!values.id && <Input
-                                    id="quantity"
+                                <Input
+                                    id="promotion"
                                     type="text"
-                                    name="quantity"
-                                    placeholder={'Ingrese la cantidad'}
+                                    name="promotion"
+                                    placeholder={'Ingrese el descuento'}
                                     className={'input-form-login'}
-                                    value={values.quantity}
+                                    value={values.promotion}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                />}
-
-                                {values.id && <span> {values.quantity} </span>}
-
-                                {errors.quantity && touched.quantity && <div className="ant-form-explain">{errors.quantity}</div>}
+                                />
+                                {errors.promotion && touched.promotion && <div className="ant-form-explain">{errors.promotion}</div>}
                             </FormItem>
                         </Col>
+                        
+                       
                         <Col {...formLayout}>
                             <FormItem
                                 {...largeItemLayout}
-                                className={errors.categoriesId && touched.categoriesId ? 'has-error' : ''}
-                                label={'Categoria'}
+                                className={errors.subCategoriesId && touched.subCategoriesId ? 'has-error' : ''}
+                                label={'Model'}
                             >
                                 <Select
-                                    value={values.categoriesId}
-                                    name="categoriesId"
+                                    value={values.subCategoriesId}
+                                    name="subCategoriesId"
                                     style={{ width: 200 }}
                                     onChange={(value) => {
-                                        setFieldValue('categoriesId', value);
+                                        setFieldValue('subCategoriesId', value);
                                     }}
                                 >
-                                    {listCategories.map(category => (
+                                    {subcategoriesList.map(category => (
                                         <SelectOption value={category.id} key={category.id} >{category.name}</SelectOption>
                                     ))}
                                 </Select>
-                                {errors.categoriesId && touched.categoriesId && <div className="ant-form-explain">{errors.categoriesId}</div>}
+                                {errors.subCategoriesId && touched.subCategoriesId && <div className="ant-form-explain">{errors.subCategoriesId}</div>}
                             </FormItem>
                         </Col>
                         <Col {...formLayout}>
@@ -217,111 +157,7 @@ export default class PromotionFormInput extends Component {
                                 {errors.description && touched.description && <div className="ant-form-explain">{errors.description}</div>}
                             </FormItem>
                         </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                className={errors.shortdescription && touched.shortdescription ? 'has-error' : ''}
-                                label={'Descripción Corta'}
-                            >
-                                <TextArea
-                                    name={'shortdescription'}
-                                    placeholder={'Ingrese la descripción Corta'}
-                                    rows={4}
-                                    value={values.shortdescription}
-                                    onChange={(event) => {
-                                        console.log(event.target.value);
-
-                                        setFieldValue('shortdescription', event.target.value)
-                                    }}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.shortdescription && touched.shortdescription && <div className="ant-form-explain">{errors.shortdescription}</div>}
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                className={errors.condition && touched.condition ? 'has-error' : ''}
-                                label={'Condiciones'}
-                            >
-                                <TextArea
-                                    name={'condition'}
-                                    placeholder={'Ingrese los Terminos y Condiciones'}
-                                    rows={4}
-                                    value={values.condition}
-                                    onChange={(event) => {
-                                        console.log(event.target.value);
-
-                                        setFieldValue('condition', event.target.value)
-                                    }}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.condition && touched.condition && <div className="ant-form-explain">{errors.condition}</div>}
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                className={errors.address && touched.address ? 'has-error' : ''}
-                                label={'Direccion'}
-                            >
-                                <Input
-                                    id="address"
-                                    type="text"
-                                    name="address"
-                                    placeholder={'Ingrese la direccion'}
-                                    className={'input-form-login'}
-                                    value={values.address}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.address && touched.address && <div className="ant-form-explain">{errors.address}</div>}
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                label={'Fechas de la promoción'}
-                            >
-                                <RangePicker
-                                    format={dateFormat}
-                                    name='vigencia'
-                                    onBlur={setFieldTouched}
-                                    defaultValue={values.vigencia}
-                                    onChange={(dates) => {
-                                        this.dateChange('vigencia', dates, values);
-                                    }}
-                                />
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                label={'Hora de inicio'}
-                            >
-                                <TimePicker
-                                    use12Hours format="hh:mm:ss A"
-                                    defaultValue={values.start_time}
-                                    onChange={(value) => {
-                                        setFieldValue('start_time', value);
-                                    }}
-                                />
-                            </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                label={'Hora de Final'}
-                            >
-                                <TimePicker
-                                    use12Hours format="hh:mm:ss A"
-                                    defaultValue={values.end_time}
-                                    onChange={(value) => {
-                                        setFieldValue('end_time', value);
-                                    }}
-                                />
-                            </FormItem>
-                        </Col>
+                        
                         <Col {...formLayout}>
                             <FormItem
                                 {...largeItemLayout}
@@ -330,7 +166,7 @@ export default class PromotionFormInput extends Component {
                                 <UploadFiles
                                     uploadedFiles={uploadedFiles}
                                     onChange={this.handleSave}
-                                    limit={4}
+                                    limit={5}
                                 />
                             </FormItem>
                         </Col>

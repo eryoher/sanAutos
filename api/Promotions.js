@@ -6,19 +6,18 @@ export const getPromotions = async (params) => {
     return response;
 }
 
-export const getPromotion = async (productsId) => {  
-    console.log(productsId, 'prorocooco')
+export const getPromotion = async (productsId) => {      
     const response = await Axios.get(`/products/${productsId}?filter={"include": [{"relation": "assets"}]}`);
     return response;
 }  
 
 export const updatePromotion = async (promotionId, params) => {  
-    const response = await Axios.post(`/promotions/${promotionId}/updatePromotion`, params);
+    const response = await Axios.post(`/products/${promotionId}/updateProduct`, params);
     return response;
 }
 
 export const createPromotion = async (params) => {  
-    const response = await Axios.post(`/promotions/createPromotion`, params);
+    const response = await Axios.post(`/products/createProduct`, params);
     return response;
 }
 
@@ -28,7 +27,7 @@ export const getTopPromotions = async () => {
 }
 
 export const searchPromotions = async (params) => {  
-    const response = await Axios.post('/promotions/adminSearch', params);
+    const response = await Axios.post('/products/adminSearch', params);
     return response;
 }
 

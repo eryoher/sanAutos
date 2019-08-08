@@ -11,6 +11,7 @@ import userReducer from './Users';
 import imageReducer from './images';
 import authorizationReducer from './authorizationCode';
 import quotesReducer from './quotes';
+import subCategReducer from './SubCategories';
 
 const rootReducer = combineReducers({
     auth:authReducer,
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     users: userReducer,
     images: imageReducer,
     authorizationCode: authorizationReducer,
-    quote:quotesReducer
+    quote:quotesReducer,
+    subCategories:subCategReducer
 });
 
 export default rootReducer;
