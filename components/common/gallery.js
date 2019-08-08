@@ -12,10 +12,10 @@ class Gallery extends Component {
     }
 
     componentWillMount() {
-        /*this.props.getPromotions({
+        this.props.getPromotions({
             page: 1,
-            pageSize: 3
-        })*/
+            pageSize: 9
+        })
     }
 
     handleClickButton() {
@@ -26,14 +26,33 @@ class Gallery extends Component {
     renderPromotions() {
         const { search } = this.props
         let rows = []
+        let items = []
 
-        search.data.forEach(promotion => {
-            rows.push(
-                <Col span={24} className={'carrusel-cont'} key={promotion.id} >
+        search.data.forEach((promotion, index) => {
+            const cont = index % 3;
+            items.push(
+                <Col span={8} className={'carrusel-cont'} key={promotion.id} >
                     <PromotionItem promotion={promotion} />
                 </Col>
             )
+
+            if (cont === 2) {
+                rows.push(
+                    <Col key={index} span={8}>
+                        {items}
+                    </Col>
+                )
+                items = [];
+            }
+
         });
+        if (items.length) {
+            rows.push(
+                <Col key={items.length * 5} span={8}>
+                    {items}
+                </Col>
+            )
+        }
 
         return (
             <Carousel autoplay autoplaySpeed={'30'} className={"body-carrusel"} >
@@ -43,56 +62,13 @@ class Gallery extends Component {
     }
 
     render() {
-        const { search } = this.props;
-        let imgUrl1 = '../../static/img/carrusel_1.jpg'
-        let imgUrl2 = '../../static/img/carrusel_2.jpg'
-        let imgUrl3 = '../../static/img/carrusel_3.jpg'
+        const { search } = this.props;       
         const copy = '../../static/img/copy.png'
 
         return (
             <Col span={24}>
-                {/* {search && this.renderPromotions()} */}
-                {/* Esto se borra por que va en el render */}
-                <Carousel autoplay autoplaySpeed={'30'} className={"body-carrusel"} >
-                    <Col span={24} key={1} className={'carrusel-cont'} >
-                        <Col span={8} className={'carrusel-item'}
-                            style={{ backgroundImage: `url(${imgUrl1})` }}
-                            onClick={() => this.handleClickButton()}
-                            type={'primary'} key={1} >
-                        </Col>
-                        <Col span={8} className={'carrusel-item'}
-                            style={{ backgroundImage: `url(${imgUrl2})` }}
-                            onClick={() => this.handleClickButton()}
-                            type={'primary'} key={2} >
-                        </Col>
-                        <Col span={8} className={'carrusel-item'}
-                            style={{ backgroundImage: `url(${imgUrl3})` }}
-                            onClick={() => this.handleClickButton()}
-                            type={'primary'} key={3} >
-                        </Col>
-                    </Col>
-
-                    
-                    <Col span={24} key={2} className={'carrusel-cont'} >
-                        <Col span={8} className={'carrusel-item'}
-                            style={{ backgroundImage: `url(${imgUrl2})` }}
-                            onClick={() => this.handleClickButton()}
-                            type={'primary'} key={2} >
-                        </Col>
-                        <Col span={8} className={'carrusel-item'}
-                            style={{ backgroundImage: `url(${imgUrl3})` }}
-                            onClick={() => this.handleClickButton()}
-                            type={'primary'} key={3} >
-                        </Col>
-                        <Col span={8} className={'carrusel-item'}
-                            style={{ backgroundImage: `url(${imgUrl1})` }}
-                            onClick={() => this.handleClickButton()}
-                            type={'primary'} key={1} >
-                        </Col>
-                    </Col>
-                </Carousel>
-
-                <Col className={'carrusel-copy'} span={24} style={{ backgroundImage: `url(${copy})` }}></Col>
+                {search && this.renderPromotions()}
+                <Col className={'carrusel-copy'} span={24} style={{ backgroundImage: `url(${copy})` }} />
             </Col>
         )
     }

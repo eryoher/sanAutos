@@ -86,7 +86,7 @@ class AdminPromotions extends Component {
       <Row >
         <Layout>
           <div style={{ marginTop: '50px' }} >
-            <Col span={12} offset={6} > <h1>Promociones</h1> </Col>
+            <Col span={12} offset={6} > <h1>Productos</h1> </Col>
             <Col span={6}>
               <Button type={'primary'} href={'/adminpromotion'} >  Crear <Icon type={'plus'} />   </Button>
             </Col>

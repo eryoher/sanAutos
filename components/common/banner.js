@@ -90,24 +90,6 @@ class Banner extends Component {
         return (
             <Row className={"banner-content"} >
                 <Row className={"banner-top"} >
-                    <Col span={4} >
-                        {/* <Affix offset={5} > */}
-                            <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
-                                <Icon type={this.state.visible ? 'close' : 'menu'} />
-                            </Button>
-                        {/*     </Affix> */}
-                        <Drawer
-                            title="Categorias"
-                            placement="left"
-                            closable={true}
-                            onClose={this.onClose}
-                            visible={this.state.visible}
-                            onClick={this.onClose}
-                        >
-                            <MenuCategories />
-                        </Drawer>
-                    </Col>
-
                     <Col span={20} >
                         {!isLogin &&
                             <Col span={12} offset={12} className={"banner-row banner-login"} >
@@ -138,16 +120,7 @@ class Banner extends Component {
                         onClick={() => this.handleClickButton()}
                         style={{ backgroundImage: `url(${bannerLogo})` }} >
                     </Col>
-                    <Col {...dividerColumn} className={"banner-params"}>
-                        <Row>
-                            <Col span={14} className={'search'} >
-                                <Search size="large" placeholder="SEARCH" />
-                            </Col>
-                            <Col span={10} className={'cities'}>
-                                {this.renderCities()}
-                            </Col>
-                        </Row>
-                    </Col>
+                    
                 </Col>
                 {
                     menuAdmin && <MenuAdmin showMenu />

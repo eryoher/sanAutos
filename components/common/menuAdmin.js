@@ -27,20 +27,20 @@ export default class MenuAdmin extends Component {
                     <Menu.Item key={"test"} disabled>
                         <Divider type={"vertical"} />
                     </Menu.Item>
-                    <Menu.Item key={'promociones'}>                            
-                        <Link href={{ pathname: '/adminpromotions'}}><a>Promociones</a></Link>
+                    <Menu.Item key={'Products'}>                            
+                        <Link href={{ pathname: '/adminpromotions'}}><a>Productos</a></Link>
                     </Menu.Item>
                     <Menu.Item key={"test2"} disabled>
                         <Divider type={"vertical"} />
-                    </Menu.Item>
-                    <Menu.Item key={'companies'}>                            
-                        <Link href={{ pathname: '/adminCompanies'}}><a>Empresas</a></Link>
-                    </Menu.Item>
+                    </Menu.Item> 
+                    <Menu.Item key={'categories'}>                            
+                        <Link href={{ pathname: '/adminCategories'}}><a>Categorias</a></Link>
+                    </Menu.Item>                   
                     <Menu.Item key={"test3"} disabled>
                         <Divider type={"vertical"} />
                     </Menu.Item>
-                    <Menu.Item key={'categories'}>                            
-                        <Link href={{ pathname: '/adminCategories'}}><a>Categorias</a></Link>
+                    <Menu.Item key={'subCategories'}>                            
+                        <Link href={{ pathname: '/adminSubcategories'}}><a>Sub Categorias</a></Link>
                     </Menu.Item>
                     <Menu.Item key={"test4"} disabled>
                         <Divider type={"vertical"} />

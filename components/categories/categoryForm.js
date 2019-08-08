@@ -38,28 +38,7 @@ export default class CategoryForm extends Component {
                                 />
                                 {errors.name && touched.name && <div className="ant-form-explain">{errors.name}</div>}
                             </FormItem>
-                        </Col>
-                        <Col {...formLayout}>
-                            <FormItem
-                                {...largeItemLayout}
-                                className={errors.icon && touched.icon ? 'has-error' : ''}
-                                label={'Icono'}
-                            >
-                                <Select
-                                    value={values.icon}
-                                    name="icon"
-                                    
-                                    onChange={(value) => {                                        
-                                        setFieldValue('icon', value);                                        
-                                    }}
-                                >
-                                    {listIcons.map(icon => (
-                                        <SelectOption value={icon.value} key={icon.value} >{icon.label}</SelectOption>
-                                    ))}
-                                </Select>
-                                {errors.icon && touched.icon && <div className="ant-form-explain">{errors.icon}</div>}
-                            </FormItem>
-                        </Col>                                                     
+                        </Col>                                                                    
                     </Row>
                 </Col>
             </Row>
