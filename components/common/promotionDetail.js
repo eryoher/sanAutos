@@ -84,7 +84,7 @@ class PromotionDetail extends Component {
     }
 
     render() {
-        const { product} = this.props
+        const { product } = this.props
         const nameProduct = (product) ? product.name : '';
         const saleTag = '../../static/img/sale-tag.png'
         const renaultLogo = "../../static/img/logo-renault.png";
@@ -106,7 +106,9 @@ class PromotionDetail extends Component {
                         {product && <Col span={24} className={'description'}>
                             {product.description}
                         </Col>}
-                        <SendInformation />
+                        <Col span={24}>
+                            <SendInformation />
+                        </Col>
                     </Col>
                 </Col>
             </Row>

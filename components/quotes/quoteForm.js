@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input, Select, AutoComplete, Button, Modal, DatePicker, TimePicker, Upload, Icon, Checkbox } from 'antd';
-import { formLayout, largeItemLayout } from '../../constants/TypeForm';
+import { formLayout  } from '../../constants/TypeForm';
 import TextArea from 'antd/lib/input/TextArea';
 import { dateFormat, apiDateFormatOutHour } from '../../lib/DateFormat';
 import moment from 'moment-business-days';
@@ -12,12 +12,12 @@ const FormItem = Form.Item;
 const { RangePicker } = DatePicker;
 
 
-export default class QuoteForm extends Component {   
-    
-    constructor(props){
+export default class QuoteForm extends Component {
+
+    constructor(props) {
         super(props)
         this.state = {};
-    }  
+    }
 
     render() {
         const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, uploadedFiles, listCategories } = this.props;
@@ -25,10 +25,10 @@ export default class QuoteForm extends Component {
         return (
             <Row>
                 <Col span={24}>
-                    <Row>                    
+                    <Row>
                         <Col {...formLayout}>
                             <FormItem
-                                {...largeItemLayout}
+                                {...formLayout}
                                 className={errors.name && touched.name ? 'has-error' : ''}
                                 label={false}
                             >
@@ -47,7 +47,7 @@ export default class QuoteForm extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...largeItemLayout}
+                                {...formLayout}
                                 className={errors.cedula && touched.cedula ? 'has-error' : ''}
                                 label={false}
                             >
@@ -66,7 +66,7 @@ export default class QuoteForm extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...largeItemLayout}
+                                {...formLayout}
                                 className={errors.phone && touched.phone ? 'has-error' : ''}
                                 label={false}
                             >
@@ -85,7 +85,7 @@ export default class QuoteForm extends Component {
                         </Col>
                         <Col {...formLayout}>
                             <FormItem
-                                {...largeItemLayout}
+                                {...formLayout}
                                 className={errors.email && touched.email ? 'has-error' : ''}
                                 label={false}
                             >
@@ -103,28 +103,27 @@ export default class QuoteForm extends Component {
                             </FormItem>
                         </Col>
                         <Col {...formLayout}>
-                            <FormItem                                
+                            <FormItem
                                 className={errors.acceptTerms && touched.acceptTerms ? 'has-error' : ''}
                                 label={false}
                             >
                                 <Checkbox
                                     id="acceptTerms"
-                                    name="acceptTerms"        
+                                    name="acceptTerms"
                                     onChange={(value) => { setFieldValue("acceptTerms", value.target.checked); touched.acceptTerms = true }}
-                                    checked={ values.acceptTerms }
+                                    checked={values.acceptTerms}
                                     onBlur={handleBlur}
 
                                 />
-                                    <label style={{paddingLeft:'10px'}} > 
-                                        <span>Acepto política de </span>
-                                        <a target={"_blank"}  >
-                                            {'protección de datos personales' } 
-                                        </a>
-                                    </label>
+                                <label style={{ paddingLeft: '10px' }} >
+                                    <span>Acepto política de </span>
+                                    <a target={"_blank"}  >
+                                        {'protección de datos personales'}
+                                    </a>
+                                </label>
                                 {errors.acceptTerms && touched.acceptTerms && <div className="ant-form-explain">{errors.acceptTerms}</div>}
                             </FormItem>
                         </Col>
-                                                                                        
                     </Row>
                 </Col>
             </Row>

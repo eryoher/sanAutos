@@ -54,9 +54,16 @@ class SendInformation extends Component {
 
 
         return (
-            <Content className="form-content">
-                <Row style={{ paddingTop: '50px' }}>
-                    <Col span={20} offset={2}>
+            <Content>
+                <Row className="form-content">
+                    <Col span={24} className="form-title" >
+                        Déjanos tus datos
+                    </Col>
+                    <Col span={24} className="form-copy" >
+                        Recibe tu oferta y estrena un Renault
+                    </Col>
+                    <Col span={4}></Col>
+                    <Col span={16}>
                         <Formik
                             initialValues={{ ...initialValues }}
                             onSubmit={(values, actions) => {
@@ -90,15 +97,16 @@ class SendInformation extends Component {
                                             }}
                                         />
                                     </Col>
-                                    <Col span={11} style={{ textAlign: 'center' }} >
+                                    <Col span={24} style={{ textAlign: 'center' }} >
                                         <Button className="ant-btn" type={'primary'} htmlType="submit">
-                                            {'Aceptar'}
+                                            {'ENVIAR'}
                                         </Button>
                                     </Col>
                                 </Form>
                             )}
                         />
                     </Col>
+                    <Col span={4}></Col>
                 </Row>
             </Content>
         )

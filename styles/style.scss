@@ -94,7 +94,7 @@
     }
     .boton:hover {
       text-decoration: underline solid #e4be2f;
-      border-bottom: #e4be2f;
+      border-bottom: #c2beaf;
     }
   }
   .boton-menu {
@@ -214,11 +214,50 @@
         @include RenaultLifeBold(14pt);
       }
     }
-    .form {
-      height: 25rem;
-      background-position: center;
-      background-size: 500px 400px;
-      background-repeat: no-repeat;
+  }
+}
+
+.form-content {
+  background-color: #dfe0e5;
+  border-radius: 0.5rem;
+  color: #000;
+  .form-title {
+    @include RenaultLifeBold(22pt);
+  }
+  .form-cpy {
+    @include RenaultLifeBold(12pt);
+    padding-bottom: 1rem;
+  }
+  .ant-input {
+    @include RenaultLifeBold(10pt);
+  }
+  .ant-btn {
+    height: 2.5rem;
+    background-color: #e4be2f;
+    border-color: #e4be2f;
+    padding-bottom: 2rem;
+    border-radius: 0%;
+    color: #000;
+    @include RenaultLifeBold(18pt);
+    position: absolute;
+    top: -1rem;
+    @include breakpoint(max-width 320px){
+      left: 1rem;
+    }
+    @include breakpoint(max-width 375px){
+      left: 2rem;
+    }
+    @include breakpoint(max-width 425px){
+      left: 3rem;
+    }
+    @include breakpoint(max-width 768px){
+      left: 1.5rem;
+    }
+    @include breakpoint(max-width 1024px){
+      left: 3.5rem;
+    }
+    @include breakpoint(max-width 1440px){
+      left: 7rem;
     }
   }
 }
