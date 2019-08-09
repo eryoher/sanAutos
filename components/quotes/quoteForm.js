@@ -46,7 +46,7 @@ export default class QuoteForm extends Component {
                                     id="cedula"
                                     type="text"
                                     name="cedula"
-                                    placeholder={'Numero de Cedula *'}
+                                    placeholder={'Número de Cedula *'}
                                     className={'input-form-login'}
                                     value={values.cedula}
                                     onChange={handleChange}
@@ -65,7 +65,7 @@ export default class QuoteForm extends Component {
                                     id="phone"
                                     type="text"
                                     name="phone"
-                                    placeholder={'Numero de Celular *'}
+                                    placeholder={'Número de Celular *'}
                                     className={'input-form-login'}
                                     value={values.phone}
                                     onChange={handleChange}
