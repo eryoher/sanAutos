@@ -97,10 +97,12 @@ class SendInformation extends Component {
                                             }}
                                         />
                                     </Col>
-                                    <Col span={24} style={{ textAlign: 'center' }} >
-                                        <Button className="ant-btn" type={'primary'} htmlType="submit">
-                                            {'ENVIAR'}
-                                        </Button>
+                                    <Col span={24} className={"btn-content"} >
+                                        <Col span={24} style={{ textAlign: 'center' }} >
+                                            <Button className="ant-btn" type={'primary'} htmlType="submit">
+                                                {'ENVIAR'}
+                                            </Button>
+                                        </Col>
                                     </Col>
                                 </Form>
                             )}

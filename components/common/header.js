@@ -12,8 +12,8 @@ const dividerColumn = {
 
 export default class Header extends Component {
     render() {
-        const renaultLogo = "../../static/img/logo-renault.png";
-        const banner = "../../static/img/logo.png";
+        const renaultLogo = "../../static/img/logo-renault.webp";
+        const banner = "../../static/img/logo.webp";
 
         return (
             <Col span={24} className={"header-cont"} >

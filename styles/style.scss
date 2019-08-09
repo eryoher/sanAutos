@@ -92,6 +92,10 @@
         @include RenaultLifeBold(10pt);
       }
     }
+    .boton:visited {
+      text-decoration: underline solid #e4be2f;
+      border-bottom: #c2beaf;
+    }
     .boton:hover {
       text-decoration: underline solid #e4be2f;
       border-bottom: #c2beaf;
@@ -188,11 +192,82 @@
       }
     }
 
-    .tag-sale {
-      height: 18rem;
-      background-position: top center;
-      background-size: 400px 300px;
-      background-repeat: no-repeat;
+    .tag-sale-cont {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-around;
+      transform: rotate(7deg);
+      .tag-sale {
+        width: 230px;
+        height: 300px;
+        .redondeado {
+          width: 164px;
+          height: 170px;
+          transform: rotate(45deg);
+          border-radius: 0.5rem;
+          background-color: #e6b722;
+          position: relative;
+          top: 86px;
+          left: 33px;
+          z-index:-1;
+          .in-circle {
+            justify-content: right;
+            padding-left: 1rem;
+            padding-top: 1rem;
+            .in-tag {
+              height: 40px;
+              width: 40px;
+              background-color: #666565;
+              border-radius: 50%;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              justify-content: space-around;
+              .in-mini {
+                height: 20px;
+                width: 20px;
+                background-color: #fff;
+                border-radius: 50%;
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+        .tag-top {
+          height: 40px;
+          border-top-right-radius: 0.2rem;
+          border-top-left-radius: 0.2rem;
+          background: #e6b722;
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          justify-content: space-around;
+          
+          .title {
+            height: 60px;
+            padding: 0.2rem;
+            @include RenaultLifeBold(24pt);
+            color: #000;
+          }
+        }
+        .tag-bottom {
+          height: 140px;
+          background-color: #1d1d1d;
+          border-bottom-left-radius: 0.8rem;
+          border-bottom-right-radius: 0.8rem;
+          @include RenaultLifeBold(13pt);
+          color: #fff;
+          text-align: center;
+          padding: 0.5rem;
+          .tag-bono {
+            @include RenaultLifeBold(20pt);
+            color: #b3b3b3;
+            padding-bottom: 1rem;
+          }
+        }
+      }
     }
   }
 
@@ -231,33 +306,20 @@
   .ant-input {
     @include RenaultLifeBold(10pt);
   }
-  .ant-btn {
-    height: 2.5rem;
-    background-color: #e4be2f;
-    border-color: #e4be2f;
-    padding-bottom: 2rem;
-    border-radius: 0%;
-    color: #000;
-    @include RenaultLifeBold(18pt);
-    position: absolute;
-    top: -1rem;
-    @include breakpoint(max-width 320px){
-      left: 1rem;
-    }
-    @include breakpoint(max-width 375px){
-      left: 2rem;
-    }
-    @include breakpoint(max-width 425px){
-      left: 3rem;
-    }
-    @include breakpoint(max-width 768px){
-      left: 1.5rem;
-    }
-    @include breakpoint(max-width 1024px){
-      left: 3.5rem;
-    }
-    @include breakpoint(max-width 1440px){
-      left: 7rem;
+  .btn-content {
+    height: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    .ant-btn {
+      height: 2.5rem;
+      background-color: #e4be2f;
+      border-color: #e4be2f;
+      border-radius: 0%;
+      color: #000;
+      @include RenaultLifeBold(18pt);
     }
   }
 }

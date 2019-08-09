@@ -63,7 +63,7 @@ class Gallery extends Component {
 
     render() {
         const { search } = this.props;       
-        const copy = '../../static/img/copy.png'
+        const copy = '../../static/img/copy.webp'
 
         return (
             <Col span={24}>

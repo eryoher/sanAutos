@@ -86,7 +86,6 @@ class PromotionDetail extends Component {
     render() {
         const { product } = this.props
         const nameProduct = (product) ? product.name : '';
-        const saleTag = '../../static/img/sale-tag.png'
         const renaultLogo = "../../static/img/logo-renault.png";
 
         return (
@@ -98,7 +97,24 @@ class PromotionDetail extends Component {
                     <Col {...dividerImg} className={'left-promo'} >
                         <Col span={24} className={'title'} >{nameProduct}</Col>
                         {product && this.renderListImg()}
-                        <Col span={24} className={'tag-sale'} style={{ backgroundImage: `url(${saleTag})` }} />
+                        <Col span={24} className={'tag-sale-cont'}>
+                            <Col span={24} className={'tag-sale'}>
+                                <Col span={24} className="redondeado">
+                                    <Col span={24} className={'in-circle'} >
+                                        <Col span={24} className={'in-tag'}>
+                                            <Col span={24} className={'in-mini'}></Col>
+                                        </Col>
+                                    </Col>
+                                </Col>
+                                <Col span={24} className={'tag-top'}>
+                                    <Col span={24} className={'title'}>BONO</Col>
+                                </Col>
+                                <Col span={24} className={'tag-bottom'}>
+                                    <Col span={24} className={'tag-bono'}> $1.000.000</Col>
+                                    <Col span={24} >Aprovecha este bono diligenciando el  formulario</Col>
+                                </Col>
+                            </Col>
+                        </Col>
                     </Col>
                     <Col {...dividerDesc} className={'description-promo'}>
                         <Col span={24} className={'title'}>Descripción</Col>
