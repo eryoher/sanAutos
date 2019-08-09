@@ -89,16 +89,18 @@ class Menu extends Component {
 
     render() {
         const { listCategories } = this.props;
+        const copy = '../../static/img/copybt.webp'
+
         return (
             <Col span={24}>
                 <Col span={24} className={"body-buttons"} >
                     {listCategories && this.renderCategories()}
 
                 </Col>
-                <Col span={24} className={"boton-menu"} >
+                { this.state.selectCategorie && <Col span={24} className={"boton-menu"} >
                     {this.renderProducts()}
-                </Col>
-                <Col span={24} className={"body-copy"} ></Col>
+                </Col>}
+                <Col span={24} className={"body-copy"}  style={{ backgroundImage: `url(${copy})` }} />
             </Col>
         )
     }

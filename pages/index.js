@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import Head from 'next/head';
 import Footer from '../components/common/footer';
 import Header from '../components/common/header';
-import Buttons from '../components/common/body';
+import Menu from '../components/common/menu';
 import Gallery from '../components/common/gallery';
 
 export default class Index extends Component {
@@ -20,7 +20,7 @@ export default class Index extends Component {
                     <Col span={24} className={"body-cont"} style={{ backgroundImage: `url(../../static/img/fondo.webp)` }} >
                         <Header />
                         <Gallery />
-                        <Buttons />
+                        <Menu />
                     </Col>
                     <Col span={24} ><Footer /></Col>
                 </Row>

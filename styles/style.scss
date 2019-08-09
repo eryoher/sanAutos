@@ -11,7 +11,7 @@
     height: 5.5rem;
     background-repeat: no-repeat;
     background-size: 150px;
-    background-position: center right;
+    background-position: 80% 50%;
     background-color: #fff;
 
     @include breakpoint(max-width 767px) {
@@ -52,9 +52,8 @@
 }
 
 .body-cont {
-  background-repeat: repeat;
   background-size: 100%;
-
+  background-repeat: repeat-y;
   .body-carrusel {
     height: 20rem;
 
@@ -117,7 +116,7 @@
   }
 
   .boton-menu {
-    margin-top: 0.3rem;
+    margin-top: 0.1rem;
     background-color: #fff;
     color: #000;
     padding: 1rem;
@@ -218,11 +217,11 @@
         display: inline-block;
       }
     }
-
     .tag-sale-cont {
+      height: 400px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      //align-items: center;
       justify-content: space-around;
       transform: rotate(7deg);
       .tag-sale {
