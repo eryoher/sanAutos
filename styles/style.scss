@@ -90,7 +90,14 @@
     justify-content: start;
     align-items: flex-start;
     justify-content: space-around;
-
+    .boton:visited {
+      text-decoration: underline solid #e4be2f;
+      border-bottom: #c2beaf;
+    }
+    .boton:hover {
+      text-decoration: underline solid #e4be2f;
+      border-bottom: #c2beaf;
+    }
     .boton {
       background-color: #fff;
       color: #000;
@@ -105,14 +112,6 @@
       @include breakpoint(max-width 767px) {
         @include RenaultLifeBold(10pt);
       }
-    }
-    .boton:visited {
-      text-decoration: underline solid #e4be2f;
-      border-bottom: #c2beaf;
-    }
-    .boton:hover {
-      text-decoration: underline solid #e4be2f;
-      border-bottom: #c2beaf;
     }
   }
 
@@ -237,7 +236,7 @@
           position: relative;
           top: 86px;
           left: 33px;
-          z-index:-1;
+          z-index: -1;
           .in-circle {
             justify-content: right;
             padding-left: 1rem;
@@ -271,7 +270,7 @@
           justify-content: flex-end;
           align-items: flex-end;
           justify-content: space-around;
-          
+
           .title {
             height: 60px;
             padding: 0.2rem;
