@@ -20,6 +20,7 @@ export default class Body extends Component {
     render() {
         const car1 = "../../static/img/logan.png";
         const car2 = "../../static/img/sandero.png";
+        const copy = '../../static/img/copybt.webp'
 
         return (
             <Col span={24}>
@@ -33,7 +34,7 @@ export default class Body extends Component {
                     <Col span={6} className="car" style={{ backgroundImage: `url(${car1})` }} onClick={() => this.handleClickButton()} >Logan</Col>
                     <Col span={6} className="car" style={{ backgroundImage: `url(${car2})` }} onClick={() => this.handleClickButton()} >Sandero</Col>
                 </Col>
-                <Col span={24} className={"body-copy"} ></Col>
+                <Col span={24} className={"body-copy"}  style={{ backgroundImage: `url(${copy})` }} />
             </Col>
         )
     }
