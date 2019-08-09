@@ -1,7 +1,7 @@
 const withSass = require('@zeit/next-sass')
 const withFonts = require('next-fonts');
 //const lineBase = "http://localhost:3001/api"; //localhost
-const lineBase = "http://api.cyberdays.com.co/api"; //CyberDays
+const lineBase = "https://api.cyberdays.com.co/api"; //CyberDays
 
 module.exports = {
   exportPathMap: function() {
@@ -17,7 +17,7 @@ module.exports = withFonts ( withSass({
   publicRuntimeConfig: { // Will be available on both server and client
     mercadoPagoToken: 'TEST-6989747173808942-031217-2e6e01703e7f786b1592f32bf6b42d74-147807596',
     //appUrl: "http://localhost:3000",
-    appUrl: "http://cyberdays.com.co",
+    appUrl: "https://cyberdays.com.co",
     apiUrl: process.env.API_URL || lineBase,
     allowedImageFileTypes: ['image/jpeg', 'image/png', "image/jpg"],
     allowedImageFileSize: 1, // max file Size in MB

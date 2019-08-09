@@ -28,7 +28,7 @@ export default class MenuAdmin extends Component {
                         <Divider type={"vertical"} />
                     </Menu.Item>
                     <Menu.Item key={'Products'}>                            
-                        <Link href={{ pathname: '/adminpromotions'}}><a>Productos</a></Link>
+                        <Link href={{ pathname: '/adminPromotions'}}><a>Productos</a></Link>
                     </Menu.Item>
                     <Menu.Item key={"test2"} disabled>
                         <Divider type={"vertical"} />

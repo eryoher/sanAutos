@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Tabs, Button, Modal, Row } from 'antd';
 import { connect } from 'react-redux';
-import { createPreference } from '../../actions';
 import getConfig from 'next/config';
 import SendInformation from '../quotes/sendInformation';
 import Router from 'next/router'
@@ -122,4 +121,4 @@ function mapStateToProps({ auth }) {
     }
 }
 
-export default connect(mapStateToProps, { createPreference })(PromotionDetail);
+export default connect(mapStateToProps)(PromotionDetail);
