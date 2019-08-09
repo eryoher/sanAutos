@@ -3,7 +3,6 @@ import { Col, Tabs, Button, Modal, Row } from 'antd';
 import { connect } from 'react-redux';
 import { createPreference } from '../../actions';
 import getConfig from 'next/config';
-import ListCategories from '../categories/listCategories';
 import SendInformation from '../quotes/sendInformation';
 import Router from 'next/router'
 
@@ -23,7 +22,6 @@ const dividerDesc = {
 }
 
 const { publicRuntimeConfig } = getConfig();
-const TabPane = Tabs.TabPane;
 
 class PromotionDetail extends Component {
 
@@ -116,11 +114,11 @@ class PromotionDetail extends Component {
     }
 }
 
-function mapStateToProps({ auth, payments }) {
-    const { preference } = payments;
+function mapStateToProps({ auth }) {
+   
     return {
-        auth,
-        preference
+        auth
+   
     }
 }
 

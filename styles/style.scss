@@ -6,12 +6,14 @@
 .header-cont {
   background-repeat: repeat;
   background-size: 80%;
+
   .header-top {
     height: 5.5rem;
     background-repeat: no-repeat;
     background-size: 150px;
     background-position: center right;
     background-color: #fff;
+
     @include breakpoint(max-width 767px) {
       height: 4rem;
       background-size: 100px;
@@ -23,6 +25,7 @@
     background-repeat: no-repeat;
     background-size: 500px;
     background-position: center;
+
     @include breakpoint(max-width 767px) {
       height: 15rem;
       background-size: 300px;
@@ -32,12 +35,14 @@
 
 .footer-cont {
   background-color: #fff;
+
   .footer-term {
     height: 16rem;
     padding: 2rem;
     text-align: justify;
     font-weight: bold;
     @include RenaultLifeLight(8pt);
+
     @include breakpoint(max-width 767px) {
       height: 15rem;
       padding: 1rem;
@@ -49,23 +54,30 @@
 .body-cont {
   background-repeat: repeat;
   background-size: 100%;
+
   .body-carrusel {
     height: 20rem;
+
     @include breakpoint(max-width 767px) {
       height: 15rem;
     }
+
     .carrusel-cont {
       height: 100%;
+
       .carrusel-item {
         height: 350px;
+
         @include breakpoint(max-width 767px) {
           height: 300px;
         }
+
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
         padding: 0.5rem;
         cursor: pointer;
+
         .big {
           height: 400px;
         }
@@ -78,6 +90,7 @@
     justify-content: start;
     align-items: flex-start;
     justify-content: space-around;
+
     .boton {
       background-color: #fff;
       color: #000;
@@ -88,21 +101,25 @@
       cursor: pointer;
       border-right: 0.1rem solid #a9a9a9;
       border-left: #a9a9a9;
+
       @include breakpoint(max-width 767px) {
         @include RenaultLifeBold(10pt);
       }
     }
+
     .boton:hover {
       text-decoration: underline solid #e4be2f;
       border-bottom: #c2beaf;
     }
   }
+
   .boton-menu {
     margin-top: 0.3rem;
     background-color: #fff;
     color: #000;
     padding: 1rem;
     cursor: pointer;
+
     .car {
       text-align: center;
       vertical-align: bottom;
@@ -112,25 +129,30 @@
       background-repeat: no-repeat;
       padding-top: 5rem;
       @include RenaultLifeBold(10pt);
+
       @include breakpoint(max-width 767px) {
         @include RenaultLifeBold(8pt);
       }
     }
   }
+
   .body-copy {
     height: 10rem;
     background-position: center;
     background-size: 600px;
     background-repeat: no-repeat;
+
     @include breakpoint(max-width 767px) {
       background-size: 400px;
     }
   }
+
   .carrusel-copy {
     height: 10rem;
     background-position: center;
     background-size: 600px;
     background-repeat: no-repeat;
+
     @include breakpoint(max-width 767px) {
       background-size: 400px;
     }
@@ -143,19 +165,23 @@
 
   .left-promo {
     padding-left: 3rem;
+
     @include breakpoint(max-width 767px) {
       padding-left: 0rem;
     }
+
     .title {
       @include breakpoint(max-width 767px) {
         padding-left: 0rem;
       }
+
       text-align: center;
       padding-left: 1.5rem;
       padding-top: 2rem;
       color: #fff;
       @include RenaultLifeBold(24pt);
     }
+
     .main-image {
       padding-top: 2%;
       padding-bottom: 3%;
@@ -163,6 +189,7 @@
       justify-content: center;
       align-items: center;
       justify-content: space-around;
+
       img {
         border-radius: 0.5rem;
         height: 500px;
@@ -171,6 +198,7 @@
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+
         @include breakpoint(max-width 768px) {
           height: 300px;
         }
@@ -201,10 +229,12 @@
     padding-top: 3rem;
     padding-right: 3rem;
     text-align: center;
+
     .title {
       color: #f4d828;
       @include RenaultLifeBold(24pt);
     }
+
     .description {
       color: #fff;
       padding: 0.5rem;
@@ -221,16 +251,20 @@
   background-color: #dfe0e5;
   border-radius: 0.5rem;
   color: #000;
+
   .form-title {
     @include RenaultLifeBold(22pt);
   }
+
   .form-cpy {
     @include RenaultLifeBold(12pt);
     padding-bottom: 1rem;
   }
+
   .ant-input {
     @include RenaultLifeBold(10pt);
   }
+
   .ant-btn {
     height: 2.5rem;
     background-color: #e4be2f;
@@ -241,23 +275,35 @@
     @include RenaultLifeBold(18pt);
     position: absolute;
     top: -1rem;
-    @include breakpoint(max-width 320px){
+
+    @include breakpoint(max-width 320px) {
       left: 1rem;
     }
-    @include breakpoint(max-width 375px){
+
+    @include breakpoint(max-width 375px) {
       left: 2rem;
     }
-    @include breakpoint(max-width 425px){
+
+    @include breakpoint(max-width 425px) {
       left: 3rem;
     }
-    @include breakpoint(max-width 768px){
+
+    @include breakpoint(max-width 768px) {
       left: 1.5rem;
     }
-    @include breakpoint(max-width 1024px){
+
+    @include breakpoint(max-width 1024px) {
       left: 3.5rem;
     }
-    @include breakpoint(max-width 1440px){
+
+    @include breakpoint(max-width 1440px) {
       left: 7rem;
     }
   }
+}
+
+.data-protection {
+  font-size: 8pt;
+  text-align: justify;
+  padding-top: 15px;
 }

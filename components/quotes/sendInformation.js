@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Row, Col, Button, Layout, Form, message } from 'antd';
+import { Row, Col, Button, Layout, Form, message, Modal } from 'antd';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import * as qs from 'qs';
@@ -8,6 +8,7 @@ import { formLayout } from '../../constants/TypeForm';
 import { sendQuoteInformation } from '../../actions';
 
 import QuoteForm from './quoteForm';
+import PersonalDataProtection from '../common/personalDataProtection';
 
 
 const { Content } = Layout;
@@ -17,7 +18,8 @@ class SendInformation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productId: null
+            productId: null,
+            showModal: false
         }
     }
 
@@ -39,6 +41,15 @@ class SendInformation extends Component {
 
     onSubmitCompany = (values) => {
         this.props.createCompany(values);
+    }
+
+    handleShowModal = () => {
+        this.setState({ showModal: true })
+    }
+
+    handleCloseModal = () => {
+        this.setState({ showModal: false })
+
     }
 
 
@@ -84,6 +95,7 @@ class SendInformation extends Component {
                                 <Form onSubmit={handleSubmit}>
                                     <Col {...formLayout}>
                                         <QuoteForm
+                                            showModal={this.handleShowModal}
                                             {...{
                                                 values,
                                                 handleBlur,
@@ -97,6 +109,14 @@ class SendInformation extends Component {
                                             }}
                                         />
                                     </Col>
+                                    <Modal
+                                        visible={this.state.showModal}
+                                        onCancel={() => this.handleCloseModal()}
+                                        footer={false}
+                                        
+                                    >
+                                        <PersonalDataProtection />
+                                    </Modal>
                                     <Col span={24} style={{ textAlign: 'center' }} >
                                         <Button className="ant-btn" type={'primary'} htmlType="submit">
                                             {'ENVIAR'}
