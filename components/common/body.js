@@ -1,40 +1,115 @@
 import React, { Component } from 'react'
 import { Row, Col, Button } from 'antd';
-import getConfig from 'next/config';
 import Router from 'next/router'
-const { publicRuntimeConfig } = getConfig();
-const dividerColumn = {
-    xs: { span: 12 },
-    sm: { span: 12 },
-    md: { span: 12 },
-    lg: { span: 6 },
-    xl: { span: 6 },
-}
+import { connect } from 'react-redux';
+import { getCategoriesWithProduct } from '../../actions';
 
-export default class Body extends Component {
-    handleClickButton() {
-        const { promotion } = this.props
-        Router.push({ pathname: '/promotion', query: { id: 1 } });
+const productsToShow = [];
+
+class Menu extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectCategorie: null,
+            productsToShow: {}
+        }
     }
-    
-    render() {
-        const car1 = "../../static/img/logan.png";
-        const car2 = "../../static/img/sandero.png";
 
+    componentWillMount = () => {
+        this.props.getCategoriesWithProduct()
+    }
+
+    handleClickButton(prdId) {
+        const { promotion } = this.props
+        Router.push({ pathname: '/promotion', query: { id: prdId } });
+    }
+
+    handleSelectCategorie = (id) => {
+        this.setState({ selectCategorie: id })
+    }
+
+    renderCategories = () => {
+        const { listCategories } = this.props;
+        const rows = [];
+
+        listCategories.data.forEach(categorie => {
+            const products = []
+            let ban = true;
+
+            rows.push(
+                <Col key={categorie.id} span={6} className="boton" onClick={() => this.handleSelectCategorie(categorie.id)} >
+                    {categorie.name}
+                </Col>
+            )
+
+            categorie.products.forEach(prd => {
+                const carLogo = `../../static/img/product_logos/${prd.logo}`;
+                products.push(
+                    <Col span={6} key={prd.id} className="car" style={{ backgroundImage: `url(${carLogo})` }} onClick={() => this.handleClickButton(prd.id)} >
+                        {prd.name}
+                    </Col>
+                )
+            });
+
+
+            productsToShow.forEach(prd => {
+                if (prd.code === categorie.id) {
+                    ban = false
+                    return ban;
+                }
+            });
+
+            if (ban) {
+                productsToShow.push({
+                    code: categorie.id,
+                    data: products
+                })
+            }
+
+        });
+
+
+        return rows;
+    }
+
+
+    renderProducts = () => {
+        let result = null
+        productsToShow.forEach(product => {
+            if (product.code === this.state.selectCategorie) {
+                return (
+                    result = product.data
+                )
+            }
+        });
+
+        return result;
+    }
+
+    render() {
+        const { listCategories } = this.props;
         return (
             <Col span={24}>
                 <Col span={24} className={"body-buttons"} >
-                    <Col span={6} className="boton" >VEHíCULOS</Col>
-                    <Col span={6} className="boton" >CAMIONETAS</Col>
-                    <Col span={6} className="boton" >PICK UP</Col>
-                    <Col span={6} className="boton" >ELECTRICOS</Col>
+                    {listCategories && this.renderCategories()}
+
                 </Col>
                 <Col span={24} className={"boton-menu"} >
-                    <Col span={6} className="car" style={{ backgroundImage: `url(${car1})` }} onClick={() => this.handleClickButton()} >Logan</Col>
-                    <Col span={6} className="car" style={{ backgroundImage: `url(${car2})` }} onClick={() => this.handleClickButton()} >Sandero</Col>
+                    {this.renderProducts()}
                 </Col>
                 <Col span={24} className={"body-copy"} ></Col>
             </Col>
         )
     }
 }
+
+
+function mapStateToProps({ categories }) {
+    const listCategories = categories.categoriesCount
+    return {
+        listCategories
+    }
+}
+
+export default connect(mapStateToProps, { getCategoriesWithProduct })(Menu);

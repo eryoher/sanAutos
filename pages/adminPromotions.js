@@ -32,12 +32,12 @@ class AdminPromotions extends Component {
       },
       {
         title: "Modelo",
-        dataIndex: 'subCategoriesId',
-        key: 'subCategoriesId',
+        dataIndex: 'categories',
+        key: 'categories',
         width: 200,
         render: (text, record) => {
           return (
-            record.subCategories.name
+            record.categories.name
           )
         },
       },

@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import * as qs from 'qs';
 import PromotionFormInput from '../components/promotions/promotionFormInut';
 import { formLayout } from '../constants/TypeForm';
-import { getPromotion, getSubCategories, updatePromotion, createPromotion }  from '../actions';
+import { getPromotion, getCategories, updatePromotion, createPromotion }  from '../actions';
 import moment from 'moment-business-days';
 import Router from 'next/router';
 import getConfig from 'next/config';
@@ -15,6 +15,45 @@ import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
 
 const { Content } = Layout;
+
+const logosProducts = [
+    {
+        key : 'logan.png',
+        label:'Logan'
+    },
+    {
+        key : 'sandero.png',
+        label:'Sandero'
+    },
+    {
+        key : 'capture.png',
+        label:'Caputure'
+    },
+    {
+        key : 'duster.png',
+        label:'Duster'
+    },
+    {
+        key : 'kangoo.png',
+        label:'Kangoo'
+    },
+    {
+        key : 'koleos.png',
+        label:'Koleos'
+    },
+    {
+        key : 'oroch.jpg',
+        label:'Oroch'
+    },
+    {
+        key : 'reveal.jpg',
+        label:'Reveal'
+    },
+    {
+        key : 'stepway.png',
+        label:'Stepway'
+    }    
+]
 
 class AdminPromotion extends Component {
 
@@ -39,7 +78,7 @@ class AdminPromotion extends Component {
         if( prevProps.success !== this.props.success ){
             if( this.props.success ){
                 message.success(this.props.success.data);
-                Router.push('/adminpromotions');
+                Router.push('/adminPromotions');
             }
         }
 
@@ -50,7 +89,7 @@ class AdminPromotion extends Component {
     }
 
     componentWillMount = () => {
-        this.props.getSubCategories();        
+        this.props.getCategories();        
     }
 
     onSubmitProduct = (values) => {
@@ -96,7 +135,7 @@ class AdminPromotion extends Component {
     }
 
     render() {
-        const {promotion, subcategoriesList} = this.props;        
+        const {promotion, listCategories} = this.props;        
         
         const initialValues = {
             
@@ -150,7 +189,8 @@ class AdminPromotion extends Component {
                                                 handleSubmit,
                                                 setFieldValue,
                                                 setFieldTouched,
-                                                subcategoriesList
+                                                listCategories,
+                                                logosProducts
                                             }}
                                         />
                                     </Col>
@@ -175,19 +215,17 @@ class AdminPromotion extends Component {
     }
 }
 
-function mapStateToProps({ promotions, categories, auth, subCategories }){
-    const {search, promotion, success} = promotions
-    const { subcategoriesList } = subCategories;
+function mapStateToProps({ promotions, categories, auth,  }){
+    const {search, promotion, success} = promotions    
     return {
         search,
         promotion,
         listCategories : (categories.categories) ? categories.categories : [],
         success,
-        auth,
+        auth,        
         
-        subcategoriesList
-    }
+   }
 }
 
-export default connect (mapStateToProps,{getPromotion, getSubCategories, updatePromotion, createPromotion})(AdminPromotion);
+export default connect (mapStateToProps,{getPromotion, getCategories, updatePromotion, createPromotion})(AdminPromotion);
 

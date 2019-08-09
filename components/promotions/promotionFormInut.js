@@ -50,7 +50,7 @@ export default class PromotionFormInput extends Component {
     }
 
     render() {
-        const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, uploadedFiles, subcategoriesList } = this.props;
+        const { t, errors, touched, values, handleChange, handleBlur, setFieldValue, setFieldTouched, search, uploadedFiles, listCategories, logosProducts } = this.props;
 
         return (
             <Row>
@@ -113,27 +113,46 @@ export default class PromotionFormInput extends Component {
                                 {errors.promotion && touched.promotion && <div className="ant-form-explain">{errors.promotion}</div>}
                             </FormItem>
                         </Col>
-                        
-                       
                         <Col {...formLayout}>
                             <FormItem
                                 {...largeItemLayout}
-                                className={errors.subCategoriesId && touched.subCategoriesId ? 'has-error' : ''}
+                                className={errors.categoriesId && touched.categoriesId ? 'has-error' : ''}
                                 label={'Model'}
                             >
                                 <Select
-                                    value={values.subCategoriesId}
-                                    name="subCategoriesId"
+                                    value={values.categoriesId}
+                                    name="categoriesId"
                                     style={{ width: 200 }}
                                     onChange={(value) => {
-                                        setFieldValue('subCategoriesId', value);
+                                        setFieldValue('categoriesId', value);
                                     }}
                                 >
-                                    {subcategoriesList.map(category => (
+                                    {listCategories.map(category => (
                                         <SelectOption value={category.id} key={category.id} >{category.name}</SelectOption>
                                     ))}
                                 </Select>
-                                {errors.subCategoriesId && touched.subCategoriesId && <div className="ant-form-explain">{errors.subCategoriesId}</div>}
+                                {errors.categoriesId && touched.categoriesId && <div className="ant-form-explain">{errors.categoriesId}</div>}
+                            </FormItem>
+                        </Col>
+                        <Col {...formLayout}>
+                            <FormItem
+                                {...largeItemLayout}
+                                className={errors.logo && touched.logo ? 'has-error' : ''}
+                                label={'Logo'}
+                            >
+                                <Select
+                                    value={values.logo}
+                                    name="logo"
+                                    style={{ width: 200 }}
+                                    onChange={(value) => {
+                                        setFieldValue('logo', value);
+                                    }}
+                                >
+                                    {logosProducts.map(logo => (
+                                        <SelectOption value={logo.key} key={logo.key} >{logo.label}</SelectOption>
+                                    ))}
+                                </Select>
+                                {errors.logo && touched.logo && <div className="ant-form-explain">{errors.logo}</div>}
                             </FormItem>
                         </Col>
                         <Col {...formLayout}>

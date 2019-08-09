@@ -99,6 +99,7 @@
       border-bottom: #c2beaf;
     }
     .boton {
+      text-transform: uppercase;
       background-color: #fff;
       color: #000;
       @include RenaultLifeBold(16pt);

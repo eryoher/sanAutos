@@ -84,7 +84,7 @@ class PromotionDetail extends Component {
         const { product } = this.props
         const nameProduct = (product) ? product.name : '';
         const renaultLogo = "../../static/img/logo-renault.png";
-
+        const bono = (product) ? new Intl.NumberFormat().format(product.promotion) : 0;
         return (
             <Row>
                 <Col span={24} className={"header-cont"}>
@@ -106,8 +106,8 @@ class PromotionDetail extends Component {
                                 <Col span={24} className={'tag-top'}>
                                     <Col span={24} className={'title'}>BONO</Col>
                                 </Col>
-                                <Col span={24} className={'tag-bottom'}>
-                                    <Col span={24} className={'tag-bono'}> $1.000.000</Col>
+                                <Col span={24} className={'tag-bottom mb-5'}>
+                                    <Col span={24} className={'tag-bono'}> {`$ ${bono}`}</Col>
                                     <Col span={24} >Aprovecha este bono diligenciando el  formulario</Col>
                                 </Col>
                             </Col>
