@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { searchCategories, removeCategory } from '../actions';
-import Link from 'next/link'
 import { Row, Col, Icon, Table, Button, Modal, message, Divider } from 'antd';
 import Layout from '../components/common/layout';
 import AdminCategory from '../components/categories/adminCategory';

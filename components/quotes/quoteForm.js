@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input, Select, AutoComplete, Button, Modal, DatePicker, TimePicker, Upload, Icon, Checkbox } from 'antd';
 import { formLayout  } from '../../constants/TypeForm';
-import TextArea from 'antd/lib/input/TextArea';
-import { dateFormat, apiDateFormatOutHour } from '../../lib/DateFormat';
-import moment from 'moment-business-days';
-import UploadFiles from '../common/uploadFiles';
-
-
-const SelectOption = Select.Option;
 const FormItem = Form.Item;
-const { RangePicker } = DatePicker;
-
 
 export default class QuoteForm extends Component {
 
@@ -117,7 +108,7 @@ export default class QuoteForm extends Component {
                                 />
                                 <label style={{ paddingLeft: '10px' }} >
                                     <span>Acepto política de </span>
-                                    <a target={"_blank"}  >
+                                    <a target={"_blank"} onClick={this.props.showModal}  >
                                         {'protección de datos personales'}
                                     </a>
                                 </label>
