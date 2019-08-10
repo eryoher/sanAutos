@@ -14,7 +14,7 @@ export default class PromotionItem extends Component {
 
     render() {
         const { promotion } = this.props        
-        let imgUrl = '../../static/img/no-imagen.jpg'
+        let imgUrl = '../../static/img/no-imagen.webp'
         
         if (promotion.assets.length) {
             imgUrl = `${publicRuntimeConfig.productImagesBasePath}${promotion.assets[0].name}`;

@@ -5,6 +5,14 @@ import { Row, Col, Carousel } from 'antd';
 import PromotionItem from './promotionItem';
 import Router from 'next/router'
 
+const dividerImg = {
+    xs: { span: 24 },
+    sm: { span: 24 },
+    md: { span: 8 },
+    lg: { span: 8 },
+    xl: { span: 8 },
+}
+
 class Gallery extends Component {
 
     constructor(props) {

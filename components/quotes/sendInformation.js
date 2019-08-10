@@ -34,8 +34,10 @@ class SendInformation extends Component {
 
     componentDidUpdate = (prevProps) => {
         if (prevProps.responseForm !== this.props.responseForm && this.props.responseForm) {
-            const msn = 'Se envio la informacion al concesionario';
-            message.success(msn);
+            const msn = 'Gracias por dejarnos tus datos, muy pronto recibirás en tu correo el bono para ser redimido. ';
+            const msn2 = 'Si el bono no te llegó ala bandeja principal de correo por favor verifica en spam'
+            message.success(msn, 5);
+            message.success(msn2, 5);
         }
     }
 

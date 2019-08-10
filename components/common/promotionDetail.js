@@ -114,14 +114,14 @@ class PromotionDetail extends Component {
                         </Col>
                     </Col>
                     <Col {...dividerDesc} className={'description-promo'}>
-                        <Col span={24} className={'title'}>Descripción</Col>
-
-                        {product && <Col span={24} className={'description'}>
-                            {product.description}
-                        </Col>}
                         <Col span={24}>
                             <SendInformation />
                         </Col>
+
+                        <Col span={24} className={'title'}>Descripción</Col>
+                        {product && <Col span={24} className={'description'}>
+                            {product.description}
+                        </Col>}
                     </Col>
                 </Col>
             </Row>

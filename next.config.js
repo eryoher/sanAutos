@@ -1,7 +1,7 @@
 const withSass = require('@zeit/next-sass')
 const withFonts = require('next-fonts');
-const lineBase = "http://localhost:3001/api"; //localhost
-//const lineBase = "https://api.cyberdays.com.co/api"; //CyberDays
+//const lineBase = "http://localhost:3001/api"; //localhost
+const lineBase = "https://api.cyberdays.com.co/api"; //CyberDays
 
 module.exports = {
   exportPathMap: function() {
