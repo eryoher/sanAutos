@@ -18,7 +18,7 @@ const { Content } = Layout;
 
 const logosProducts = [
     {
-        key : 'logan.png',
+        key : 'logan.jpg',
         label:'Logan'
     },
     {

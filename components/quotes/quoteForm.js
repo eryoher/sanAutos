@@ -108,7 +108,7 @@ export default class QuoteForm extends Component {
                                 />
                                 <label style={{ paddingLeft: '10px' }} >
                                     <span>Acepto política de </span>
-                                    <a target={"_blank"} onClick={this.props.showModal}  >
+                                    <a target={"_blank"} href={'https://www.renault.com.co/content/dam/Renault/CO/informes/politicas_de_tratamientos_de_datos_personales.pdf'}  >
                                         {'protección de datos personales'}
                                     </a>
                                 </label>
