@@ -89,7 +89,7 @@ class Menu extends Component {
 
     render() {
         const { listCategories } = this.props;
-        const copy = '../../static/img/copybt.webp'
+        const copy = '../../static/img/copybt.png'
 
         return (
             <Col span={24}>

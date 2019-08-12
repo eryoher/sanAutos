@@ -24,19 +24,19 @@
 @mixin RenaultLifeRegular($size) {
     font-size: $size;
     font-family: RenaultLifeRegular;
-    font-display: swap;
+    font-display: auto;
 }
 
 @mixin RenaultLifeBold($size) {
     font-size: $size;
     font-family: RenaultLifeBold;
-    font-display: swap;
+    font-display: auto;
 }
 
 @mixin RenaultLifeLight($size) {
     font-size: $size;
     font-family: RenaultLifeLight;
-    font-display: swap;
+    font-display: auto;
 }
 
 $width-page: auto;

@@ -17,7 +17,7 @@ export default class Index extends Component {
                 </Head>
 
                 <Row className={"main-content"} >
-                    <Col span={24} className={"body-cont"} style={{ backgroundImage: `url(../../static/img/fondo.webp)` }} >
+                    <Col span={24} className={"body-cont"} style={{ backgroundImage: `url(../../static/img/fondo.jpg)` }} >
                         <Header />
                         <Gallery />
                         <Menu />

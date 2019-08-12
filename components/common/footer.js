@@ -11,9 +11,6 @@ const dividerColumnCero = {
 
 export default class Footer extends Component {
     render() {
-        const vigiladoLogo = "../../static/img/vigilado.png";
-        const footerLogo = "../../static/img/logos-footer.png";
-
         return (
             <Col span={24} className={"footer-cont"} >
                 <Col span={24} className={"footer-term"} >

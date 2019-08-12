@@ -5,12 +5,12 @@ import { Row, Col, Carousel } from 'antd';
 import PromotionItem from './promotionItem';
 import Router from 'next/router'
 
-const dividerImg = {
-    xs: { span: 24 },
-    sm: { span: 24 },
-    md: { span: 8 },
-    lg: { span: 8 },
-    xl: { span: 8 },
+const dividerGallery = {
+    xs: { span: 0 },
+    sm: { span: 0 },
+    md: { span: 24 },
+    lg: { span: 24 },
+    xl: { span: 24 },
 }
 
 class Gallery extends Component {
@@ -69,15 +69,39 @@ class Gallery extends Component {
         )
     }
 
-    render() {
-        const { search } = this.props;       
-        const copy = '../../static/img/copy.webp'
+    renderPromotionsMobile() {
+        const { search } = this.props
+        let rows = []
+
+        search.data.forEach((promotion, index) => {
+            rows.push(
+                <Col span={24} className={'carrusel-cont'} key={promotion.id} >
+                    <PromotionItem promotion={promotion} />
+                </Col>
+            )
+        });
 
         return (
-            <Col span={24}>
-                {search && this.renderPromotions()}
+            <Carousel autoplay autoplaySpeed={'30'} className={"carrusel-mobile"} >
+                {rows}
+            </Carousel>
+        )
+    }
+
+    render() {
+        const { search } = this.props;
+        const copy = '../../static/img/copy.png'
+
+        return (
+            <Row>
+                <Col {...dividerGallery} >
+                    {search && this.renderPromotions()}
+                </Col>
+                <Col span={24} className={'carrusel'}>
+                    {search && this.renderPromotionsMobile()}
+                </Col>
                 <Col className={'carrusel-copy'} span={24} style={{ backgroundImage: `url(${copy})` }} />
-            </Col>
+            </Row>
         )
     }
 }
