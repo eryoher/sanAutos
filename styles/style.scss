@@ -194,7 +194,6 @@
 
   .left-promo {
     padding-left: 3rem;
-
     @include breakpoint(max-width 767px) {
       padding-left: 0rem;
     }
@@ -220,20 +219,20 @@
       justify-content: space-around;
       img {
         border-radius: 0.5rem;
-        height: 350px;
+        height: 400px;
         width: 100%;
         padding: 4%;
         background-position: center;
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
-
         @include breakpoint(max-width 768px) {
-          height: 300px;
+          height: 200px;
         }
       }
     }
 
     .list-images {
+      padding-left: 1.5rem;
       @include breakpoint(max-width 767px) {
         padding-left: 3rem;
       }
@@ -251,7 +250,6 @@
     }
     .tag-sale-cont {
       padding-left: 2rem; 
-      height: 350px;
       width: 90%;
       display: flex;
       justify-content: center;
@@ -259,7 +257,7 @@
       transform: rotate(7deg);
       .tag-sale {
         width: 230px;
-        height: 300px;
+        height: 400px;
         .redondeado {
           width: 164px;
           height: 170px;
