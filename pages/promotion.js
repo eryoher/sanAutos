@@ -38,7 +38,7 @@ class Promotions extends Component {
                     <link href="../static/favicon.ico" rel="icon" type="image/x-icon" />
                 </Head>
                 <Row>
-                    <Col span={24} className={"body-cont"} style={{ backgroundImage: `url(../../static/img/fondo.png)` }} >
+                    <Col span={24} className={"body-cont"} style={{ backgroundImage: `url(../../static/img/fondo.jpg)` }} >
                         <PromotionDetail product = {promotion} />
                     </Col>
                     <Col span={24} >
