@@ -214,14 +214,13 @@
     .main-image {
       padding-top: 2%;
       padding-bottom: 3%;
-
       display: flex;
       justify-content: center;
       align-items: center;
       justify-content: space-around;
       img {
         border-radius: 0.5rem;
-        height: 500px;
+        height: 350px;
         width: 100%;
         padding: 4%;
         background-position: center;
@@ -235,6 +234,9 @@
     }
 
     .list-images {
+      @include breakpoint(max-width 767px) {
+        padding-left: 3rem;
+      }
       .list {
         background-size: cover;
         background-repeat: no-repeat;
@@ -242,13 +244,17 @@
         margin: 2%;
         width: 120px;
         display: inline-block;
+        @include breakpoint(max-width 767px) {
+          height: 70px;
+        }
       }
     }
     .tag-sale-cont {
-      height: 400px;
+      padding-left: 2rem; 
+      height: 350px;
+      width: 90%;
       display: flex;
       justify-content: center;
-      //align-items: center;
       justify-content: space-around;
       transform: rotate(7deg);
       .tag-sale {

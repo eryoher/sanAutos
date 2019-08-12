@@ -84,6 +84,7 @@ class PromotionDetail extends Component {
         const { product } = this.props
         const nameProduct = (product) ? product.name : '';
         const renaultLogo = "../../static/img/logo-renault.png";
+        const no = "../../static/img/no-imagen.jpg";
         const bono = (product) ? new Intl.NumberFormat().format(product.promotion) : 0;
         return (
             <Row>
@@ -130,10 +131,10 @@ class PromotionDetail extends Component {
 }
 
 function mapStateToProps({ auth }) {
-   
+
     return {
         auth
-   
+
     }
 }
 
