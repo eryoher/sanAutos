@@ -19,7 +19,7 @@
     "@zeit/next-less": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "antd": "^3.11.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.2.6",
     "compass-mixins": "^0.12.10",
